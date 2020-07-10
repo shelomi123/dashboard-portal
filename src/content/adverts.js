@@ -29,6 +29,31 @@ function Adverts(){
                     </div>
 
 
+                    <table class="table">
+                        <thead class="table-info">
+                            <tr>
+                                <th>#</th>
+                                <th>Company</th>
+                                <th>Job Role</th>
+                                <th>Advertisement</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <th>1</th>
+                                <td>WSO2</td>
+                                <td>Software Engineer</td>
+                                <td><button type="button" class="btn btn-secondary">View</button></td>
+                            </tr>
+                            <tr>
+                                <th>2</th>
+                                <td>SYSCO</td>
+                                <td>Software Engineer</td>
+                                <td><button type="button" class="btn btn-secondary">View</button></td>
+                            </tr> 
+                              
+                        </tbody>
+                    </table>
 
 
 
