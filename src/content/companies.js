@@ -5,9 +5,7 @@ import '../App.css';
 function Companies(){
     return (
         <div className="admin-content">
-           <div className="companies">
-               Companies
-           </div>
+           ggggggggggggggggggggggg
         </div>
     )
 }
