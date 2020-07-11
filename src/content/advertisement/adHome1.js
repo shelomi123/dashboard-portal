@@ -10,7 +10,7 @@ function adverts(){
                <center>advertisements from the </center>
                <center>companies yet.</center>
                <br></br>
-               <button type="button" class="btn btn-info">START REQUESTING ADVERTISEMENTS</button>
+               <button type="button" class="btn btn-info" style={{ background: '#01506e' }}>START REQUESTING ADVERTISEMENTS</button>
                
            </div>
            
