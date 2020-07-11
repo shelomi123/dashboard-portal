@@ -92,13 +92,13 @@ function Adverts(){
                     <div class="form-group row">
                         
                         <div class="col-md-2">
-                            <h8>0/104 selected</h8><br></br><br></br>
+                            <h8>0/104 selected</h8><br></br>
                             <button type="button" >Select All</button>
                         </div>
                         
-                        <div class="col-md-2">
+                        <div class="col-md-3">
                         </div>
-                        <div class="col-md-2">
+                        <div class="col-md-3">
                         </div>
                         
                         <div class="col-md-2">
