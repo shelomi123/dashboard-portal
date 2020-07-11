@@ -12,7 +12,7 @@ import Adverts from './views/adverts';
 import StudentCvs from './views/studentCvs';
 import Emailing from './views/emailing';
 import Notifications from './views/notifications';
-import advertsRequest from './views/advertsRequest';
+
 
 
 ReactDOM.render(
@@ -26,7 +26,6 @@ ReactDOM.render(
       <Route path="/cvs" component={StudentCvs} />
       <Route path="/emailing" component={Emailing} />
       <Route path="/notifications" component={Notifications} />
-      <Route path="/advertsRequest" component={advertsRequest} />
       <Redirect from="/" to="/admin/index" />
     </Switch>
   </BrowserRouter>,
