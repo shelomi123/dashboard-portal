@@ -165,6 +165,21 @@
     align-items: center;
 }
 
+.top-left { 
+    top: 0; 
+    left: 0; 
+} 
+
+.top-center { 
+    top: 0; 
+    left: 50%; 
+    transform: translateX(-50%); 
+} 
+
+.top-right { 
+    top: 0; 
+    right: 0; 
+} 
 /*==================================================== studentCvs =================================================== */
 
 .studentCvs {

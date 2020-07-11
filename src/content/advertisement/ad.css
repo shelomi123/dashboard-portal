@@ -1,0 +1,69 @@
+@import url('https://fonts.googleapis.com/css2?family=Ropa+Sans&display=swap');
+:any-link {
+    text-decoration: none;
+}
+
+
+
+/*==================================================== dashboard admin content =================================================== */
+
+.admin-content {
+    position: fixed !important;
+    right: 10px;
+    top: 60px;
+    width: 84%;
+    background-color: rgb(236, 234, 234);
+    border-radius: 5px;
+    height: 100px;
+    height: 90vh;
+    float: right;
+    overflow: auto;
+}
+
+.content {
+    background-color: red;
+    height: 300px;
+    margin: 10px;
+}
+
+
+
+
+
+
+/*==================================================== adverts =================================================== */
+
+.adverts {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-size: 50px;
+    font-weight: 700;
+    color: rgb(168, 164, 164);
+}
+.admin-content{
+    justify-content: center;
+    align-items: center;
+}
+
+.top-left { 
+    top: 1cm; 
+    left: 2cm; 
+} 
+
+.top-center { 
+    top: 1cm; 
+    left: 5cm; 
+    transform: translateX(-50%); 
+} 
+
+.top-right { 
+    top: 1cm; 
+    left: 8cm; 
+} 
+.custom {
+    width: 5cm !important;
+}
