@@ -60,14 +60,20 @@
     transform: translateX(-50%); 
 } 
 
-.top-right { 
-    top: 1cm; 
-    left: 8cm; 
+.bottom-right { 
+    bottom: 1cm; 
+    left: 24cm; 
 } 
+.bottom-mid{
+    bottom: 1cm;
+    left: 20cm;
+}
 .custom {
     width: 5cm !important;
 }
-
+.smbtn{
+    width: 3cm;
+}
 .cardbtn {
     width: 5cm;
     
