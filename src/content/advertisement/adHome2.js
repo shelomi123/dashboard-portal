@@ -1,6 +1,7 @@
 import React from 'react';
 import './ad.css';
 import 'bootstrap/dist/css/bootstrap.css';
+import com from '../../assets/images/com.png';
 
 function Adverts(){
     return (
@@ -51,46 +52,199 @@ function Adverts(){
 {/*------------------------------------------------------------card begin-------------------------------------------------------*/}
                 
                 <div class="row">
-                    <div class="col-md-3 col-sm-6 col-12">
-                        <div class="card h-100">
-                            <h1 class="card-title">BeatsX</h1>
-                            <div class="text-center">
-                                <p>1188.0000</p>
-                                <p>2017-06-09 10:00:00</p>
-                            </div>
-                        </div>
-                    </div>
-
+                    {/*card1111111111111111*/}
                     <div class="col-md-4 col-sm-6 col-12">
-                        <div class="card h-100">
-                            {/*<img src="images/dieux/Agni.jpg" alt="Nitendo Switch"> */}
-                            <h1 class="card-title">Nitendo Switch</h1>
-                            <div class="text-center">
-                                <p>2899.0000</p>
-                                <p>2017-06-10 10:00:00</p>
-                                <div class="container p-3 my-3" style={{ background: '#b2ebf2' }}>
-                                    <div class="form-group row">
-                                        <div class="col-md-4">
-                                        <button type="button" class="btn btn-secondary ">SUMMARY</button>
-                                        </div>
-                                        <div class="col-md-4">
-                                        <button type="button" class="btn btn-secondary">PENDING</button>
+                        <div class="card h-80">
+                            <div class="card mb-3" style={{ width:'540px' }}/>
+                                <div class="row no-gutters">
+                                    <div class="col-md-4">
+                                        <img src={com} alt="Logo" style={{ height:'3cm' , width:'3cm' }}/>
+                                    </div>
+                                    <div class="col-md-8">
+                                        <div class="card-body">
+                                            <h5 class="card-title">Card title</h5>
+                                            <p class="card-text">This is a wider card with</p>
                                         </div>
                                     </div>
+                                    <div class="container p-3 my-3" style={{ background: '#b2ebf2' }}>
+                                        <div class="form-group row">
+                                            <div class="col-md-12">
+                                                <center>
+                                                <button type="button" class="btn btn-secondary cardbtn">View more</button>
+                                                </center>
+                                            </div>
+                                        </div>
+                                    </div>
+
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="col-md-4 col-sm-6 col-12">
-                        <div class="card h-100">
-                            <h1 class="card-title">iPhone 7 128GB (Jet Blakc)</h1>
-                            <div class="text-center">
-                                <p>6388.0000</p>
-                                <p>2017-06-06 10:00:00</p>
+
+{/*card2222222222222222*/}
+                        <div class="col-md-4 col-sm-6 col-12">
+                        <div class="card h-80">
+                            <div class="card mb-3" style={{ width:'540px' }}/>
+                                <div class="row no-gutters">
+                                    <div class="col-md-4">
+                                        <img src={com} alt="Logo" style={{ height:'3cm' , width:'3cm' }}/>
+                                    </div>
+                                    <div class="col-md-8">
+                                        <div class="card-body">
+                                            <h5 class="card-title">Card title</h5>
+                                            <p class="card-text">This is a wider card with</p>
+                                        </div>
+                                    </div>
+                                    <div class="container p-3 my-3" style={{ background: '#b2ebf2' }}>
+                                        <div class="form-group row">
+                                            <div class="col-md-12">
+                                                <center>
+                                                <button type="button" class="btn btn-secondary cardbtn">View more</button>
+                                                </center>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
                             </div>
                         </div>
+{/*card33333 */}
+
+<div class="col-md-4 col-sm-6 col-12">
+                        <div class="card h-80">
+                            <div class="card mb-3" style={{ width:'540px' }}/>
+                                <div class="row no-gutters">
+                                    <div class="col-md-4">
+                                        <img src={com} alt="Logo" style={{ height:'3cm' , width:'3cm' }}/>
+                                    </div>
+                                    <div class="col-md-8">
+                                        <div class="card-body">
+                                            <h5 class="card-title">Card title</h5>
+                                            <p class="card-text">This is a wider card with</p>
+                                        </div>
+                                    </div>
+                                    <div class="container p-3 my-3" style={{ background: '#b2ebf2' }}>
+                                        <div class="form-group row">
+                                            <div class="col-md-12">
+                                                <center>
+                                                <button type="button" class="btn btn-secondary cardbtn">View more</button>
+                                                </center>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+
+
+
+
+
+
+
+
                     </div>
-                </div>
+
+<br></br>
+{/*ccccccccccaaaaaaaaaaaarrrrrrddddddd bbbbbbbbbbbbbbbbbbbrrrrrrrrrrrrrrrrr*/}
+
+                <div class="row">
+                    {/*card1111111111111111*/}
+                    <div class="col-md-4 col-sm-6 col-12">
+                        <div class="card h-80">
+                            <div class="card mb-3" style={{ width:'540px' }}/>
+                                <div class="row no-gutters">
+                                    <div class="col-md-4">
+                                        <img src={com} alt="Logo" style={{ height:'3cm' , width:'3cm' }}/>
+                                    </div>
+                                    <div class="col-md-8">
+                                        <div class="card-body">
+                                            <h5 class="card-title">Card title</h5>
+                                            <p class="card-text">This is a wider card with</p>
+                                        </div>
+                                    </div>
+                                    <div class="container p-3 my-3" style={{ background: '#b2ebf2' }}>
+                                        <div class="form-group row">
+                                            <div class="col-md-12">
+                                                <center>
+                                                <button type="button" class="btn btn-secondary cardbtn">View more</button>
+                                                </center>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+
+{/*card2222222222222222*/}
+                        <div class="col-md-4 col-sm-6 col-12">
+                        <div class="card h-80">
+                            <div class="card mb-3" style={{ width:'540px' }}/>
+                                <div class="row no-gutters">
+                                    <div class="col-md-4">
+                                        <img src={com} alt="Logo" style={{ height:'3cm' , width:'3cm' }}/>
+                                    </div>
+                                    <div class="col-md-8">
+                                        <div class="card-body">
+                                            <h5 class="card-title">Card title</h5>
+                                            <p class="card-text">This is a wider card with</p>
+                                        </div>
+                                    </div>
+                                    <div class="container p-3 my-3" style={{ background: '#b2ebf2' }}>
+                                        <div class="form-group row">
+                                            <div class="col-md-12">
+                                                <center>
+                                                <button type="button" class="btn btn-secondary cardbtn">View more</button>
+                                                </center>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+{/*card33333 */}
+
+<div class="col-md-4 col-sm-6 col-12">
+                        <div class="card h-80">
+                            <div class="card mb-3" style={{ width:'540px' }}/>
+                                <div class="row no-gutters">
+                                    <div class="col-md-4">
+                                        <img src={com} alt="Logo" style={{ height:'3cm' , width:'3cm' }}/>
+                                    </div>
+                                    <div class="col-md-8">
+                                        <div class="card-body">
+                                            <h5 class="card-title">Card title</h5>
+                                            <p class="card-text">This is a wider card with</p>
+                                        </div>
+                                    </div>
+                                    <div class="container p-3 my-3" style={{ background: '#b2ebf2' }}>
+                                        <div class="form-group row">
+                                            <div class="col-md-12">
+                                                <center>
+                                                <button type="button" class="btn btn-secondary cardbtn">View more</button>
+                                                </center>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+
+
+
+
+
+
+
+
+                    </div>
+
+                    
+                    
+                
 {/*------------------------------------------------------------card end-------------------------------------------------------*/}
                
 
@@ -101,14 +255,7 @@ function Adverts(){
 
 
                   
-            </div>
-                
-                
-
-            
-           
-       
-            
+        </div>
     </div>
     )
 }

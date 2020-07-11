@@ -55,6 +55,30 @@ function Adverts(){
                         </tbody>
                     </table>
 
+{/*///////////////////////////////////////*/}
+<div class="col-md-4 col-sm-6 col-12">
+                        <div class="card h-100">
+                            <img src={com} alt="Logo" style={{ height:'3cm' , width:'3cm' }}/>
+                            <h5 class="card-title">Nitendo Switch</h5>
+                            <div class="text-center">
+                                <p>2899.0000</p>
+                                <p>2017-06-10 10:00:00</p>
+                                <div class="container p-3 my-3" style={{ background: '#b2ebf2' }}>
+                                    <div class="form-group row">
+                                        <div class="col-md-4">
+                                        <button type="button" class="btn btn-secondary ">SUMMARY</button>
+                                        </div>
+                                        <div class="col-md-4">
+                                        <button type="button" class="btn btn-secondary">PENDING</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+
 
 
 
