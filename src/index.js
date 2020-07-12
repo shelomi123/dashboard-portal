@@ -12,6 +12,7 @@ import Adverts from './views/adverts';
 import StudentCvs from './views/studentCvs';
 import Emailing from './views/emailing';
 import Notifications from './views/notifications';
+import Users from './views/users';
 
 ReactDOM.render(
   <React.StrictMode>
@@ -23,8 +24,9 @@ ReactDOM.render(
       <Route path="/adverts" component={Adverts} />
       <Route path="/cvs" component={StudentCvs} />
       <Route path="/emailing" component={Emailing} />
+      <Route path="/users" component={Users} />
       <Route path="/notifications" component={Notifications} />
-      <Redirect from="/" to="/admin/index" />
+      <Redirect from="/" to="/dashboard" />
     </Switch>
   </BrowserRouter>,
   </React.StrictMode>,
