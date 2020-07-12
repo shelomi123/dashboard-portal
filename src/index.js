@@ -1,7 +1,10 @@
-import React from 'react'
-import ReactDOM from 'react-dom'
-import './index.css'
-import { BrowserRouter, Route, Switch, Redirect } from 'react-router-dom'
+
+import React from 'react';
+import ReactDOM from 'react-dom';
+import './index.css';
+import { BrowserRouter, Route, Switch, Redirect } from 'react-router-dom';
+import * as serviceWorker from './serviceWorker';
+import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
 import * as serviceWorker from './serviceWorker'
 
 import DashboardHome from './views/dashboardr-home'
@@ -12,6 +15,8 @@ import StudentCvs from './views/studentCvs'
 import Emailing from './views/emailing'
 import Notifications from './views/notifications'
 import setDeadline from './content/advertisements2/setDeadline'
+
+
 
 ReactDOM.render(
   <React.StrictMode>
