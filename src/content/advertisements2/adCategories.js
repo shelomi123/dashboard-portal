@@ -1,8 +1,8 @@
 import React from 'react'
 import MUIDataTable from 'mui-datatables'
 import { Card } from 'react-bootstrap'
-import Navbar from '../../components/navbar'
-import SideBar from '../../components/sidebar'
+// import Navbar from '../../components/navbar'
+// import SideBar from '../../components/sidebar'
 
 const columns = ['Category Code', 'Category Name']
 const data = [
@@ -12,6 +12,10 @@ const data = [
   ['WEB-D', 'Web Developer(PHP/Python/Ruby/JavaScript)'],
   ['SA', 'System Architect'],
   ['QAE', 'Quality Assurance Engineer'],
+  ['BA', 'Business Analyst'],
+  ['BA', 'Business Analyst'],
+  ['BA', 'Business Analyst'],
+  ['BA', 'Business Analyst'],
   ['BA', 'Business Analyst'],
 ]
 
@@ -24,7 +28,9 @@ function adCategories() {
       <div className="container-fluid cat_container">
         <h1>ADVERTISEMENT CATEGORIES</h1>
         <div className="new_category_btn_position">
-          <button className="new_category_btn ">Add New Categroy</button>
+          <button className="new_category_btn " style={{ outline: 'none' }}>
+            Add New Categroy
+          </button>
         </div>
         <div>
           <Card className="ad_card">
@@ -37,14 +43,17 @@ function adCategories() {
                 print: false,
                 viewColumns: false,
                 sort: false,
-                pagination: false,
+                pagination: true,
+                rowsPerPage: 5,
               }}
             />
           </Card>
         </div>
 
         <div className="ad_back_btn_position">
-          <button className="ad_back_btn">Back</button>
+          <button className="ad_back_btn" style={{ outline: 'none' }}>
+            Back
+          </button>
         </div>
       </div>
     </div>
