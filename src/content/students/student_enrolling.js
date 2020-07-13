@@ -4,7 +4,6 @@ import {
     Card, CardImg, CardText, CardBody,
     CardTitle, CardSubtitle, Button, Form
   } from 'reactstrap';
-import ReactFileReader from 'react-file-reader';
 
 function Student_enrolling(){
     
