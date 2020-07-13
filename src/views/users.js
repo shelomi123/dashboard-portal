@@ -1,10 +1,10 @@
 import React from 'react';
 import Navbar from '../components/navbar'
 import SideBar from '../components/sidebar'
-import Content from '../content/students/student_enrolled';
+import Content from '../content/users';
 
 
-function Students(){
+function Users(){
     return (
         <div>
         <Navbar/>
@@ -14,4 +14,4 @@ function Students(){
     );
 }
 
-export default Students;
+export default Users;

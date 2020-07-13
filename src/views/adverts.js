@@ -8,7 +8,6 @@ function Adverts() {
     <div>
       <Navbar />
       <SideBar />
-      <Content />
     </div>
   )
 }
