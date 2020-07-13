@@ -35,7 +35,7 @@ function Adverts(){
                                 <th>#</th>
                                 <th>Company</th>
                                 <th>Job Role</th>
-                                <th>Advertisement</th>
+                                <th>Advertisement123</th>
                             </tr>
                         </thead>
                         <tbody>
