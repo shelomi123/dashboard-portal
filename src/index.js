@@ -6,7 +6,6 @@ import { BrowserRouter, Route, Switch, Redirect } from 'react-router-dom';
 import * as serviceWorker from './serviceWorker';
 import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
 
-
 import DashboardHome from './views/dashboardr-home'
 import Companies from './views/companies'
 import Students from './views/students'
