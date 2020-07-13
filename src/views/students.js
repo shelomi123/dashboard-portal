@@ -1,7 +1,7 @@
 import React from 'react';
 import Navbar from '../components/navbar'
 import SideBar from '../components/sidebar'
-import Content from '../content/students';
+import Content from '../content/students/student_list';
 
 
 function Students(){
