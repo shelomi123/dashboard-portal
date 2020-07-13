@@ -19,7 +19,9 @@ class setDeadline extends Component {
         {/* <Navbar />
         <SideBar /> */}
         <div className="catogeries_btn_position">
-          <button className="catogeries_btn">Advertisement Categories</button>
+          <button className="catogeries_btn" style={{ outline: 'none' }}>
+            Advertisement Categories
+          </button>
         </div>
 
         <div className="container deadline_container">
@@ -38,7 +40,8 @@ class setDeadline extends Component {
             </Form>
             <button
               onClick={this.checkDate}
-              className="continue-btn block "
+              className="continue-btn  "
+              style={{ outline: 'none' }}
               type="submit"
             >
               Continue
