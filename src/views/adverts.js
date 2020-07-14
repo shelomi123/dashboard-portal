@@ -1,7 +1,7 @@
 import React from 'react'
 import Navbar from '../components/navbar'
 import SideBar from '../components/sidebar'
-import Content from '../content/advertisements2/setDeadline.js'
+import Content from '../content/advertisements2/regCompanyList'
 
 function Adverts() {
   return (

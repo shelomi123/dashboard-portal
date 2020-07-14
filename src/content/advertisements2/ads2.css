@@ -31,7 +31,6 @@
   padding-top: 30px;
   padding-right: 20px;
   padding-bottom: 120px;
-  border: 1px solid rgb(97, 98, 99);
   border-radius: 10px;
   margin-left: 20em;
   background-color: rgba(242, 245, 244, 0.253);
@@ -39,11 +38,12 @@
 }
 .deadline_form {
   margin-top: 5px;
-  margin-left: 14em;
+  margin-left: 3em;
 }
 .deadline_form_label {
   font-weight: 700;
   font-size: 34px;
+  margin-left: 5.5em;
 }
 .deadline_form_control {
   width: 200px;
@@ -75,12 +75,12 @@
   background-color: rgba(128, 128, 128, 0.116);
   padding-top: 3.5em;
   margin-left: 13.8em;
-  height: auto;
+  height: fit-content;
   width: fit-content;
 }
 .cat_container > h1 {
   position: fixed;
-  margin-left: 3em;
+  margin-left: 5em;
   margin-top: 1em;
   color: gray;
 }
@@ -88,8 +88,9 @@
   background-color: rgba(128, 128, 128, 0.384);
   position: fixed;
   display: flex;
+  flex-direction: column;
   margin-top: 1em;
-  margin-left: 4em;
+  margin-left: 17em;
   width: 68em;
   height: fit-content;
   border-color: black;
@@ -98,7 +99,7 @@
 }
 .new_category_btn_position {
   padding-top: 30px;
-  margin-left: 60em;
+  margin-left: 65em;
 }
 .new_category_btn {
   background-color: rgb(54, 192, 247);
@@ -111,7 +112,7 @@
   text-align: center;
   margin-top: 2em;
   padding: 3px;
-  margin-left: 5em;
+  margin-left: 8em;
 }
 .new_category_btn:hover {
   background-color: rgb(33, 153, 209);
@@ -133,8 +134,9 @@
   border: none;
   outline: none;
   text-align: center;
-  margin-top: 32em;
+  margin-top: 0em;
   margin-bottom: 1em;
+  margin-left: 10em;
 }
 .ad_back_btn:hover {
   background-color: rgb(4, 59, 4);
@@ -142,11 +144,13 @@
 }
 /*====================================================regCompanyList===================================================*/
 .list_container {
+  display: flex;
+  flex-direction: column;
   background-color: rgba(128, 128, 128, 0.116);
   padding-top: 3.5em;
-  margin-left: 13.8em;
+  margin-left: 13em;
   height: fit-content;
-  width: 78em;
+  width: 85%;
   position: relative;
 }
 .list_container > h1 {

@@ -3,6 +3,7 @@ import MUIDataTable from 'mui-datatables'
 import Navbar from '../../components/navbar'
 import SideBar from '../../components/sidebar'
 import './ads2.css'
+import '../../../node_modules/bootstrap/dist/css/bootstrap.min.css'
 
 const columns = [
   'Company Name',
@@ -42,7 +43,10 @@ function regCompanyList() {
     <div>
       <Navbar />
       <SideBar />
-      <div className="container-fluid list_container">
+      <div
+        className="container-fluid  list_container"
+        style={{ width: '85%', marginLeft: '13em', position: 'fixed' }}
+      >
         <h1>REGISTERED COMPANY LIST</h1>
         <MUIDataTable
           columns={columns}
