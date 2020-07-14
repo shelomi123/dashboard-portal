@@ -116,6 +116,34 @@
 .cancel:hover{
     background-color: violet;
 }
+.csv-reader-input{
+    background: #FFF;
+    clear: both;
+    overflow: auto;
+    border: 1px solid #BBB;
+    min-height: 120px;
+    padding: 15px;
+    margin: 10px;
+
+}
+.csv-input{
+    background: #FFF;
+    clear: both;
+    overflow: auto;
+    border: 2px dashed #BBB;
+    min-height: 120px;
+    position: relative;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    /* display: flex; */
+    width: 100%;
+    padding-left: 350px;
+    padding-top: 40px;
+    display: block;
+    align-items: center;
+}
+
 
 /*/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////*/
 

@@ -4,7 +4,8 @@ import {
     Card, CardImg, CardText, CardBody,
     CardTitle, CardSubtitle, Button
   } from 'reactstrap';
-import arrow from '../../assets/images/arrow.png'
+import arrow from '../../assets/images/arrow.png';
+import CSVReader from "react-csv-reader";
 
 
 function Student_csv(){
@@ -24,6 +25,9 @@ function Student_csv(){
                     </div>
                     
                </div>
+               <div className="files container">
+                 <CSVReader onFileLoaded={(data, fileInfo) => console.dir(data, fileInfo)} inputStyle={{color: 'red'}} />
+                </div>
                <div className="row">
                 <div className="col-xl-8 col-lg-6 col-md-4"></div>
                <div className="buttons col-xl-4 col-lg-6 col-md-">
@@ -32,6 +36,7 @@ function Student_csv(){
                 </div>
                 </div>
             </div>
+            
            
         </div>
     )
