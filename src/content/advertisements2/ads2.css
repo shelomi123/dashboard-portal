@@ -1,0 +1,158 @@
+/*==================================================== set Deadline  =================================================== */
+.catogeries_btn_position {
+  padding-top: 4em;
+  margin-left: 78em;
+}
+
+.catogeries_btn {
+  border-radius: 10px;
+  background-color: rgb(54, 192, 247);
+  border-radius: 20px;
+  border-style: none;
+  color: #fff;
+  width: 200px;
+  height: 40px;
+  border: none;
+  outline: none;
+  text-align: center;
+  margin-top: 1em;
+  margin-right: 0;
+}
+.catogeries_btn:hover {
+  background-color: rgb(33, 153, 209);
+}
+
+.deadline_container {
+  padding-top: 2em;
+}
+.set_deadline_card {
+  width: 60%;
+  height: 240px;
+  padding-top: 30px;
+  padding-right: 20px;
+  padding-bottom: 120px;
+  border: 1px solid rgb(97, 98, 99);
+  border-radius: 10px;
+  margin-left: 20em;
+  background-color: rgba(242, 245, 244, 0.253);
+  background-image: none;
+}
+.deadline_form {
+  margin-top: 5px;
+  margin-left: 14em;
+}
+.deadline_form_label {
+  font-weight: 700;
+  font-size: 34px;
+}
+.deadline_form_control {
+  width: 200px;
+  height: 40px;
+  border-radius: 10px;
+  background-color: rgb(220, 248, 248);
+  justify-content: center;
+  outline: none;
+}
+.continue-btn {
+  background-color: rgb(54, 192, 247);
+  border-radius: 20px;
+  border-style: none;
+  color: #fff;
+  width: 200px;
+  height: 40px;
+  border: none;
+  text-align: center;
+  margin-top: 1em;
+  margin-right: 0;
+  margin-left: 14em;
+}
+.continue-btn:hover {
+  background-color: rgb(33, 153, 209);
+}
+
+/*====================================================adCatogries===================================================*/
+.cat_container {
+  background-color: rgba(128, 128, 128, 0.116);
+  padding-top: 3.5em;
+  margin-left: 13.8em;
+  height: auto;
+  width: fit-content;
+}
+.cat_container > h1 {
+  position: fixed;
+  margin-left: 3em;
+  margin-top: 1em;
+  color: gray;
+}
+.ad_card {
+  background-color: rgba(128, 128, 128, 0.384);
+  position: fixed;
+  display: flex;
+  margin-top: 1em;
+  margin-left: 4em;
+  width: 68em;
+  height: fit-content;
+  border-color: black;
+  text-align: center;
+  font-size: 22;
+}
+.new_category_btn_position {
+  padding-top: 30px;
+  margin-left: 60em;
+}
+.new_category_btn {
+  background-color: rgb(54, 192, 247);
+  border-radius: 15px;
+  border-style: none;
+  color: #fff;
+  width: 180px;
+  border: none;
+  outline: none;
+  text-align: center;
+  margin-top: 2em;
+  padding: 3px;
+  margin-left: 5em;
+}
+.new_category_btn:hover {
+  background-color: rgb(33, 153, 209);
+}
+.ad_back_btn_position {
+  margin-left: 66em;
+  margin-top: 1em;
+}
+.ad_back_btn {
+  background-color: rgba(21, 226, 113, 0.788);
+  border-radius: 15px;
+  border-style: none;
+  color: rgb(12, 12, 12);
+  font-size: 15px;
+  font-family: sans-serif;
+  font-weight: 500;
+  width: 150px;
+  height: 30px;
+  border: none;
+  outline: none;
+  text-align: center;
+  margin-top: 32em;
+  margin-bottom: 1em;
+}
+.ad_back_btn:hover {
+  background-color: rgb(4, 59, 4);
+  color: white;
+}
+/*====================================================regCompanyList===================================================*/
+.list_container {
+  background-color: rgba(128, 128, 128, 0.116);
+  padding-top: 3.5em;
+  margin-left: 13.8em;
+  height: fit-content;
+  width: 78em;
+  position: relative;
+}
+.list_container > h1 {
+  position: relative;
+  margin-left: 8em;
+  margin-top: 0.2em;
+  color: rgba(72, 71, 71, 0.708);
+  font-weight: 700;
+}
