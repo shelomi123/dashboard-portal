@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { Card, Form } from 'react-bootstrap'
-import '../../App.css'
+import './ads2.css'
 // import Navbar from '../../components/navbar'
 // import SideBar from '../../components/sidebar'
 

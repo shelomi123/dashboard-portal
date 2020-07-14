@@ -1,6 +1,7 @@
 import React from 'react'
 import MUIDataTable from 'mui-datatables'
 import { Card } from 'react-bootstrap'
+import './ads2.css'
 // import Navbar from '../../components/navbar'
 // import SideBar from '../../components/sidebar'
 

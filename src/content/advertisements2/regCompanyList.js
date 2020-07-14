@@ -1,7 +1,8 @@
 import React from 'react'
 import MUIDataTable from 'mui-datatables'
-// import Navbar from '../../components/navbar'
-// import SideBar from '../../components/sidebar'
+import Navbar from '../../components/navbar'
+import SideBar from '../../components/sidebar'
+import './ads2.css'
 
 const columns = [
   'Company Name',
@@ -39,8 +40,8 @@ const options = {
 function regCompanyList() {
   return (
     <div>
-      {/* <Navbar />
-       <SideBar /> */}
+      <Navbar />
+      <SideBar />
       <div className="container-fluid list_container">
         <h1>REGISTERED COMPANY LIST</h1>
         <MUIDataTable
@@ -62,7 +63,6 @@ function regCompanyList() {
             Request ADs
           </button>
           <button className="btn btn-danger" style={{ width: '200px' }}>
-            {' '}
             Cancel
           </button>
         </div>
