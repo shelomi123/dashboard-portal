@@ -24,19 +24,18 @@ function Student_csv(){
                             </div>
                         </div>
                     </div>
+                    <br></br>
                     
-               </div> */}
-               {/* <div className="files container">
-                 <CSVReader id="csv_reader" onFileLoaded={(data, fileInfo) => console.dir(data, fileInfo)} inputStyle={{color: 'red'}}>
-                 <Button className="upload">Upload</Button></CSVReader>
-                </div>
+                    
+               </div>
                <div className="row">
-                <div className="col-xl-8 col-lg-6 col-md-4"></div>
-               <div className="buttons col-xl-4 col-lg-6 col-md-">
-                    <Button className="upload">Upload</Button>
-                    <Button className="cancel">Cancel</Button>
-                </div>
+                            <div className="col-xl-8 col-lg-6 col-md-4"></div>
+                            <div className="buttons col-xl-4 col-lg-6 col-md-8">
+                                <Button className="upload">Upload</Button>
+                                <Button className="cancel">Cancel</Button>
+                            </div>
                 </div> */}
+               
                 <Tabs defaultActiveKey="profile" id="controlled-tab-example">
                     <Tab eventKey="home" title="Computer Science">
                         <div className="files container">
