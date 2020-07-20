@@ -93,7 +93,7 @@
 .upload,.cancel{
 
     border: 0;
-    box-shadow: 0 5px 10px 0 rgba(0,0,0,.2);
+    /* box-shadow: 0 5px 10px 0 rgba(0,0,0,.2); */
     padding: 8px;
     padding-left: 40px;
     padding-right: 40px;
@@ -108,7 +108,7 @@
     background-color: rgb(64, 213, 224);
 }
 .cancel{
-    background-color: rgb(241, 172, 224);
+    background-color: rgb(248, 168, 217);
 }
 .upload:hover{
     background-color: rgb(64, 187, 224);
@@ -123,7 +123,7 @@
     border: 1px solid #BBB;
     min-height: 120px;
     padding: 15px;
-    margin: 10px;
+    margin-top: 30px;
 
 }
 .csv-input{
@@ -142,6 +142,14 @@
     padding-top: 40px;
     display: block;
     align-items: center;
+}
+.nav-tabs .nav-link.active{
+    /* background-color: rgb(182, 231, 250); */
+    color: #007bff;
+   
+}
+.nav-tabs .nav-link{
+    color: #000;
 }
 
 
