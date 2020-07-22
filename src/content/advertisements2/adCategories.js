@@ -1,8 +1,8 @@
 import React from 'react'
 import MUIDataTable from 'mui-datatables'
 import { Card } from 'react-bootstrap'
-// import Navbar from '../../components/navbar'
-// import SideBar from '../../components/sidebar'
+import './ads2.css'
+import '../../../node_modules/bootstrap/dist/css/bootstrap.min.css'
 
 const columns = ['Category Code', 'Category Name']
 const data = [
@@ -22,9 +22,6 @@ const data = [
 function adCategories() {
   return (
     <div>
-      {/* <Navbar />
-      <SideBar /> */}
-
       <div className="container-fluid cat_container">
         <h1>ADVERTISEMENT CATEGORIES</h1>
         <div className="new_category_btn_position">
@@ -33,7 +30,7 @@ function adCategories() {
           </button>
         </div>
         <div>
-          <Card className="ad_card">
+          <Card className="ad_card ">
             <MUIDataTable
               columns={columns}
               data={data}
@@ -44,7 +41,8 @@ function adCategories() {
                 viewColumns: false,
                 sort: false,
                 pagination: true,
-                rowsPerPage: 5,
+                rowsPerPage: 6,
+                rowsPerPageOptions: false,
               }}
             />
           </Card>
