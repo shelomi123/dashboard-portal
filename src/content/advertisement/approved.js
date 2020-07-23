@@ -11,7 +11,7 @@ function Adverts(){
             <div class="container p-3 my-3 bg-light">
                     <div class="form-group row">
                         <div class="col-md-3">
-                            <button type="button" class="btn btn-info custom ">SUMMARY</button>
+                            <button type="button" class="btn btn-info custom ">SUMMARYdd</button>
                         </div>
                         <div class="col-md-3">
                             <button type="button" class="btn btn-info custom">PENDING APPROVAL</button>
