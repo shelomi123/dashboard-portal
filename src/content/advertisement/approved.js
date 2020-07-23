@@ -92,68 +92,7 @@ function Adverts(){
                         </div>
                     </div>
 
-                    ////////////////
-            <div class="container p-3 my-3 bg-light">
-                <h6>STUDENTS LIST</h6>
-
-                <table class="table">
-                        <thead class="table-info">
-                            <tr>
-                                <th></th>
-                                <th>Company Name</th>
-                                <th>Advert Code</th>
-                                <th>No of Positions</th>
-                                <th>Contact</th>
-                                <th>Email</th>
-                                <th></th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td><input type="checkbox" class="form-check-input" id="1"></input></td>
-                                <td>WSO2</td>
-                                <td>t1112</td>
-                                <td>6</td>
-                                <td>011 1234567</td>
-                                <td>test@gmail.com</td>
-                                <td><button type="button" class="btn btn-secondary">View</button></td>
-                            </tr>
-                            <tr>
-                                <td><input type="checkbox" class="form-check-input" id="1"></input></td>
-                                <td>WSO2</td>
-                                <td>t1112</td>
-                                <td>6</td>
-                                <td>011 1234567</td>
-                                <td>test@gmail.com</td>
-                                <td><button type="button" class="btn btn-secondary">View</button></td>
-                            </tr>
-                            <tr>
-                                <td><input type="checkbox" class="form-check-input" id="1"></input></td>
-                                <td>WSO2</td>
-                                <td>t1112</td>
-                                <td>6</td>
-                                <td>011 1234567</td>
-                                <td>test@gmail.com</td>
-                                <td><button type="button" class="btn btn-secondary">View</button></td>
-                            </tr>
-                            <tr>
-                                <td><input type="checkbox" class="form-check-input" id="1"></input></td>
-                                <td>WSO2</td>
-                                <td>t1112</td>
-                                <td>6</td>
-                                <td>011 1234567</td>
-                                <td>test@gmail.com</td>
-                                <td><button type="button" class="btn btn-secondary">View</button></td>
-                            </tr>
-                              
-                        </tbody>
-                    </table>
-
                     
-               
-
-                  
-            </div>
         </div>
     )
 }
