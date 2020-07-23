@@ -1,10 +1,14 @@
 import React from 'react';
 import './ad.css';
 import 'bootstrap/dist/css/bootstrap.css';
-
+import Navbar from '../../components/navbar'
+import SideBar from '../../components/sidebar'
 
 function Adverts(){
     return (
+        <div>
+      <Navbar />
+      <SideBar />
         <div className="admin-content">
              
 
@@ -33,6 +37,7 @@ function Adverts(){
                <button type="button" class="btn btn-info" style={{ background: '#01506e' }}>CHANGE THE DEADLINE</button>
                
            </div>
+    </div>
     </div>
     )
 }

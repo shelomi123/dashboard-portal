@@ -1,10 +1,14 @@
 import React from 'react';
 import './ad.css';
 import 'bootstrap/dist/css/bootstrap.css';
-
+import Navbar from '../../components/navbar'
+import SideBar from '../../components/sidebar'
 
 function Adverts(){
     return (
+        <div>
+      <Navbar />
+      <SideBar />
         <div className="admin-content">
             <div class="container p-3 my-3 bg-light">
                 <div class="form-group row">
@@ -48,6 +52,7 @@ function Adverts(){
             </div>
             
 
+        </div>
         </div>
     )
 }

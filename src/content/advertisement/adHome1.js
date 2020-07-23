@@ -1,9 +1,14 @@
 import React from 'react';
 import './ad.css';
 import 'bootstrap/dist/css/bootstrap.css';
+import Navbar from '../../components/navbar'
+import SideBar from '../../components/sidebar'
 
-function adverts(){
+function adHome1(){
     return (
+        <div>
+      <Navbar />
+      <SideBar />
         <div className="admin-content">
            <div className="adverts" >
                <center>PDC is not requesting</center> 
@@ -15,9 +20,9 @@ function adverts(){
            </div>
            
         </div>
-        
+        </div>
     )
 }
 
 
-export default adverts;
+export default adHome1

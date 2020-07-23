@@ -2,9 +2,15 @@ import React from 'react';
 import './ad.css';
 import 'bootstrap/dist/css/bootstrap.css';
 import com from '../../assets/images/com.png';
+import Navbar from '../../components/navbar'
+import SideBar from '../../components/sidebar'
 
-function Adverts(){
+function adHome2(){
     return (
+    <div>
+      <Navbar />
+      <SideBar />
+
         <div className="admin-content">
              
 
@@ -49,13 +55,13 @@ function Adverts(){
                 <br></br>
                      
 
-{/*------------------------------------------------------------card begin-------------------------------------------------------*/}
+{/*------------------------------------------------------------card begin----------------------------------------------*/}
                 
                 <div class="row">
                     {/*card1111111111111111*/}
                     <div class="col-md-4 col-sm-6 col-12">
                         <div class="card h-80">
-                            <div class="card mb-3" style={{ width:'540px' }}/>
+                            <div class="card md-3" style={{ width:'540px' }}/>
                                 <div class="row no-gutters">
                                     <div class="col-md-4">
                                         <img src={com} alt="Logo" style={{ height:'3cm' , width:'3cm' }}/>
@@ -83,7 +89,7 @@ function Adverts(){
 {/*card2222222222222222*/}
                         <div class="col-md-4 col-sm-6 col-12">
                         <div class="card h-80">
-                            <div class="card mb-3" style={{ width:'540px' }}/>
+                            <div class="card md-3" style={{ width:'540px' }}/>
                                 <div class="row no-gutters">
                                     <div class="col-md-4">
                                         <img src={com} alt="Logo" style={{ height:'3cm' , width:'3cm' }}/>
@@ -111,7 +117,7 @@ function Adverts(){
 
 <div class="col-md-4 col-sm-6 col-12">
                         <div class="card h-80">
-                            <div class="card mb-3" style={{ width:'540px' }}/>
+                            <div class="card md-3" style={{ width:'540px' }}/>
                                 <div class="row no-gutters">
                                     <div class="col-md-4">
                                         <img src={com} alt="Logo" style={{ height:'3cm' , width:'3cm' }}/>
@@ -152,7 +158,7 @@ function Adverts(){
                     {/*card1111111111111111*/}
                     <div class="col-md-4 col-sm-6 col-12">
                         <div class="card h-80">
-                            <div class="card mb-3" style={{ width:'540px' }}/>
+                            <div class="card md-3" style={{ width:'540px' }}/>
                                 <div class="row no-gutters">
                                     <div class="col-md-4">
                                         <img src={com} alt="Logo" style={{ height:'3cm' , width:'3cm' }}/>
@@ -180,7 +186,7 @@ function Adverts(){
 {/*card2222222222222222*/}
                         <div class="col-md-4 col-sm-6 col-12">
                         <div class="card h-80">
-                            <div class="card mb-3" style={{ width:'540px' }}/>
+                            <div class="card md-3" style={{ width:'540px' }}/>
                                 <div class="row no-gutters">
                                     <div class="col-md-4">
                                         <img src={com} alt="Logo" style={{ height:'3cm' , width:'3cm' }}/>
@@ -208,7 +214,7 @@ function Adverts(){
 
 <div class="col-md-4 col-sm-6 col-12">
                         <div class="card h-80">
-                            <div class="card mb-3" style={{ width:'540px' }}/>
+                            <div class="card md-3" style={{ width:'540px' }}/>
                                 <div class="row no-gutters">
                                     <div class="col-md-4">
                                         <img src={com} alt="Logo" style={{ height:'3cm' , width:'3cm' }}/>
@@ -257,7 +263,8 @@ function Adverts(){
                   
         </div>
     </div>
+    </div>
     )
 }
 
-export default Adverts;
+export default adHome2;
