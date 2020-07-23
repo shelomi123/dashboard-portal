@@ -167,7 +167,7 @@
     color: rgb(168, 164, 164);
 }
 
-/*/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////*/
+/*//////////////////////////////////////////////student_list////////////////////////////////////////////////////////////////*/
 
 .student_list{
     background-color: white;
@@ -232,4 +232,35 @@
 }
 .cancel2:hover{
     background-color: violet;
+}
+
+/*////////////////////////////////////////////////////////student_list2/////////////////////////////////////////////////////*/
+
+.student_list2{
+    /* background-color: white; */
+    margin-top: 20px;
+    /* padding: 20px; */
+    border-radius: 5px;
+}
+.student_list2 > h1 {
+    position: relative;
+   text-align: center;
+    margin-top: 0.2em;
+    color: rgba(72, 71, 71, 0.708);
+    font-weight: 700;
+  }
+  .enrollbtn{
+    background-color: rgb(64, 213, 224);
+
+  }
+.enrollbtn,.cancelbtn{
+
+    box-shadow: 0 5px 10px 0 rgba(0,0,0,.2);
+    padding: 8px;
+    padding-left: 40px;
+    padding-right: 40px;
+    margin-top: 30px;
+}
+.enrollbtn{
+    margin-right: 30px;
 }
