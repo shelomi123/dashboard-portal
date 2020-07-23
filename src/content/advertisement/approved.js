@@ -78,7 +78,7 @@ function Adverts(){
                 <div class="form-group row">
                         
                         <div class="col-md-8">
-                            <h8>0/104 selected</h8><br></br>
+                            <h8>0/104 selected/////</h8><br></br>
                             <button type="button" >Select All</button>
                         </div>
                         
