@@ -149,24 +149,7 @@ function Adverts(){
                         </tbody>
                     </table>
 
-                    <br></br><br></br>
-
-                    <div class="form-group row">
-                        
-                        <div class="col-md-8">
-                            <h8>0/104 selected</h8><br></br>
-                            <button type="button" >Select All</button>
-                        </div>
-                        
-                        
-                        
-                        <div class="col-md-2">
-                            <button type="button" class="btn btn-info smbtn" style={{ background: '#1a84ad' }}>PUBLISH</button>
-                        </div>
-                        <div class="col-md-2">
-                            <button type="button" class="btn btn-info smbtn" style={{ background: '#d12317' }}>CANCEL</button>
-                        </div>
-                    </div>
+                    
                
 
                   
