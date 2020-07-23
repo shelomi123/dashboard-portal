@@ -1,7 +1,10 @@
-import React from 'react';
-import './ad.css';
-import MUIDataTable from 'mui-datatables';
-import 'bootstrap/dist/css/bootstrap.css';
+import React from 'react'
+import './ad.css'
+import MUIDataTable from 'mui-datatables'
+import 'bootstrap/dist/css/bootstrap.css'
+import Navbar from '../../components/navbar'
+import SideBar from '../../components/sidebar'
+
 
 const columns = [
     'COMPANY NAME',
@@ -19,7 +22,7 @@ const columns = [
   const Data = [
     ['testCompany', 't0001', '5', '0111223344', 'testmail@test.com'],
     ['testCompany', 't0001', '4', '0111223344', 'testmail@test.com'],
-    ['testCompany', 't0001', '2', '0111223344', 'testmail@test.com'],
+    ['testCompany', 't0002', '2', '0111223344', 'testmail@test.com'],
     ['testCompany', 't0001', '4', '0111223344', 'testmail@test.com'],
     ['testCompany', 't0001', '2', '0111223344', 'testmail@test.com'],
     ['testCompany', 't0001', '2', '0111223344', 'testmail@test.com'],
@@ -36,8 +39,11 @@ const columns = [
     responsive: 'vertical',
   }
 
-function Adverts(){
+function approved(){
     return (
+      <div>
+      <Navbar />
+      <SideBar />
         <div className="admin-content">
              
 
@@ -94,7 +100,8 @@ function Adverts(){
 
                     
         </div>
+        </div>
     )
 }
 
-export default Adverts;
+export default approved;
