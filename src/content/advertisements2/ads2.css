@@ -1,7 +1,7 @@
 /*==================================================== set Deadline  =================================================== */
 .catogeries_btn_position {
   padding-top: 4em;
-  margin-left: 78em;
+  margin-left: 78%;
 }
 
 .catogeries_btn {
@@ -32,7 +32,7 @@
   padding-right: 20px;
   padding-bottom: 120px;
   border-radius: 10px;
-  margin-left: 20em;
+  margin-left: 30%;
   background-color: rgba(242, 245, 244, 0.253);
   background-image: none;
 }
@@ -43,7 +43,7 @@
 .deadline_form_label {
   font-weight: 700;
   font-size: 34px;
-  margin-left: 5.5em;
+  margin-left: 30%;
 }
 .deadline_form_control {
   width: 200px;
@@ -64,7 +64,7 @@
   text-align: center;
   margin-top: 1em;
   margin-right: 0;
-  margin-left: 14em;
+  margin-left: 35%;
 }
 .continue-btn:hover {
   background-color: rgb(33, 153, 209);
@@ -74,7 +74,6 @@
 .cat_container {
   background-color: rgba(128, 128, 128, 0.116);
   padding-top: 3.5em;
-  margin-left: 13.8em;
   height: fit-content;
   width: fit-content;
 }
@@ -90,7 +89,7 @@
   display: flex;
   flex-direction: column;
   margin-top: 1em;
-  margin-left: 17em;
+  margin-left: 5%;
   width: 68em;
   height: fit-content;
   border-color: black;
@@ -99,7 +98,7 @@
 }
 .new_category_btn_position {
   padding-top: 30px;
-  margin-left: 65em;
+  margin-left: 70%;
 }
 .new_category_btn {
   background-color: rgb(54, 192, 247);
@@ -118,7 +117,7 @@
   background-color: rgb(33, 153, 209);
 }
 .ad_back_btn_position {
-  margin-left: 66em;
+  margin-left: 70%;
   margin-top: 1em;
 }
 .ad_back_btn {

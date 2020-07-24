@@ -22,7 +22,7 @@ const data = [
 function adCategories() {
   return (
     <div>
-      <div className="container-fluid cat_container">
+      <div className="container-fluid cat_container" style={{ width: '85%', marginLeft: '13em', position: 'fixed' }}>
         <h1>ADVERTISEMENT CATEGORIES</h1>
         <div className="new_category_btn_position">
           <button className="new_category_btn " style={{ outline: 'none' }}>
