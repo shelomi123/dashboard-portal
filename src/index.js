@@ -25,6 +25,11 @@ import approved from './content/advertisement/approved'
 import category from './content/advertisement/category'
 import summary from './content/advertisement/summary'
 
+// import Companies from './content/companies/companies'
+import BlackListedCompany from './content/companies/blackListedCompanies'
+import RegisteredCompany from './content/companies/registeredCompanies'
+import PendingCompany from './content/companies/pendingCompanies'
+
 
 ReactDOM.render(
   <React.StrictMode>
@@ -47,6 +52,10 @@ ReactDOM.render(
         <Route path="/approved" component={approved} />
         <Route path="/category" component={category} />
         <Route path="/summary" component={summary} />
+
+        <Route path="/registeredcom" component={RegisteredCompany}/>
+        <Route path="/pendingcom" component={PendingCompany}/>
+        <Route path="/blacklistedcom" component={BlackListedCompany}/>
 
         <Redirect from="/" to="/dashboard" />
       </Switch>
