@@ -40,7 +40,7 @@ const columns = [
     responsive: 'vertical',
   }
 
-function approved(){
+function pending(){
     return (
       <div>
       <Navbar />
@@ -67,7 +67,7 @@ function approved(){
 
             <br></br>
             <div class="col-md-12">
-                <h6>104 advertisements from 50 companies have been approved</h6>
+                <h6>30 advertisements are pending approval</h6>
             </div>
             <br></br>
             <MUIDataTable
@@ -105,4 +105,4 @@ function approved(){
     )
 }
 
-export default approved;
+export default pending;

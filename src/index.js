@@ -22,6 +22,8 @@ import regCompanyList from './content/advertisements2/regCompanyList'
 import adHome1 from './content/advertisement/adHome1'
 import adHome2 from './content/advertisement/adHome2'
 import approved from './content/advertisement/approved'
+import pending from './content/advertisement/pending'
+import declined from './content/advertisement/declined'
 import category from './content/advertisement/category'
 import summary from './content/advertisement/summary'
 
@@ -47,9 +49,12 @@ ReactDOM.render(
         <Route path="/adCategories" component={adCategories} />
         <Route path="/regCompanyList" component={regCompanyList} />
 
+        
         <Route path="/adHome1" component={adHome1} />
         <Route path="/adHome2" component={adHome2} />
         <Route path="/approved" component={approved} />
+        <Route path="/pending" component={pending} />
+        <Route path="/declined" component={declined} />
         <Route path="/category" component={category} />
         <Route path="/summary" component={summary} />
 

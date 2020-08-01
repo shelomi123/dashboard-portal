@@ -1,6 +1,7 @@
 import React from 'react';
 import './ad.css';
 import 'bootstrap/dist/css/bootstrap.css';
+import { Link } from 'react-router-dom'
 import Navbar from '../../components/navbar'
 import SideBar from '../../components/sidebar'
 
@@ -15,7 +16,7 @@ function adHome1(){
                <center>advertisements from the </center>
                <center>companies yet.</center>
                <br></br>
-               <button type="button" class="btn btn-info" style={{ background: '#01506e' }}>START REQUESTING ADVERTISEMENTS</button>
+               <button type="button" class="btn btn-info" style={{ background: '#01506e' }}><Link style={{color:'white'}} to="/adHome2" >START REQUESTING ADVERTISEMENTS</Link></button>
                
            </div>
            
