@@ -16,7 +16,7 @@ function SideNavbar(){
                 <span class="material-icons sidebar-icon">corporate_fare</span>Companies</div></Link>
             <Link to="/students"><div className="sidebar-link">
                 <span class="material-icons sidebar-icon">people</span>Students</div></Link>
-            <Link to="/adverts"><div className="sidebar-link">
+            <Link to="/adHome1"><div className="sidebar-link">
                 <span class="material-icons sidebar-icon">view_carousel</span>Advertiesments</div></Link>
             <Link to="/cvs"><div className="sidebar-link">
                 <span class="material-icons sidebar-icon">text_snippet</span>Student CVs</div></Link>
