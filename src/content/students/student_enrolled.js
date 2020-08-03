@@ -13,7 +13,7 @@ function Student_enrolled(){
            <div className="student_enrolled">
             <p className="para">300 Out of 300 Students</p>
             <p> have been enrolled.</p>
-            <Button className="enroll">ENROLL STUDENTS</Button>
+            <Button className="enroll" style={{padding:'15px',}}>ENROLL STUDENTS</Button>
            </div>
         </div>
     )
