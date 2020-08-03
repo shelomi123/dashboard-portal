@@ -6,14 +6,14 @@ import {
   } from 'reactstrap';
 import arrow from '../../assets/images/arrow.png';
 // import CSVReader from "react-csv-reader";
-import { CSVReader } from 'react-papaparse'
+import { CSVReader, readString } from 'react-papaparse';
 import {Tabs, Tab} from 'react-bootstrap';
 
 
 function Student_csv(){
 
+    
     const handleOnDrop = (data) => {
-        
         console.log(data)
         
       }
@@ -65,6 +65,7 @@ function Student_csv(){
                                 addRemoveButton
                                 removeButtonColor='#659cef'
                                 onRemoveFile={handleOnRemoveFile}
+                                
                                 style={{
                                     dropArea: {
                                       borderStyle: 'dashed',
@@ -82,6 +83,7 @@ function Student_csv(){
                                       }
                                     },
                                 }}
+                            
                                 >
                                 <span>Drop CSV file here or click to upload.</span>
                             </CSVReader>
@@ -89,7 +91,7 @@ function Student_csv(){
                         <div className="row">
                             <div className="col-xl-7 col-lg-6 col-md-4"></div>
                             <div className="buttons col-xl-5 col-lg-6 col-md-8">
-                            <button className="btn upload btn-primary" style={{ width: '180px', marginRight: '2em' }}>Upload</button>  
+                            <button className="btn upload btn-primary" style={{ width: '180px', marginRight: '2em' }}>Save</button>  
                             <button className="btn cancel btn-danger"  style={{ width: '180px' }}>Cancel</button>
         
                             </div>
@@ -130,7 +132,7 @@ function Student_csv(){
                         <div className="row">
                             <div className="col-xl-7 col-lg-6 col-md-4"></div>
                             <div className="buttons col-xl-5 col-lg-6 col-md-8">
-                            <button className="btn upload btn-primary" style={{ width: '180px', marginRight: '2em' }}>Upload</button>  
+                            <button className="btn upload btn-primary" style={{ width: '180px', marginRight: '2em' }}>Save</button>  
                             <button className="btn cancel btn-danger"  style={{ width: '180px' }}>Cancel</button>
                             </div>
                         </div>
