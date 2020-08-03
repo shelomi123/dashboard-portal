@@ -134,7 +134,7 @@
     justify-content: center;
     /* display: flex; */
     width: 100%;
-    padding-left: 350px;
+    padding-left: 400px;
     padding-top: 40px;
     display: block;
     align-items: center;
@@ -146,7 +146,9 @@
 }
 .nav-tabs .nav-link{
     color: #000;
+    border: 2px;
 }
+
 
 
 /*/////////////////////////////////////////////student_enrolled////////////////////////////////////////////////////////////////*/
