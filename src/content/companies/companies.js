@@ -16,7 +16,7 @@ export default class Companies extends Component {
             error: null,
             search_field:'',
             show: false,
-            hideDefault: false,
+            hideDefult: false,
             hideFilter: true,
             alphabet:'',
 
@@ -25,17 +25,17 @@ export default class Companies extends Component {
 
     async componentDidMount(){
         try{
-            fetch('https://restcountries.eu/rest/v2/all').then((res) => res.json())
+            fetch('Http://localhost:5000/company/getAll').then((res) => res.json())
             .then((data) => {
-                data.sort((a, b) => a.name.localeCompare(b.name))
-                this.setState({com_names: data, hideDefault:this.props.fromView, hideFilter: true });
+                data.sort((a, b) => a.comp_name.localeCompare(b.comp_name))
+                this.setState({com_names: data, hideDefault:this.props.fromView, hideDefult: false, hideFilter: true });
             });
         }  catch(error){ 
             this.setState({error: error});
         }
     }
     handlePageClick = (e) => {
-        this.setState({alphabet: e.target.value, hideDefault: true, hideFilter:false});
+        this.setState({alphabet: e.target.value, hideDefult: true, hideFilter:false});
     }
     // myCallback = (dataFromChild) => {
     //     this.setState({ hide: dataFromChild });
@@ -48,10 +48,10 @@ export default class Companies extends Component {
     render() {
         const {com_names ,alphabet, search_field} = this.state
         const filter_companie = com_names.filter(company => (
-            (company.name.toLowerCase().includes(search_field.toLowerCase()))
+            (company.comp_name.toLowerCase().includes(search_field.toLowerCase()))
             )); //name should replace comp_name
         
-        const filter_compani = com_names.filter(company => (company.name.charAt(0).toLowerCase()=== alphabet.toLowerCase() ))   
+        const filter_compani = com_names.filter(company => (company.comp_name.charAt(0).toLowerCase()=== alphabet.toLowerCase() ))   
         return (
             <div>
                 <Navbar/>
@@ -112,24 +112,22 @@ export default class Companies extends Component {
                 </div>
                 {/* <Alphabetical callbackFromParent={this.myCallback}/> */}
             
+               
+                <div hidden={this.state.hideDefult}  className="cards">
             {filter_companie && filter_companie.map((company_data, index) => {
                 return(
-                    <div hidden={this.state.hideDefault}  key={index} className="container">
-                        <div className="cards">
-                            <div className="card" style={{margin: '5px 5px'}}>
+                            <div className="card text-white bg-secondary mb-3" style={{margin: '5px 10px'}} key={index}>
                                 <img className="company-logo" src={ucsc_logo} alt="ucsc_logo"/>
                                 <div className="card-body " style={{marginLeft:' 10em'}}>
-                                    <h3 className="card-title" style={{position:'relative', fontSize:'30px'}}>{company_data.name}</h3>
+                                    <h3 className="card-title" style={{position:'relative', fontSize:'30px'}}>{company_data.comp_name}</h3>
                                     <p className="card-title" style={{position:'relative', fontSize:'15px'}}>Contact Number :&ensp;{company_data.contact_number}</p>
                                     <p className="card-title" style={{position:'relative', fontSize:'15px'}}>Contact register Name:&ensp;{ 'James anderson example'}</p>
                                     <p className="card-title" style={{position:'relative', fontSize:'15px'}}>E-Mail :&ensp;{company_data.email}</p>
                                     <div style={{position:'relative'}}><hr/>
-                                        <button type="button" className="btn btn-secondary">Send Message</button>&emsp;&emsp;
-                                        <button type="button" className="btn btn-secondary" onClick={()=> this.setState({show: true})}>View More...</button>
+                                        <button type="button" className="btn btn-info">Send Message</button>&emsp;&emsp;
+                                        <button type="button" className="btn btn-info" onClick={()=> this.setState({show: true})}>View More...</button>
                                     </div>
                                 </div>
-                            </div>
-                        </div>
                                 <Modal show={this.state.show} size="lg" aria-labelledby="contained-modal-title-vcenter" animation={false} centered>
                                     <img className="company-logo" src={ucsc_logo} alt="ucsc_logo"/>
                                     <Modal.Header >
@@ -158,27 +156,28 @@ export default class Companies extends Component {
                                         <Button onClick={()=> this.setState({show: false})}>Cancel</Button>
                                     </Modal.Footer>
                                     </Modal>
-                    </div>
+                            </div>
+                        
+                    
                 );
             })}
+            </div>
+                            
+            <div hidden={this.state.hideFilter}  className="cards">
             {filter_compani && filter_compani.map((company_data, index) => {
                 return(
-                    <div hidden={this.state.hideFilter} key={index} className="container">
-                        <div className="cards">
-                            <div className="card" style={{margin: '5px 5px'}}>
+                            <div className="card text-white bg-secondary mb-3" style={{margin: '5px 5px'}} key={index}>
                                 <img className="company-logo" src={ucsc_logo} alt="ucsc_logo"/>
                                 <div className="card-body " style={{marginLeft:' 10em'}}>
-                                    <h3 className="card-title" style={{position:'relative', fontSize:'30px'}}>{company_data.name}</h3>
+                                    <h3 className="card-title" style={{position:'relative', fontSize:'30px'}}>{company_data.comp_name}</h3>
                                     <p className="card-title" style={{position:'relative', fontSize:'15px'}}>Contact Number :&ensp;{company_data.contact_number}</p>
                                     <p className="card-title" style={{position:'relative', fontSize:'15px'}}>Contact register Name:&ensp;{ 'James anderson example'}</p>
                                     <p className="card-title" style={{position:'relative', fontSize:'15px'}}>E-Mail :&ensp;{company_data.email}</p>
                                     <div style={{position:'relative'}}><hr/>
-                                        <button type="button" className="btn btn-secondary">Send Message</button>&emsp;&emsp;
-                                        <button type="button" className="btn btn-secondary" onClick={()=> this.setState({show: true})}>View More...</button>
+                                        <button type="button" className="btn btn-info">Send Message</button>&emsp;&emsp;
+                                        <button type="button" className="btn btn-info" onClick={()=> this.setState({show: true})}>View More...</button>
                                     </div>
                                 </div>
-                            </div>
-                        </div>
                                 <Modal show={this.state.show} size="lg" aria-labelledby="contained-modal-title-vcenter" animation={false} centered>
                                     <img className="company-logo" src={ucsc_logo} alt="ucsc_logo"/>
                                     <Modal.Header >
@@ -207,12 +206,15 @@ export default class Companies extends Component {
                                         <Button onClick={()=> this.setState({show: false})}>Cancel</Button>
                                     </Modal.Footer>
                                     </Modal>
-                    </div>
+                            </div>
+                        
+                    
                 );
             })}
             </div>
-            </div>
             
+            </div>
+            </div>
             </div>
         )
     }

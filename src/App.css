@@ -144,7 +144,7 @@
     border: none;
 }
   
-.cards { display: flex; flex-wrap: wrap; flex-direction: row; }
+.cards { margin-left: 8em; display: flex; flex-wrap: wrap; }
  
 form.search-bar input[type=text] {
     padding: 10px;
@@ -162,14 +162,13 @@ form.search-bar::after {content: ""; clear: both; display: table; border: none;}
 
 .compnaytab {
   border: none;
-  padding: 50px 32px;
-  text-align: center;
   width: 20em;
+  height: 5em;
   font-size: 16px;
   margin: 10px 50px;
   cursor: pointer;
   box-shadow: 0 8px 20px 0 rgba(0, 0, 2, 0.2), 0 6px 20px 0 rgba(0, 0, 5, 0.19);
-  background-color: rgb(105, 158, 190);
+  background-color: rgb(58, 94, 116);
   }
 
 .company-logo { position: absolute;height: 150px;width: 150px;margin: 50px 10px;border-radius: 50%;}

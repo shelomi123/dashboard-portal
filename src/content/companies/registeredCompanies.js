@@ -110,11 +110,10 @@ export default class RegisteredCompany extends Component {
                     </nav>
                 </div>
             
+                <div hidden={this.state.hideDefult}  className="cards">
             {filter_companie && filter_companie.map((company_data, index) => {
                 return(
-                    <div hidden={this.state.hideDefult} key={index} className="container">
-                        <div className="cards">
-                            <div className="card" style={{margin: '5px 5px'}}>
+                            <div className="card text-white bg-secondary mb-3" style={{margin: '5px 5px'}} key={index}>
                                 <img className="company-logo" src={ucsc_logo} alt="ucsc_logo"/>
                                 <div className="card-body " style={{marginLeft:' 10em'}}>
                                     <h3 className="card-title" style={{position:'relative', fontSize:'30px'}}>{company_data.comp_name}</h3>
@@ -122,13 +121,11 @@ export default class RegisteredCompany extends Component {
                                     <p className="card-title" style={{position:'relative', fontSize:'15px'}}>Contact register Name:&ensp;{ 'James anderson example'}</p>
                                     <p className="card-title" style={{position:'relative', fontSize:'15px'}}>E-Mail :&ensp;{company_data.email}</p>
                                     <div style={{position:'relative'}}><hr/>
-                                        <button type="button" className="btn btn-secondary">Send Message</button>&emsp;&emsp;
-                                        <button type="button" className="btn btn-secondary" onClick={()=> this.setState({show: true})} >View More...</button>
+                                        <button type="button" className="btn btn-info">Send Message</button>&emsp;&emsp;
+                                        <button type="button" className="btn btn-info" onClick={()=> this.setState({show: true})}>View More...</button>
                                     </div>
                                 </div>
-                            </div>
-                        </div>
-                        <Modal show={this.state.show} size="lg" aria-labelledby="contained-modal-title-vcenter" animation={false} centered>
+                                <Modal show={this.state.show} size="lg" aria-labelledby="contained-modal-title-vcenter" animation={false} centered>
                                     <img className="company-logo" src={ucsc_logo} alt="ucsc_logo"/>
                                     <Modal.Header >
                                         <Modal.Title style={{marginLeft:'10em'}} id="contained-modal-title-vcenter">{company_data.comp_name}</Modal.Title>
@@ -156,14 +153,17 @@ export default class RegisteredCompany extends Component {
                                         <Button onClick={()=> this.setState({show: false})}>Cancel</Button>
                                     </Modal.Footer>
                                     </Modal>
-                    </div>
+                            </div>
+                        
+                    
                 );
             })}
-             {filter_compani && filter_compani.map((company_data, index) => {
+            </div>
+
+             <div hidden={this.state.hideFilter}  className="cards">
+            {filter_compani && filter_compani.map((company_data, index) => {
                 return(
-                    <div hidden={this.state.hideFilter} key={index} className="container">
-                        <div className="cards">
-                            <div className="card" style={{margin: '5px 5px'}}>
+                            <div className="card text-white bg-secondary mb-3" style={{margin: '5px 5px'}} key={index}>
                                 <img className="company-logo" src={ucsc_logo} alt="ucsc_logo"/>
                                 <div className="card-body " style={{marginLeft:' 10em'}}>
                                     <h3 className="card-title" style={{position:'relative', fontSize:'30px'}}>{company_data.comp_name}</h3>
@@ -171,13 +171,11 @@ export default class RegisteredCompany extends Component {
                                     <p className="card-title" style={{position:'relative', fontSize:'15px'}}>Contact register Name:&ensp;{ 'James anderson example'}</p>
                                     <p className="card-title" style={{position:'relative', fontSize:'15px'}}>E-Mail :&ensp;{company_data.email}</p>
                                     <div style={{position:'relative'}}><hr/>
-                                        <button type="button" className="btn btn-secondary">Send Message</button>&emsp;&emsp;
-                                        <button type="button" className="btn btn-secondary" onClick={()=> this.setState({show: true})}>View More...</button>
+                                        <button type="button" className="btn btn-info">Send Message</button>&emsp;&emsp;
+                                        <button type="button" className="btn btn-info" onClick={()=> this.setState({show: true})}>View More...</button>
                                     </div>
                                 </div>
-                            </div>
-                        </div>
-                        <Modal show={this.state.show} size="lg" aria-labelledby="contained-modal-title-vcenter" animation={false} centered>
+                                <Modal show={this.state.show} size="lg" aria-labelledby="contained-modal-title-vcenter" animation={false} centered>
                                     <img className="company-logo" src={ucsc_logo} alt="ucsc_logo"/>
                                     <Modal.Header >
                                         <Modal.Title style={{marginLeft:'10em'}} id="contained-modal-title-vcenter">{company_data.comp_name}</Modal.Title>
@@ -205,9 +203,14 @@ export default class RegisteredCompany extends Component {
                                         <Button onClick={()=> this.setState({show: false})}>Cancel</Button>
                                     </Modal.Footer>
                                     </Modal>
-                    </div>
+                            </div>
+                        
+                    
                 );
             })}
+            </div>
+
+
             </div>
             </div>
             </div>
