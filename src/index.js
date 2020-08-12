@@ -24,6 +24,7 @@ import adHome2 from './content/advertisement/adHome2'
 import approved from './content/advertisement/approved'
 import category from './content/advertisement/category'
 import summary from './content/advertisement/summary'
+import Adverts from './views/adverts';
 
 
 ReactDOM.render(
@@ -33,7 +34,7 @@ ReactDOM.render(
         <Route path="/dashboard" component={DashboardHome} />
         <Route path="/companies" component={Companies} />
         <Route path="/students" component={Students} />
-        
+        <Route path='/adverts' component={Adverts} />
         <Route path="/cvs" component={StudentCvs} />
         <Route path="/emailing" component={Emailing} />
         <Route path="/users" component={Users} />

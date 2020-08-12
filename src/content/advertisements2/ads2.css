@@ -85,7 +85,7 @@
 }
 .ad_card {
   background-color: rgba(128, 128, 128, 0.384);
-  position: fixed;
+  /* position: fixed; */
   display: flex;
   flex-direction: column;
   margin-top: 1em;
