@@ -22,9 +22,16 @@ import regCompanyList from './content/advertisements2/regCompanyList'
 import adHome1 from './content/advertisement/adHome1'
 import adHome2 from './content/advertisement/adHome2'
 import approved from './content/advertisement/approved'
+import pending from './content/advertisement/pending'
+import declined from './content/advertisement/declined'
 import category from './content/advertisement/category'
 import summary from './content/advertisement/summary'
 import Adverts from './views/adverts';
+
+// import Companies from './content/companies/companies'
+import BlackListedCompany from './content/companies/blackListedCompanies'
+import RegisteredCompany from './content/companies/registeredCompanies'
+import PendingCompany from './content/companies/pendingCompanies'
 
 
 ReactDOM.render(
@@ -43,11 +50,18 @@ ReactDOM.render(
         <Route path="/adCategories" component={adCategories} />
         <Route path="/regCompanyList" component={regCompanyList} />
 
+        
         <Route path="/adHome1" component={adHome1} />
         <Route path="/adHome2" component={adHome2} />
         <Route path="/approved" component={approved} />
+        <Route path="/pending" component={pending} />
+        <Route path="/declined" component={declined} />
         <Route path="/category" component={category} />
         <Route path="/summary" component={summary} />
+
+        <Route path="/registeredcom" component={RegisteredCompany}/>
+        <Route path="/pendingcom" component={PendingCompany}/>
+        <Route path="/blacklistedcom" component={BlackListedCompany}/>
 
         <Redirect from="/" to="/dashboard" />
       </Switch>
