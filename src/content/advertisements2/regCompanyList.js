@@ -5,6 +5,7 @@ import SideBar from '../../components/sidebar'
 import './ads2.css'
 import '../../../node_modules/bootstrap/dist/css/bootstrap.min.css'
 import { Button } from 'react-bootstrap'
+import { Link } from 'react-router-dom'
 
 const columns = [
   'Company Name',
@@ -12,12 +13,7 @@ const columns = [
   'Registration Date',
   'Contact no',
   'Email',
-  // {
-  //   Name: 'view more',
-  //   customBodyRenderLite: (dataIndex) => {
-  //     return <button className="btn btn-primary">view More</button>
-  //   },
-  // },
+
   {
     name: "",
     options: {
@@ -51,6 +47,11 @@ const options = {
   responsive: 'vertical',
 }
 
+const resetCheck = () => {
+
+}
+
+
 function regCompanyList() {
   return (
     <div>
@@ -80,7 +81,8 @@ function regCompanyList() {
             Request ADs
           </button>
           <button className="btn btn-danger" style={{ width: '200px' }}>
-            Cancel
+            <Link style={{ color: 'white' }} > Cancel</Link>
+
           </button>
         </div>
       </div>

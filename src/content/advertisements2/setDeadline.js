@@ -1,7 +1,10 @@
 import React, { Component } from 'react'
-import { Card, Form } from 'react-bootstrap'
+import { Card, Form, Nav } from 'react-bootstrap'
 import './ads2.css'
 import '../../../node_modules/bootstrap/dist/css/bootstrap.min.css'
+import { Link } from 'react-router-dom'
+import Navbar from '../../components/navbar'
+import SideBar from '../../components/sidebar'
 
 class setDeadline extends Component {
   constructor(props) {
@@ -15,10 +18,13 @@ class setDeadline extends Component {
   render() {
     return (
       <div>
+        <Navbar />
+        <SideBar />
         <div className="catogeries_btn_position">
-          <button className="catogeries_btn" style={{ outline: 'none' }}>
-            Advertisement Categories
-          </button>
+
+          <Link style={{ color: "white" }} to='/adCategories'>  <button className="catogeries_btn" style={{ outline: 'none' }}> Advertisement Categories </button></Link>
+
+
         </div>
 
         <div className="container deadline_container">
@@ -34,7 +40,9 @@ class setDeadline extends Component {
                 <Form.Control
                   className="deadline_form_control"
                   type="date"
-                  style={{ border: ' 1.5px solid rgb(97, 98, 99)' }}
+                  style={{
+                    border: ' 1.5px solid rgb(97, 98, 99)', alignSelf: 'center'
+                  }}
                   placeholder={this.state.date}
                 ></Form.Control>
               </Form.Group>

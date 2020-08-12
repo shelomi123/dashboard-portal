@@ -3,6 +3,9 @@ import MUIDataTable from 'mui-datatables'
 import { Card } from 'react-bootstrap'
 import './ads2.css'
 import '../../../node_modules/bootstrap/dist/css/bootstrap.min.css'
+import Navbar from '../../components/navbar'
+import SideBar from '../../components/sidebar'
+import { Link } from 'react-router-dom'
 
 const columns = ['Category Code', 'Category Name']
 const data = [
@@ -22,6 +25,8 @@ const data = [
 function adCategories() {
   return (
     <div>
+      <Navbar />
+      <SideBar />
       <div className="container-fluid cat_container" style={{ width: '85%', marginLeft: '13em', position: 'fixed' }}>
         <h1>ADVERTISEMENT CATEGORIES</h1>
         <div className="new_category_btn_position">
@@ -49,9 +54,11 @@ function adCategories() {
         </div>
 
         <div className="ad_back_btn_position">
-          <button className="ad_back_btn" style={{ outline: 'none' }}>
-            Back
-          </button>
+
+          <Link style={{ color: "white" }} to='/setDeadline'>
+            <button className="ad_back_btn" style={{ outline: 'none' }}> Back</button>
+          </Link>
+
         </div>
       </div>
     </div>
