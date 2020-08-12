@@ -1,6 +1,6 @@
-import React from 'react'
+import React, { useState } from 'react'
 import MUIDataTable from 'mui-datatables'
-import { Card } from 'react-bootstrap'
+import { Card, Modal, Button, Form } from 'react-bootstrap'
 import './ads2.css'
 import '../../../node_modules/bootstrap/dist/css/bootstrap.min.css'
 import Navbar from '../../components/navbar'
@@ -22,7 +22,17 @@ const data = [
   ['BA', 'Business Analyst'],
 ]
 
-function adCategories() {
+
+
+function AdCategories() {
+  const [show, setShow] = useState(false);
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
+  const handleUpload = () => {
+    //Adding category to database will be done by this 
+    handleClose()
+
+  }
   return (
     <div>
       <Navbar />
@@ -30,9 +40,34 @@ function adCategories() {
       <div className="container-fluid cat_container" style={{ width: '85%', marginLeft: '13em', position: 'fixed' }}>
         <h1>ADVERTISEMENT CATEGORIES</h1>
         <div className="new_category_btn_position">
-          <button className="new_category_btn " style={{ outline: 'none' }}>
+          <button className="new_category_btn " style={{ outline: 'none' }} onClick={handleShow}>
             Add New Categroy
           </button>
+          <Modal show={show} onHide={handleClose}>
+            <Modal.Header closeButton>
+              <Modal.Title>Add Advertisement Category</Modal.Title>
+            </Modal.Header>
+            <Modal.Body>
+              <Form>
+                <Form.Group>
+                  <Form.Label>Category Code</Form.Label>
+                  <Form.Control type='text' placeholder="Enter Category Code">
+                  </Form.Control>
+                  <Form.Label>Category Name</Form.Label>
+                  <Form.Control type='text' placeholder="Enter Category Name">
+                  </Form.Control>
+                </Form.Group>
+              </Form>
+            </Modal.Body>
+            <Modal.Footer>
+              <Button variant="secondary" onClick={handleClose}>
+                Close
+          </Button>
+              <Button variant="primary" onClick={handleUpload()}>
+                Save Changes
+          </Button>
+            </Modal.Footer>
+          </Modal>
         </div>
         <div>
           <Card className="ad_card ">
@@ -65,4 +100,4 @@ function adCategories() {
   )
 }
 
-export default adCategories
+export default AdCategories
