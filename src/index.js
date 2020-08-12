@@ -26,6 +26,7 @@ import pending from './content/advertisement/pending'
 import declined from './content/advertisement/declined'
 import category from './content/advertisement/category'
 import summary from './content/advertisement/summary'
+import Adverts from './views/adverts';
 
 // import Companies from './content/companies/companies'
 import BlackListedCompany from './content/companies/blackListedCompanies'
@@ -40,7 +41,7 @@ ReactDOM.render(
         <Route path="/dashboard" component={DashboardHome} />
         <Route path="/companies" component={Companies} />
         <Route path="/students" component={Students} />
-        
+        <Route path='/adverts' component={Adverts} />
         <Route path="/cvs" component={StudentCvs} />
         <Route path="/emailing" component={Emailing} />
         <Route path="/users" component={Users} />

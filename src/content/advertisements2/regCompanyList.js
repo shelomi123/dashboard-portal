@@ -4,6 +4,8 @@ import Navbar from '../../components/navbar'
 import SideBar from '../../components/sidebar'
 import './ads2.css'
 import '../../../node_modules/bootstrap/dist/css/bootstrap.min.css'
+import { Button } from 'react-bootstrap'
+import { Link } from 'react-router-dom'
 
 const columns = [
   'Company Name',
@@ -11,12 +13,19 @@ const columns = [
   'Registration Date',
   'Contact no',
   'Email',
+
   {
-    Name: 'view more',
-    customBodyRenderLite: (dataIndex) => {
-      return <button className="btn btn-primary">view More</button>
-    },
-  },
+    name: "",
+    options: {
+      customBodyRender: (value, tableMeta, updateValue) => {
+        return (
+          <Button className='btn' size="sm">
+            {`View more`}
+          </Button>
+        );
+      }
+    }
+  }
 ]
 const Data = [
   ['testCompany', 't0001', '2001/01/02', '0111223344', 'testmail@test.com'],
@@ -38,6 +47,11 @@ const options = {
   responsive: 'vertical',
 }
 
+const resetCheck = () => {
+
+}
+
+
 function regCompanyList() {
   return (
     <div>
@@ -45,7 +59,7 @@ function regCompanyList() {
       <SideBar />
       <div
         className="container-fluid  list_container"
-        style={{ width: '85%', marginLeft: '13em', position: 'fixed' }}
+        style={{ width: '85%', marginLeft: '13em', position: 'relative' }}
       >
         <h1>REGISTERED COMPANY LIST</h1>
         <MUIDataTable
@@ -67,7 +81,8 @@ function regCompanyList() {
             Request ADs
           </button>
           <button className="btn btn-danger" style={{ width: '200px' }}>
-            Cancel
+            <Link style={{ color: 'white' }} > Cancel</Link>
+
           </button>
         </div>
       </div>
