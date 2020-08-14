@@ -16,7 +16,7 @@ import Emailing from './views/emailing'
 import Notifications from './views/notifications'
 import setDeadline from './content/advertisements2/setDeadline'
 import Users from './views/users'
-import adCategories from './content/advertisements2/adCategories'
+import AdCategories from './content/advertisements2/AdCategories'
 import regCompanyList from './content/advertisements2/regCompanyList'
 
 import adHome1 from './content/advertisement/adHome1'
@@ -47,10 +47,10 @@ ReactDOM.render(
         <Route path="/users" component={Users} />
         <Route path="/notifications" component={Notifications} />
         <Route path="/setDeadline" component={setDeadline} />
-        <Route path="/adCategories" component={adCategories} />
+        <Route path="/AdCategories" component={AdCategories} />
         <Route path="/regCompanyList" component={regCompanyList} />
 
-        
+
         <Route path="/adHome1" component={adHome1} />
         <Route path="/adHome2" component={adHome2} />
         <Route path="/approved" component={approved} />
@@ -59,9 +59,9 @@ ReactDOM.render(
         <Route path="/category" component={category} />
         <Route path="/summary" component={summary} />
 
-        <Route path="/registeredcom" component={RegisteredCompany}/>
-        <Route path="/pendingcom" component={PendingCompany}/>
-        <Route path="/blacklistedcom" component={BlackListedCompany}/>
+        <Route path="/registeredcom" component={RegisteredCompany} />
+        <Route path="/pendingcom" component={PendingCompany} />
+        <Route path="/blacklistedcom" component={BlackListedCompany} />
 
         <Redirect from="/" to="/dashboard" />
       </Switch>
