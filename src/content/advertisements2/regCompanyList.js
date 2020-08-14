@@ -8,11 +8,24 @@ import { Button, Modal, Form } from 'react-bootstrap'
 // import { Link } from 'react-router-dom'
 
 
+
 function RegCompanyList() {
 
   const [show, setShow] = useState(false);
+  //const [Loading, setLoading] = useState(false);
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
+
+  // useEffect(() => {
+  //   setLoading(true);
+  //   fetch('Http://localhost:5000/company/get').then((res) => res.json())
+  //     .then((data) => {
+  //       console.log("is verified", data)
+  //       setLoading(false);
+
+  //     })
+
+  // }, [Loading])
 
   const columns = [
     'Company Name',
