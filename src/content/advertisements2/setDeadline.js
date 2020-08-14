@@ -38,7 +38,7 @@ class setDeadline extends Component {
         <SideBar />
         <div className="catogeries_btn_position">
 
-          <Link style={{ color: "white" }} to='/AdCategories'>  <button className="catogeries_btn" style={{ outline: 'none' }}>
+          <Link style={{ color: "white" }} to='/adCategories'>  <button className="catogeries_btn" style={{ outline: 'none' }}>
             Advertisement Categories </button>
           </Link>
 

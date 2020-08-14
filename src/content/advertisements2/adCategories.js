@@ -24,13 +24,14 @@ const data = [
 
 
 
-function AdCategories() {
+function adCategories() {
+  // eslint-disable-next-line react-hooks/rules-of-hooks
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
   const handleUpload = () => {
     //Adding category to database will be done by this 
-    handleClose()
+
 
   }
   return (
@@ -100,4 +101,4 @@ function AdCategories() {
   )
 }
 
-export default AdCategories
+export default adCategories
