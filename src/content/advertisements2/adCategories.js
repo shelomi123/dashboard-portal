@@ -1,4 +1,5 @@
-import React, { useState } from 'react'
+/* eslint-disable react-hooks/rules-of-hooks */
+import React, { useState, useEffect } from 'react'
 import MUIDataTable from 'mui-datatables'
 import { Card, Modal, Button, Form } from 'react-bootstrap'
 import './ads2.css'
@@ -7,7 +8,7 @@ import Navbar from '../../components/navbar'
 import SideBar from '../../components/sidebar'
 import { Link } from 'react-router-dom'
 
-const columns = ['Category Code', 'Category Name']
+
 const data = [
   ['SE-J', 'Software Engineer(Java/J2EE)'],
   ['SE-NET', 'Software Engineer(.NET/C#)'],
@@ -24,11 +25,40 @@ const data = [
 
 
 
-function adCategories() {
-  // eslint-disable-next-line react-hooks/rules-of-hooks
+function AdCategories() {
+
   const [show, setShow] = useState(false);
+  const [loading, setLoading] = useState(false);
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
+  const [categoryData, setCategoryData] = useState([]);
+
+
+  useEffect(() => {
+    try {
+      let dataArr = [];
+      setLoading(true);
+      fetch('http://localhost:5000/advert/getCategories').then((res) => res.json())
+        .then(response => {
+          dataArr.push({ ...response });
+          setCategoryData({ categoryData: dataArr });
+          setLoading(false);
+        })
+    } catch (error) {
+      console.log(error);
+
+    }
+
+
+  });
+
+  //console.log(categoryData);
+  const columns = ['Category Code', 'Category Name']
+
+  // const data = {categoryData};
+
+
+
   const handleUpload = () => {
     //Adding category to database will be done by this 
 
@@ -76,7 +106,7 @@ function adCategories() {
               columns={columns}
               data={data}
               options={{
-                selectableRows: false,
+                selectableRows: "none",
                 download: false,
                 print: false,
                 viewColumns: false,
@@ -101,4 +131,4 @@ function adCategories() {
   )
 }
 
-export default adCategories
+export default AdCategories
