@@ -16,7 +16,7 @@ import Emailing from './views/emailing'
 import Notifications from './views/notifications'
 import setDeadline from './content/advertisements2/setDeadline'
 import Users from './views/users'
-import AdCategories from './content/advertisements2/AdCategories'
+import adCategories from './content/advertisements2/adCategories'
 import regCompanyList from './content/advertisements2/regCompanyList'
 
 import adHome1 from './content/advertisement/adHome1'
@@ -47,7 +47,7 @@ ReactDOM.render(
         <Route path="/users" component={Users} />
         <Route path="/notifications" component={Notifications} />
         <Route path="/setDeadline" component={setDeadline} />
-        <Route path="/AdCategories" component={AdCategories} />
+        <Route path="/adCategories" component={adCategories} />
         <Route path="/regCompanyList" component={regCompanyList} />
 
 
