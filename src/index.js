@@ -46,6 +46,7 @@ ReactDOM.render(
         <Route path="/emailing" component={Emailing} />
         <Route path="/users" component={Users} />
         <Route path="/notifications" component={Notifications} />
+
         <Route path="/setDeadline" component={setDeadline} />
         <Route path="/adCategories" component={adCategories} />
         <Route path="/regCompanyList" component={regCompanyList} />
