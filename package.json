@@ -20,7 +20,7 @@
     "react-papaparse": "^3.6.0",
     "react-router": "^5.2.0",
     "react-router-dom": "^5.2.0",
-    "react-scripts": "^3.4.2",
+    "react-scripts": "^3.4.3",
     "react-transition-group": "^4.4.1",
     "react-virtualized": "^9.21.2",
     "reactstrap": "^8.5.1"

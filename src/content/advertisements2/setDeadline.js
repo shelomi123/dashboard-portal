@@ -5,7 +5,6 @@ import '../../../node_modules/bootstrap/dist/css/bootstrap.min.css'
 import { Link } from 'react-router-dom'
 import Navbar from '../../components/navbar'
 import SideBar from '../../components/sidebar'
-import moment from 'moment'
 import DatePicker from 'react-datepicker'
 import "react-datepicker/dist/react-datepicker.css";
 
@@ -29,7 +28,7 @@ class setDeadline extends Component {
     if (this.state.todayDate > this.state.date) {
       console.log("date can't be set");
     } else {
-      console.log('date is set' + this.state.Date);
+      console.log('date is set ' + this.state.Date);
     }
   }
   render() {
@@ -39,7 +38,7 @@ class setDeadline extends Component {
         <SideBar />
         <div className="catogeries_btn_position">
 
-          <Link style={{ color: "white" }} to='/adCategories'>  <button className="catogeries_btn" style={{ outline: 'none' }}>
+          <Link style={{ color: "white" }} to='/AdCategories'>  <button className="catogeries_btn" style={{ outline: 'none' }}>
             Advertisement Categories </button>
           </Link>
 
