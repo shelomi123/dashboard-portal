@@ -1,4 +1,4 @@
-/* eslint-disable react-hooks/rules-of-hooks */
+
 import React, { useState, useEffect } from 'react'
 import MUIDataTable from 'mui-datatables'
 import { Card, Modal, Button, Form } from 'react-bootstrap'
@@ -7,21 +7,23 @@ import '../../../node_modules/bootstrap/dist/css/bootstrap.min.css'
 import Navbar from '../../components/navbar'
 import SideBar from '../../components/sidebar'
 import { Link } from 'react-router-dom'
+import axios from 'axios'
+import { Category } from '@material-ui/icons'
 
 
-const data = [
-  ['SE-J', 'Software Engineer(Java/J2EE)'],
-  ['SE-NET', 'Software Engineer(.NET/C#)'],
-  ['SE-C', 'Software Engineer(C++)'],
-  ['WEB-D', 'Web Developer(PHP/Python/Ruby/JavaScript)'],
-  ['SA', 'System Architect'],
-  ['QAE', 'Quality Assurance Engineer'],
-  ['BA', 'Business Analyst'],
-  ['BA', 'Business Analyst'],
-  ['BA', 'Business Analyst'],
-  ['BA', 'Business Analyst'],
-  ['BA', 'Business Analyst'],
-]
+// const data = [
+//   ['SE-J', 'Software Engineer(Java/J2EE)'],
+//   ['SE-NET', 'Software Engineer(.NET/C#)'],
+//   ['SE-C', 'Software Engineer(C++)'],
+//   ['WEB-D', 'Web Developer(PHP/Python/Ruby/JavaScript)'],
+//   ['SA', 'System Architect'],
+//   ['QAE', 'Quality Assurance Engineer'],
+//   ['BA', 'Business Analyst'],
+//   ['BA', 'Business Analyst'],
+//   ['BA', 'Business Analyst'],
+//   ['BA', 'Business Analyst'],
+//   ['BA', 'Business Analyst'],
+// ]
 
 
 
@@ -33,31 +35,33 @@ function AdCategories() {
   const handleShow = () => setShow(true);
   const [categoryData, setCategoryData] = useState([]);
 
-
+  //for getting all the categories and category codes
   useEffect(() => {
     try {
-      let dataArr = [];
+
       setLoading(true);
-      fetch('http://localhost:5000/advert/getCategories').then((res) => res.json())
-        .then(response => {
-          dataArr.push({ ...response });
-          setCategoryData({ categoryData: dataArr });
-          setLoading(false);
+      axios
+        .get(`http://localhost:5000/advert/getCategories`)
+        .then(res => {
+          console.log(res.data);
+          setCategoryData(res.data);
+
         })
+
     } catch (error) {
       console.log(error);
 
     }
 
+    setLoading(false);
 
-  });
+  }, [loading]);
 
-  //console.log(categoryData);
+
+  console.log(categoryData);
+
   const columns = ['Category Code', 'Category Name']
-
-  // const data = {categoryData};
-
-
+  let data = categoryData;
 
   const handleUpload = () => {
     //Adding category to database will be done by this 
@@ -104,7 +108,12 @@ function AdCategories() {
           <Card className="ad_card ">
             <MUIDataTable
               columns={columns}
-              data={data}
+              data={data.map(item => {
+                return [
+                  item.cat_id,
+                  item.cat_name,
+                ]
+              })}
               options={{
                 selectableRows: "none",
                 download: false,
