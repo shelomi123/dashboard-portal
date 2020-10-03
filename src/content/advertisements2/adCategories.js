@@ -8,22 +8,6 @@ import Navbar from '../../components/navbar'
 import SideBar from '../../components/sidebar'
 import { Link } from 'react-router-dom'
 import axios from 'axios'
-import { Category } from '@material-ui/icons'
-
-
-// const data = [
-//   ['SE-J', 'Software Engineer(Java/J2EE)'],
-//   ['SE-NET', 'Software Engineer(.NET/C#)'],
-//   ['SE-C', 'Software Engineer(C++)'],
-//   ['WEB-D', 'Web Developer(PHP/Python/Ruby/JavaScript)'],
-//   ['SA', 'System Architect'],
-//   ['QAE', 'Quality Assurance Engineer'],
-//   ['BA', 'Business Analyst'],
-//   ['BA', 'Business Analyst'],
-//   ['BA', 'Business Analyst'],
-//   ['BA', 'Business Analyst'],
-//   ['BA', 'Business Analyst'],
-// ]
 
 
 
@@ -45,16 +29,13 @@ function AdCategories() {
         .then(res => {
           console.log(res.data);
           setCategoryData(res.data);
-
         })
 
     } catch (error) {
       console.log(error);
 
     }
-
     setLoading(false);
-
   }, [loading]);
 
 
