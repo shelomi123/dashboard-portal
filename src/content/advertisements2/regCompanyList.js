@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import MUIDataTable from 'mui-datatables'
 import Navbar from '../../components/navbar'
 import SideBar from '../../components/sidebar'
@@ -6,15 +6,53 @@ import './ads2.css'
 import '../../../node_modules/bootstrap/dist/css/bootstrap.min.css'
 import { Button, Modal, Form } from 'react-bootstrap'
 // import { Link } from 'react-router-dom'
+import axios from 'axios'
 
 
 
 function RegCompanyList() {
 
   const [show, setShow] = useState(false);
-  //const [Loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const [regCompanyData, setRegCompanyData] = useState([])
+  const [modalData, setModalData] = useState([]);
   const handleClose = () => setShow(false);
-  const handleShow = () => setShow(true);
+
+
+  // getting data from the server to pass to the modal 
+  const handleShow = (rowData, rowMeta) => {
+    let key = rowData[4];
+    for (var i = 0; i < regCompanyData.length; i++) {
+      if (key === regCompanyData[i].email) {
+        setModalData(regCompanyData[i]);
+      }
+    }
+
+    setShow(true);
+
+
+  }
+
+  console.log(modalData);
+
+
+  // for getting all registered company data 
+  useEffect(() => {
+    try {
+      setLoading(true);
+      axios
+        .get(`http://localhost:5000/company/getAll`)
+        .then(res => {
+          //console.log(res.data);
+          setRegCompanyData(res.data);
+        })
+
+    } catch (error) {
+      console.log(error);
+
+    }
+    setLoading(false)
+  }, [loading])
 
 
 
@@ -28,34 +66,30 @@ function RegCompanyList() {
     {
       name: "",
       options: {
-        customBodyRender: () => {
+        customBodyRenderLite: () => {
+
+
           return (
+
             <Button className='btn' size="sm" onClick={handleShow}>
               {`View more`}
             </Button>
+
           );
+
+
         }
       }
     }
   ]
-  const Data = [
-    ['testCompany', 't0001', '2001/01/02', '0111223344', 'testmail@test.com'],
-    ['testCompany', 't0001', '2001/01/02', '0111223344', 'testmail@test.com'],
-    ['testCompany', 't0001', '2001/01/02', '0111223344', 'testmail@test.com'],
-    ['testCompany', 't0001', '2001/01/02', '0111223344', 'testmail@test.com'],
-    ['testCompany', 't0001', '2001/01/02', '0111223344', 'testmail@test.com'],
-    ['testCompany', 't0001', '2001/01/02', '0111223344', 'testmail@test.com'],
-    ['testCompany', 't0001', '2001/01/02', '0111223344', 'testmail@test.com'],
-    ['testCompany', 't0001', '2001/01/02', '0111223344', 'testmail@test.com'],
-    ['testCompany', 't0001', '2001/01/02', '0111223344', 'testmail@test.com'],
-    ['testCompany', 't0001', '2001/01/02', '0111223344', 'testmail@test.com'],
-    ['testCompany', 't0001', '2001/01/02', '0111223344', 'testmail@test.com'],
-    ['testCompany', 't0001', '2001/01/02', '0111223344', 'testmail@test.com'],
-    ['testCompany', 't0001', '2001/01/02', '0111223344', 'testmail@test.com'],
-  ]
+  let data = regCompanyData;
+
+
+
   const options = {
     filterType: 'checkbox',
     responsive: 'vertical',
+
   }
 
 
@@ -71,13 +105,26 @@ function RegCompanyList() {
         <h1>REGISTERED COMPANY LIST</h1>
         <MUIDataTable
           columns={columns}
-          data={Data}
+          data={data.map(item => {
+            return [
+
+              item.comp_name,
+              item.reg_no,
+              item.date_of_establishment,
+              item.contact_number,
+              item.email,
+
+
+
+            ]
+          })}
           options={{
             options,
             download: false,
             print: false,
             rowsPerPage: 5,
             rowsPerPageOptions: [5, 10, 20, 50],
+            onRowClick: handleShow
           }}
         />
 
@@ -91,34 +138,34 @@ function RegCompanyList() {
               <Form>
                 <Form.Group>
                   <Form.Label style={{ fontSize: 18, fontWeight: 'bold', fontFamily: 'TimesNewRoman', color: 'grey' }}>Company Name:</Form.Label>
-                  <Form.Text style={{ fontSize: 14, fontWeight: 'bold', marginLeft: '28%' }}>testCompany</Form.Text>
+                  <Form.Text style={{ fontSize: 14, fontWeight: 'bold', marginLeft: '28%' }}>{modalData.comp_name}</Form.Text>
 
                   <Form.Label style={{ fontSize: 18, fontWeight: 'bold', fontFamily: 'TimesNewRoman', color: 'grey' }}>Registration No:</Form.Label>
-                  <Form.Text style={{ fontSize: 14, fontWeight: 'bold', marginLeft: '28%' }}>t0001</Form.Text>
+                  <Form.Text style={{ fontSize: 14, fontWeight: 'bold', marginLeft: '28%' }}>{modalData.reg_no}</Form.Text>
 
                   <Form.Label style={{ fontSize: 18, fontWeight: 'bold', fontFamily: 'TimesNewRoman', color: 'grey' }}>Registration Date:</Form.Label>
-                  <Form.Text style={{ fontSize: 14, fontWeight: 'bold', marginLeft: '28%' }}>2001/01/02</Form.Text>
+                  <Form.Text style={{ fontSize: 14, fontWeight: 'bold', marginLeft: '28%' }}>{modalData.date_of_establishment}</Form.Text>
 
                   <Form.Label style={{ fontSize: 18, fontWeight: 'bold', fontFamily: 'TimesNewRoman', color: 'grey' }}>Email:</Form.Label>
-                  <Form.Text style={{ fontSize: 14, fontWeight: 'bold', marginLeft: '28%' }}>	testmail@test.com</Form.Text>
+                  <Form.Text style={{ fontSize: 14, fontWeight: 'bold', marginLeft: '28%' }}>	{modalData.email}</Form.Text>
 
                   <Form.Label style={{ fontSize: 18, fontWeight: 'bold', fontFamily: 'TimesNewRoman', color: 'grey' }}>Website:</Form.Label>
-                  <Form.Text style={{ fontSize: 14, fontWeight: 'bold', marginLeft: '28%' }}>testCompany.com</Form.Text>
+                  <Form.Text style={{ fontSize: 14, fontWeight: 'bold', marginLeft: '28%' }}>{modalData.comp_website}</Form.Text>
 
                   <Form.Label style={{ fontSize: 18, fontWeight: 'bold', fontFamily: 'TimesNewRoman', color: 'grey' }}>Address:</Form.Label>
-                  <Form.Text style={{ fontSize: 14, fontWeight: 'bold', marginLeft: '28%' }}>testaddress  </Form.Text>
+                  <Form.Text style={{ fontSize: 14, fontWeight: 'bold', marginLeft: '28%' }}>{modalData.address} </Form.Text>
 
                   <Form.Label style={{ fontSize: 18, fontWeight: 'bold', fontFamily: 'TimesNewRoman', color: 'grey' }}>Contact no:</Form.Label>
-                  <Form.Text style={{ fontSize: 14, fontWeight: 'bold', marginLeft: '28%' }}>0111223344</Form.Text>
+                  <Form.Text style={{ fontSize: 14, fontWeight: 'bold', marginLeft: '28%' }}>{modalData.contact_number}</Form.Text>
 
                   <Form.Label style={{ fontSize: 18, fontWeight: 'bold', fontFamily: 'TimesNewRoman', color: 'grey' }}>Fax no:</Form.Label>
-                  <Form.Text style={{ fontSize: 14, fontWeight: 'bold', marginLeft: '28%' }}>0111223344</Form.Text>
+                  <Form.Text style={{ fontSize: 14, fontWeight: 'bold', marginLeft: '28%' }}>{modalData.fax_number}</Form.Text>
 
                   <Form.Label style={{ fontSize: 18, fontWeight: 'bold', fontFamily: 'TimesNewRoman', color: 'grey' }}>Number of employess</Form.Label>
-                  <Form.Text style={{ fontSize: 14, fontWeight: 'bold', marginLeft: '28%' }}>100</Form.Text>
+                  <Form.Text style={{ fontSize: 14, fontWeight: 'bold', marginLeft: '28%' }}>{modalData.num_of_employees}</Form.Text>
 
                   <Form.Label style={{ fontSize: 18, fontWeight: 'bold', fontFamily: 'TimesNewRoman', color: 'grey' }}>Number of tech leads</Form.Label>
-                  <Form.Text style={{ fontSize: 14, fontWeight: 'bold', marginLeft: '28%' }}>20</Form.Text>
+                  <Form.Text style={{ fontSize: 14, fontWeight: 'bold', marginLeft: '28%' }}>{modalData.num_of_techleads}</Form.Text>
 
                 </Form.Group>
               </Form>
