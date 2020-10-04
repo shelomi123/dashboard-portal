@@ -18,6 +18,7 @@ import setDeadline from './content/advertisements2/setDeadline'
 import Users from './views/users'
 import adCategories from './content/advertisements2/adCategories'
 import regCompanyList from './content/advertisements2/regCompanyList'
+import Student_csv from './content/students/student_csv';
 
 ReactDOM.render(
   <React.StrictMode>
@@ -34,6 +35,7 @@ ReactDOM.render(
         <Route path="/setDeadline" component={setDeadline} />
         <Route path="/adCategories" component={adCategories} />
         <Route path="/regCompanyList" component={regCompanyList} />
+        <Route path="/studentCSV" component={Student_csv} />
         <Redirect from="/" to="/dashboard" />
       </Switch>
     </BrowserRouter>
