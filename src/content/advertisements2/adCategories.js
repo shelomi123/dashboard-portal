@@ -8,6 +8,9 @@ import Navbar from '../../components/navbar'
 import SideBar from '../../components/sidebar'
 import { Link } from 'react-router-dom'
 import axios from 'axios'
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 
 
 
@@ -15,9 +18,14 @@ function AdCategories() {
 
   const [show, setShow] = useState(false);
   const [loading, setLoading] = useState(false);
+
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
   const [categoryData, setCategoryData] = useState([]);
+  const [isAdding, setIsAdding] = useState(false);
+  const [modalData, setModalData] = useState({})
+
+
 
   //for getting all the categories and category codes
   useEffect(() => {
@@ -27,7 +35,7 @@ function AdCategories() {
       axios
         .get(`http://localhost:5000/advert/getCategories`)
         .then(res => {
-          console.log(res.data);
+          //console.log(res.data);
           setCategoryData(res.data);
         })
 
@@ -35,20 +43,45 @@ function AdCategories() {
       console.log(error);
 
     }
+
     setLoading(false);
   }, [loading]);
 
-
-  console.log(categoryData);
-
+  //column data for the data table
   const columns = ['Category Code', 'Category Name']
+
+  //row data for the datatable
   let data = categoryData;
 
-  const handleUpload = () => {
-    //Adding category to database will be done by this 
-
+  //handle form change
+  const handleChange = (e) => {
+    e.preventDefault();
+    setModalData(e.target.value);
+    console.log(modalData);
 
   }
+  //
+  let Catdata = { category: modalData }
+
+  //uploading new category
+  const handleUpload = (evt) => {
+    evt.preventDefault();
+    axios
+      .post(`http://localhost:5000/advert/addcategory`, Catdata)
+      .then(res => {
+        console.log(res.data);
+        toast.success('Category Added Successfully ', { position: toast.POSITION.TOP_RIGHT });
+      })
+      .catch(err => {
+        console.log(err);
+        toast.error('error occured while adding ', { position: toast.POSITION.TOP_RIGHT });
+
+      })
+    setShow(false);
+
+  }
+
+
   return (
     <div>
       <Navbar />
@@ -66,11 +99,8 @@ function AdCategories() {
             <Modal.Body>
               <Form>
                 <Form.Group>
-                  <Form.Label>Category Code</Form.Label>
-                  <Form.Control type='text' placeholder="Enter Category Code">
-                  </Form.Control>
                   <Form.Label>Category Name</Form.Label>
-                  <Form.Control type='text' placeholder="Enter Category Name">
+                  <Form.Control type="text" placeholder="Enter Category Name" onChange={handleChange} >
                   </Form.Control>
                 </Form.Group>
               </Form>
@@ -78,10 +108,10 @@ function AdCategories() {
             <Modal.Footer>
               <Button variant="secondary" onClick={handleClose}>
                 Close
-          </Button>
-              <Button variant="primary" onClick={handleUpload()}>
+              </Button>
+              <Button variant="primary" type="submit" onClick={handleUpload} disabled={modalData === null}>
                 Save Changes
-          </Button>
+              </Button>
             </Modal.Footer>
           </Modal>
         </div>
@@ -102,8 +132,8 @@ function AdCategories() {
                 viewColumns: false,
                 sort: false,
                 pagination: true,
-                rowsPerPage: 6,
-                rowsPerPageOptions: false,
+                rowsPerPage: 5,
+                rowsPerPageOptions: [5, 10, 15, 20],
               }}
             />
           </Card>
