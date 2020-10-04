@@ -1,26 +1,33 @@
 import React from 'react';
 import './ad.css';
 import 'bootstrap/dist/css/bootstrap.css';
+import { Link } from 'react-router-dom'
 import com from '../../assets/images/com.png';
+import Navbar from '../../components/navbar'
+import SideBar from '../../components/sidebar'
 
-function Adverts(){
+function adHome2(){
     return (
+    <div>
+      <Navbar />
+      <SideBar />
+
         <div className="admin-content">
              
 
             <div class="container p-3 my-3 bg-light">
                     <div class="form-group row">
                         <div class="col-md-3">
-                            <button type="button" class="btn btn-info custom ">SUMMARY</button>
+                            <button type="button" class="btn btn-info custom "><Link style={{color:'white'}} to="/summary" >SUMMARY</Link></button>
                         </div>
                         <div class="col-md-3">
-                            <button type="button" class="btn btn-info custom">PENDING APPROVAL</button>
+                            <button type="button" class="btn btn-info custom"><Link style={{color:'white'}} to="/pending" >PENDING APPROVAL</Link></button>
                         </div>
                         <div class="col-md-3">
-                            <button type="button" class="btn btn-info custom">APPROVED</button>
+                            <button type="button" class="btn btn-info custom" ><Link style={{color:'white'}} to="/approved" >APPROVED</Link></button>
                         </div>
                         <div class="col-md-3">
-                            <button type="button" class="btn btn-info custom">DECLINED</button>
+                            <button type="button" class="btn btn-info custom"><Link style={{color:'white'}} to="/declined" >DECLINED</Link></button>
                         </div>
                     </div>
             </div>
@@ -40,22 +47,22 @@ function Adverts(){
                 </div>        
 
                 <div class="search-container">
-                    <form action="/action_page.php">
-                        <input class="col-md-11" type="text" placeholder="Search.." name="search"></input>
-                        <button type="submit">Submit</button>
-                    </form>
+                <form className=" search-bar"  > 
+                    <i className="material-icons inline" style={{position:'absolute', margin:'0.6em 32em'}}>search</i>
+                    <input type="text"  placeholder="Search.." name="search"></input>
+                </form>
                 </div>
 
                 <br></br>
                      
 
-{/*------------------------------------------------------------card begin-------------------------------------------------------*/}
+{/*------------------------------------------------------------card begin----------------------------------------------*/}
                 
                 <div class="row">
                     {/*card1111111111111111*/}
                     <div class="col-md-4 col-sm-6 col-12">
                         <div class="card h-80">
-                            <div class="card mb-3" style={{ width:'540px' }}/>
+                            <div class="card md-3" style={{ width:'540px' }}/>
                                 <div class="row no-gutters">
                                     <div class="col-md-4">
                                         <img src={com} alt="Logo" style={{ height:'3cm' , width:'3cm' }}/>
@@ -83,7 +90,7 @@ function Adverts(){
 {/*card2222222222222222*/}
                         <div class="col-md-4 col-sm-6 col-12">
                         <div class="card h-80">
-                            <div class="card mb-3" style={{ width:'540px' }}/>
+                            <div class="card md-3" style={{ width:'540px' }}/>
                                 <div class="row no-gutters">
                                     <div class="col-md-4">
                                         <img src={com} alt="Logo" style={{ height:'3cm' , width:'3cm' }}/>
@@ -111,7 +118,7 @@ function Adverts(){
 
 <div class="col-md-4 col-sm-6 col-12">
                         <div class="card h-80">
-                            <div class="card mb-3" style={{ width:'540px' }}/>
+                            <div class="card md-3" style={{ width:'540px' }}/>
                                 <div class="row no-gutters">
                                     <div class="col-md-4">
                                         <img src={com} alt="Logo" style={{ height:'3cm' , width:'3cm' }}/>
@@ -152,7 +159,7 @@ function Adverts(){
                     {/*card1111111111111111*/}
                     <div class="col-md-4 col-sm-6 col-12">
                         <div class="card h-80">
-                            <div class="card mb-3" style={{ width:'540px' }}/>
+                            <div class="card md-3" style={{ width:'540px' }}/>
                                 <div class="row no-gutters">
                                     <div class="col-md-4">
                                         <img src={com} alt="Logo" style={{ height:'3cm' , width:'3cm' }}/>
@@ -180,7 +187,7 @@ function Adverts(){
 {/*card2222222222222222*/}
                         <div class="col-md-4 col-sm-6 col-12">
                         <div class="card h-80">
-                            <div class="card mb-3" style={{ width:'540px' }}/>
+                            <div class="card md-3" style={{ width:'540px' }}/>
                                 <div class="row no-gutters">
                                     <div class="col-md-4">
                                         <img src={com} alt="Logo" style={{ height:'3cm' , width:'3cm' }}/>
@@ -208,7 +215,7 @@ function Adverts(){
 
 <div class="col-md-4 col-sm-6 col-12">
                         <div class="card h-80">
-                            <div class="card mb-3" style={{ width:'540px' }}/>
+                            <div class="card md-3" style={{ width:'540px' }}/>
                                 <div class="row no-gutters">
                                     <div class="col-md-4">
                                         <img src={com} alt="Logo" style={{ height:'3cm' , width:'3cm' }}/>
@@ -257,7 +264,8 @@ function Adverts(){
                   
         </div>
     </div>
+    </div>
     )
 }
 
-export default Adverts;
+export default adHome2;

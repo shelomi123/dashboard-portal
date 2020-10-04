@@ -1,14 +1,14 @@
 import React from 'react';
-import {Link} from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import '../App.css';
 import ucsc_logo from '../assets/images/ucsc_logo.jpeg'
 
 
-function SideNavbar(){
+function SideNavbar() {
     return (
         <div className="side-bar">
-           <img className="sidebar-logo" src={ucsc_logo} alt="ucsc_logo"/>
-           <hr/>
+            <img className="sidebar-logo" src={ucsc_logo} alt="ucsc_logo" />
+            <hr />
             <div className="empty-box"></div>
             <Link to="/dashboard"><div className="sidebar-link">
                 <span class="material-icons sidebar-icon">dashboard</span>Dashboard</div></Link>
