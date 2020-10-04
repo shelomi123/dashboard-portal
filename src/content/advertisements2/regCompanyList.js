@@ -27,13 +27,8 @@ function RegCompanyList() {
         setModalData(regCompanyData[i]);
       }
     }
-
     setShow(true);
-
-
   }
-
-  console.log(modalData);
 
 
   // for getting all registered company data 

@@ -53,10 +53,10 @@ class setDeadline extends Component {
             <Form className="deadline_form" >
               <Form.Group controlId="deadline">
                 <Form.Label className="deadline_form_label">
-                  Set deadline
+                  Set Deadline
                 </Form.Label>
                 <div style={{ marginLeft: '31%' }}>
-                  <DatePicker selected={this.state.Date} onChange={this.handleDateChange} minDate={this.state.todayDate} isClearable={true} dateFormat='yyyy/mm/dd' />
+                  <DatePicker selected={this.state.Date} onChange={date => this.handleDateChange(date)} minDate={this.state.todayDate} isClearable dateFormat='yyyy/MM/dd' />
                 </div>
 
               </Form.Group>

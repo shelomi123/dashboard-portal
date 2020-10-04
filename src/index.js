@@ -7,15 +7,18 @@ import { BrowserRouter, Route, Switch, Redirect } from 'react-router-dom';
 import * as serviceWorker from './serviceWorker';
 import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
 
+//dashboard views
 import DashboardHome from './views/dashboardr-home'
 import Companies from './views/companies'
 import Students from './views/students'
-
 import StudentCvs from './views/studentCvs'
 import Emailing from './views/emailing'
 import Notifications from './views/notifications'
-import setDeadline from './content/advertisements2/setDeadline'
 import Users from './views/users'
+import Adverts from './views/adverts';
+
+//advertisement2 components
+import setDeadline from './content/advertisements2/setDeadline'
 import adCategories from './content/advertisements2/adCategories'
 import regCompanyList from './content/advertisements2/regCompanyList'
 
@@ -26,7 +29,7 @@ import pending from './content/advertisement/pending'
 import declined from './content/advertisement/declined'
 import category from './content/advertisement/category'
 import summary from './content/advertisement/summary'
-import Adverts from './views/adverts';
+
 
 // import Companies from './content/companies/companies'
 import BlackListedCompany from './content/companies/blackListedCompanies'
