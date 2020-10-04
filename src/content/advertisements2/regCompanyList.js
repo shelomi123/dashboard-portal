@@ -20,7 +20,7 @@ function RegCompanyList() {
 
 
   // getting data from the server to pass to the modal 
-  const handleShow = (rowData, rowMeta) => {
+  const handleShow = (rowData) => {
     let key = rowData[4];
     for (var i = 0; i < regCompanyData.length; i++) {
       if (key === regCompanyData[i].email) {
@@ -67,10 +67,7 @@ function RegCompanyList() {
       name: "",
       options: {
         customBodyRenderLite: () => {
-
-
           return (
-
             <Button className='btn' size="sm" onClick={handleShow}>
               {`View more`}
             </Button>
@@ -107,15 +104,11 @@ function RegCompanyList() {
           columns={columns}
           data={data.map(item => {
             return [
-
               item.comp_name,
               item.reg_no,
               item.date_of_establishment,
               item.contact_number,
               item.email,
-
-
-
             ]
           })}
           options={{
@@ -130,23 +123,27 @@ function RegCompanyList() {
 
         <div>
           {/* model to show company details */}
-          <Modal show={show} onHide={handleClose}>
-            <Modal.Header closeButton >
+          <Modal show={show} onHide={handleClose} >
+            <Modal.Header closeButton style={{}} >
               <Modal.Title style={{ marginLeft: '28%', fontSize: 24, fontWeight: 'bold', fontFamily: 'TimesNewRoman', color: '#6e6b6b' }}>Company Details</Modal.Title>
             </Modal.Header>
             <Modal.Body>
               <Form>
                 <Form.Group>
-                  <Form.Label style={{ fontSize: 18, fontWeight: 'bold', fontFamily: 'TimesNewRoman', color: 'grey' }}>Company Name:</Form.Label>
-                  <Form.Text style={{ fontSize: 14, fontWeight: 'bold', marginLeft: '28%' }}>{modalData.comp_name}</Form.Text>
+                  <div style={{ display: 'flex', alignItems: 'center' }}>
+                    <Form.Label style={{ fontSize: 18, fontWeight: 'bold', fontFamily: 'TimesNewRoman', color: 'grey', background: 'red', margin: '0px' }}>Company Name:</Form.Label>
+                    <Form.Text style={{ fontSize: 14, fontWeight: 'bold', background: 'green', margin: '0px' }}>{modalData.comp_name}</Form.Text>
+                  </div>
 
-                  <Form.Label style={{ fontSize: 18, fontWeight: 'bold', fontFamily: 'TimesNewRoman', color: 'grey' }}>Registration No:</Form.Label>
-                  <Form.Text style={{ fontSize: 14, fontWeight: 'bold', marginLeft: '28%' }}>{modalData.reg_no}</Form.Text>
-
-                  <Form.Label style={{ fontSize: 18, fontWeight: 'bold', fontFamily: 'TimesNewRoman', color: 'grey' }}>Registration Date:</Form.Label>
-                  <Form.Text style={{ fontSize: 14, fontWeight: 'bold', marginLeft: '28%' }}>{modalData.date_of_establishment}</Form.Text>
-
-                  <Form.Label style={{ fontSize: 18, fontWeight: 'bold', fontFamily: 'TimesNewRoman', color: 'grey' }}>Email:</Form.Label>
+                  <div style={{ display: 'flex', alignItems: 'center' }}>
+                    <Form.Label style={{ fontSize: 18, fontWeight: 'bold', fontFamily: 'TimesNewRoman', color: 'grey' }}>Registration No:</Form.Label>
+                    <Form.Text style={{ fontSize: 14, fontWeight: 'bold', marginLeft: '5%' }}>{modalData.reg_no}</Form.Text>
+                  </div>
+                  <div style={{ display: 'flex', alignItems: 'center' }}>
+                    <Form.Label style={{ fontSize: 18, fontWeight: 'bold', fontFamily: 'TimesNewRoman', color: 'grey' }}>Registration Date:</Form.Label>
+                    <Form.Text style={{ fontSize: 14, fontWeight: 'bold', marginLeft: '5%' }}>{modalData.date_of_establishment}</Form.Text>
+                  </div>
+                  <Form.Label style={{ fontSize: 18, fontWeight: 'bold', fontFamily: 'TimesNewRoman' }}>Email:</Form.Label>
                   <Form.Text style={{ fontSize: 14, fontWeight: 'bold', marginLeft: '28%' }}>	{modalData.email}</Form.Text>
 
                   <Form.Label style={{ fontSize: 18, fontWeight: 'bold', fontFamily: 'TimesNewRoman', color: 'grey' }}>Website:</Form.Label>
