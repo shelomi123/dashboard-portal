@@ -30,20 +30,32 @@ function Student_list2() {
         }
         }
     }
-]
+    ]
 
-const data = [
-["Joe James", "2017cs005", "17000051", "CS" , "thirunihp@gmail.com" , ""],
-["John Walsh", "2017cs005", "17000051", "CS" , "thirunihp@gmail.com" , ""],
-["Bob Herm", "2017cs005", "17000051", "CS" , "thirunihp@gmail.com" , ""],
-["James Houston", "2017cs005", "17000051", "IS" , "thirunihp@gmail.com" , ""]
+    const data = [
+    ["Joe James", "2017cs005", "17000051", "CS" , "thirunihp@gmail.com" , ""],
+    ["John Walsh", "2017cs005", "17000051", "CS" , "thirunihp@gmail.com" , ""],
+    ["Bob Herm", "2017cs005", "17000051", "CS" , "thirunihp@gmail.com" , ""],
+    ["James Houston", "2017cs005", "17000051", "IS" , "thirunihp@gmail.com" , ""]
 
-]
+    ]
 
-const options = {
-filterType: 'checkbox',
+    const options = {
+    filterType: 'checkbox',
 
-}
+    }
+
+    const [validated, setValidated] = useState(false);
+
+    const handleSubmit = (event) => {
+        const form = event.currentTarget;
+        if (form.checkValidity() === false) {
+        event.preventDefault();
+        event.stopPropagation();
+        }
+
+        setValidated(true);
+    };
 
 
     return(
@@ -189,52 +201,68 @@ filterType: 'checkbox',
                         <button className="btn cancelbtn btn-danger clearfix float-right" style={{ width: '200px', marginRight: '2em' }}>Cancel</button>  
                         <button className="btn enrollbtn btn-primary clearfix float-right"  style={{ width: '200px' }} onClick={handleShow_2}>Enroll</button>
                         
-                        <Modal show={show_2} onHide={handleClose_2} >
+                        <Modal show={show_2} onHide={handleClose_2} size="lg">
+                            
                             <Modal.Header closeButton style={{}} >
-                            <Modal.Title style={{ marginLeft: '28%', fontSize: 24, fontWeight: 'bold', fontFamily: 'TimesNewRoman', color: '#6e6b6b' }}>Add New Student</Modal.Title>
+                            <Modal.Title style={{ marginLeft: '35%', fontSize: 24, fontWeight: 'bold', fontFamily: 'TimesNewRoman', color: '#6e6b6b' }}>Add New Student</Modal.Title>
                             </Modal.Header>
+                           
                             <Modal.Body>
-                                <Form>
+                              <Form noValidate validated={validated} onSubmit={handleSubmit}>
+
                                 <Form.Group as={Row} controlId="name">
                                     <Form.Label column sm="3" style={{ fontSize: 17, fontWeight: 'bold', fontFamily: 'TimesNewRoman', color: 'grey' }}>
                                     Name With Initials : 
                                     </Form.Label>
                                     <Col sm="9">
-                                    <Form.Control type="text" placeholder="Name"/>
+                                    <Form.Control type="text" required placeholder="Name with initials"/>
+                                    <Form.Control.Feedback type="invalid"> Please provide the student name.</Form.Control.Feedback>
                                     </Col>
                                 </Form.Group>
+                                
                                 <Form.Group as={Row} controlId="regno">
                                     <Form.Label column sm="3" style={{ fontSize: 17, fontWeight: 'bold', fontFamily: 'TimesNewRoman', color: 'grey' }}>
                                     Registration No :
                                     </Form.Label>
                                     <Col sm="9">
-                                    <Form.Control type="text" placeholder="2017cs001"/>
+                                    <Form.Control type="text" required placeholder="2017cs001"/>
+                                    <Form.Control.Feedback type="invalid"> Please provide the Registration Number.</Form.Control.Feedback>
                                     </Col>
                                 </Form.Group>
+
                                 <Form.Group as={Row} controlId="indexno">
                                     <Form.Label column sm="3" style={{ fontSize: 17, fontWeight: 'bold', fontFamily: 'TimesNewRoman', color: 'grey' }}>
                                     Index No :
                                     </Form.Label>
                                     <Col sm="9">
-                                    <Form.Control  placeholder="17000001"/>
+                                    <Form.Control required  placeholder="17000001"/>
+                                    <Form.Control.Feedback type="invalid"> Please provide the Index Number.</Form.Control.Feedback>
                                     </Col>
                                 </Form.Group>
+
                                 <Form.Group as={Row} controlId="degree">
                                     <Form.Label column sm="3" style={{ fontSize: 17, fontWeight: 'bold', fontFamily: 'TimesNewRoman', color: 'grey' }}>
-                                    Degree :
+                                    Degree Programme:
                                     </Form.Label>
                                     <Col sm="9">
-                                    <Form.Control placeholder="Computer Science"/>
+                                    <Form.Control required as="select" placeholder="Choose...">
+                                        <option>Computer Science</option>
+                                        <option>Information Systems</option>
+                                    </Form.Control>
+                                    <Form.Control.Feedback type="invalid"> Please select the Degree Programme.</Form.Control.Feedback>
                                     </Col>
                                 </Form.Group>
+
                                 <Form.Group as={Row} controlId="email">
                                     <Form.Label column sm="3" style={{ fontSize: 17, fontWeight: 'bold', fontFamily: 'TimesNewRoman', color: 'grey' }}>
                                     Email :
                                     </Form.Label>
                                     <Col sm="9">
-                                    <Form.Control type="email" placeholder="abc@gmail.com"/>
+                                    <Form.Control required type="email" placeholder="abc@gmail.com"/>
+                                    <Form.Control.Feedback type="invalid"> Please provide a valid email.</Form.Control.Feedback>
                                     </Col>
                                 </Form.Group>
+
                                 <Form.Group as={Row} controlId="ademail">
                                     <Form.Label column sm="3" style={{ fontSize: 17, fontWeight: 'bold', fontFamily: 'TimesNewRoman', color: 'grey' }}>
                                     Additional Email :
@@ -243,22 +271,31 @@ filterType: 'checkbox',
                                     <Form.Control type="email" placeholder="abc@gmail.com"/>
                                     </Col>
                                 </Form.Group>
+
                                 <Form.Group as={Row} controlId="contact">
                                     <Form.Label column sm="3" style={{ fontSize: 17, fontWeight: 'bold', fontFamily: 'TimesNewRoman', color: 'grey' }}>
                                     Contact No:
                                     </Form.Label>
                                     <Col sm="9">
-                                    <Form.Control placeholder="Mobile Number"/>
+                                    <Form.Control required placeholder="Mobile Number"/>
+                                    <Form.Control.Feedback type="invalid"> Please provide the Contact Number.</Form.Control.Feedback>
                                     </Col>
                                 </Form.Group>
+                                <Modal.Footer>
+                                    <Button type="submit">Add Student</Button>
+                                    <Button variant="secondary" onClick={handleClose_2}>
+                                        Close
+                                    </Button>
+                                </Modal.Footer>
+                                
                             </Form>
                             </Modal.Body>
-                            <Modal.Footer>
+                            {/* <Modal.Footer>
                                 <Button variant="secondary" onClick={handleClose_2}>
                                     Close
                                 </Button>
                                 <Button variant="primary">Submit</Button>
-                                </Modal.Footer>
+                            </Modal.Footer> */}
 
                         </Modal>
                                     
