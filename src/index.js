@@ -15,7 +15,8 @@ import StudentCvs from './views/studentCvs'
 import Emailing from './views/emailing'
 import Notifications from './views/notifications'
 import Users from './views/users'
-import Adverts from './views/adverts';
+import Adverts from './views/adverts'
+import Login from './views/login'
 
 //advertisement2 components
 import setDeadline from './content/advertisements2/setDeadline'
@@ -41,6 +42,7 @@ ReactDOM.render(
   <React.StrictMode>
     <BrowserRouter>
       <Switch>
+        <Route path="/login" component={Login} />
         <Route path="/dashboard" component={DashboardHome} />
         <Route path="/companies" component={Companies} />
         <Route path="/students" component={Students} />

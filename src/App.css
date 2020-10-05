@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Ropa+Sans&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Ropa+Sans&display=swap");
 :any-link {
   text-decoration: none;
 }
@@ -20,7 +20,7 @@
 
 .logo-navbar {
   margin-left: 17vw;
-  font-family: 'Ropa Sans', sans-serif;
+  font-family: "Ropa Sans", sans-serif;
   font-weight: 500;
   letter-spacing: 2px;
 }
@@ -122,43 +122,84 @@
 
 /*==================================================== companies =================================================== */
 
-
-.companies { width: 100%;height: 100%;display: flex; flex-direction: column;}
-
-.companyview-btn{
-    width: 6em;
-    border-radius: 4em;
-    background: linear-gradient(0deg, rgb(149, 174, 183) 0%, rgb(122, 121, 151) 0%, rgb(89, 81, 132) 0%, rgb(110, 96, 137) 50%, rgb(113, 107, 157) 100%, rgba(255, 255, 255, 0) 100%);
-    border: none;
+.companies {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
 }
-.companydel-btn{
-    width: 6em;
-    border-radius: 4em;
-    background: linear-gradient(0deg, rgb(98, 16, 16) 0%, rgb(144, 54, 54) 0%, rgb(168, 95, 95) 0%, rgb(199, 104, 104) 50%, rgb(154, 60, 60) 100%, rgba(255, 255, 255, 0) 100%);
-    border: none;
-}
-.companymsg-btn{
-    width: 6em;
-    border-radius: 4em;
-    background: linear-gradient(0deg, rgb(149, 183, 157) 0%, rgb(121, 151, 129) 0%, rgb(81, 132, 95) 0%, rgb(96, 137, 109) 50%, rgb(107, 157, 119) 100%, rgba(255, 255, 255, 0) 100%);
-    border: none;
-}
-  
-.cards { display: flex; flex-wrap: wrap; flex-direction: row; }
- 
-form.search-bar input[type=text] {
-    padding: 10px;
-    margin-left: 18em;
-    font-size: 17px;
-    border: 1px solid grey;
-    width: 30em;
-    background: #ffffff;
-    border-radius: 5em;
-  }
-  
-form.search-bar::after {content: ""; clear: both; display: table; border: none;}
 
-.containerAlph {Margin-top:2vh; display: flex; justify-content: center;}
+.companyview-btn {
+  width: 6em;
+  border-radius: 4em;
+  background: linear-gradient(
+    0deg,
+    rgb(149, 174, 183) 0%,
+    rgb(122, 121, 151) 0%,
+    rgb(89, 81, 132) 0%,
+    rgb(110, 96, 137) 50%,
+    rgb(113, 107, 157) 100%,
+    rgba(255, 255, 255, 0) 100%
+  );
+  border: none;
+}
+.companydel-btn {
+  width: 6em;
+  border-radius: 4em;
+  background: linear-gradient(
+    0deg,
+    rgb(98, 16, 16) 0%,
+    rgb(144, 54, 54) 0%,
+    rgb(168, 95, 95) 0%,
+    rgb(199, 104, 104) 50%,
+    rgb(154, 60, 60) 100%,
+    rgba(255, 255, 255, 0) 100%
+  );
+  border: none;
+}
+.companymsg-btn {
+  width: 6em;
+  border-radius: 4em;
+  background: linear-gradient(
+    0deg,
+    rgb(149, 183, 157) 0%,
+    rgb(121, 151, 129) 0%,
+    rgb(81, 132, 95) 0%,
+    rgb(96, 137, 109) 50%,
+    rgb(107, 157, 119) 100%,
+    rgba(255, 255, 255, 0) 100%
+  );
+  border: none;
+}
+
+.cards {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+}
+
+form.search-bar input[type="text"] {
+  padding: 10px;
+  margin-left: 18em;
+  font-size: 17px;
+  border: 1px solid grey;
+  width: 30em;
+  background: #ffffff;
+  border-radius: 5em;
+}
+
+form.search-bar::after {
+  content: "";
+  clear: both;
+  display: table;
+  border: none;
+}
+
+.containerAlph {
+  margin-top: 2vh;
+  display: flex;
+  justify-content: center;
+}
 
 .compnaytab {
   border: none;
@@ -170,10 +211,15 @@ form.search-bar::after {content: ""; clear: both; display: table; border: none;}
   cursor: pointer;
   box-shadow: 0 8px 20px 0 rgba(0, 0, 2, 0.2), 0 6px 20px 0 rgba(0, 0, 5, 0.19);
   background-color: rgb(105, 158, 190);
-  }
+}
 
-.company-logo { position: absolute;height: 150px;width: 150px;margin: 50px 10px;border-radius: 50%;}
-
+.company-logo {
+  position: absolute;
+  height: 150px;
+  width: 150px;
+  margin: 50px 10px;
+  border-radius: 50%;
+}
 
 /*==================================================== students =================================================== */
 
@@ -257,11 +303,22 @@ form.search-bar::after {content: ""; clear: both; display: table; border: none;}
   height: 100%;
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
   font-size: 50px;
   font-weight: 700;
   color: rgb(168, 164, 164);
+}
+.users > h1 {
+  font-weight: 700;
+  color: rgba(72, 71, 71, 0.708);
+  margin-top: 2%;
+  font-size: 22;
+}
+
+.addbtn {
+  margin-left: 80%;
+  margin-top: -6%;
+  color: rgb(54, 192, 247);
 }
 
 /*==================================================== notifications =================================================== */
@@ -276,4 +333,34 @@ form.search-bar::after {content: ""; clear: both; display: table; border: none;}
   font-size: 50px;
   font-weight: 700;
   color: rgb(168, 164, 164);
+}
+/*===================================================== login ============================================================*/
+.login-page {
+  overflow: hidden;
+  min-height: 91vh;
+}
+
+.login-form {
+  width: 40vw;
+  background-color: rgb(250, 250, 250);
+  margin: auto;
+  margin-top: 25vh;
+  -webkit-box-shadow: 0px 0px 50px -3px rgb(185, 184, 184);
+  -moz-box-shadow: 0px 0px 50px -3px rgb(163, 162, 163);
+  box-shadow: 0px 0px 50px -3px rgb(185, 183, 183);
+  border-radius: 20px;
+  /* height: 340px; */
+}
+
+.login-header {
+  font-size: 30px;
+  font-weight: 500;
+  color: gray;
+  padding: 15px 30px;
+}
+
+.login-container {
+  width: 85%;
+  height: 60%;
+  margin: auto;
 }
