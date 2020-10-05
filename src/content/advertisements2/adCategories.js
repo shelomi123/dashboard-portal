@@ -66,6 +66,7 @@ function AdCategories() {
   //uploading new category
   const handleUpload = (evt) => {
     evt.preventDefault();
+    setIsAdding(true)
     axios
       .post(`http://localhost:5000/advert/addcategory`, Catdata)
       .then(res => {
@@ -78,6 +79,7 @@ function AdCategories() {
 
       })
     setShow(false);
+    setIsAdding(false)
 
   }
 

@@ -21,7 +21,7 @@ function RegCompanyList() {
 
   // getting data from the server to pass to the modal 
   const handleShow = (rowData) => {
-    let key = rowData[4];
+    let key = rowData[3];
     for (var i = 0; i < regCompanyData.length; i++) {
       if (key === regCompanyData[i].email) {
         setModalData(regCompanyData[i]);
@@ -38,8 +38,17 @@ function RegCompanyList() {
       axios
         .get(`http://localhost:5000/company/getAll`)
         .then(res => {
-          //console.log(res.data);
-          setRegCompanyData(res.data);
+
+          // console.log(res.data[0].is_verified);
+          for (var i = 0; i < res.data.length; i++) {
+            if (res.data[i].is_verified === true) {
+              setRegCompanyData(res.data);
+            }
+          }
+          console.log(regCompanyData);
+
+
+
         })
 
     } catch (error) {
@@ -47,16 +56,18 @@ function RegCompanyList() {
 
     }
     setLoading(false)
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [loading])
+  console.log(regCompanyData);
 
 
 
   const columns = [
     'Company Name',
-    'Registration No',
     'Registration Date',
     'Contact no',
     'Email',
+    'Website',
 
     {
       name: "",
@@ -100,10 +111,10 @@ function RegCompanyList() {
           data={data.map(item => {
             return [
               item.comp_name,
-              item.reg_no,
               item.date_of_establishment,
               item.contact_number,
               item.email,
+              item.comp_website,
             ]
           })}
           options={{
@@ -119,45 +130,38 @@ function RegCompanyList() {
         <div>
           {/* model to show company details */}
           <Modal show={show} onHide={handleClose} >
-            <Modal.Header closeButton style={{}} >
-              <Modal.Title style={{ marginLeft: '28%', fontSize: 24, fontWeight: 'bold', fontFamily: 'TimesNewRoman', color: '#6e6b6b' }}>Company Details</Modal.Title>
-            </Modal.Header>
+
             <Modal.Body>
               <Form>
                 <Form.Group>
-                  <div style={{ display: 'flex', alignItems: 'center' }}>
-                    <Form.Label style={{ fontSize: 18, fontWeight: 'bold', fontFamily: 'TimesNewRoman', color: 'grey', background: 'red', margin: '0px' }}>Company Name:</Form.Label>
-                    <Form.Text style={{ fontSize: 14, fontWeight: 'bold', background: 'green', margin: '0px' }}>{modalData.comp_name}</Form.Text>
-                  </div>
 
-                  <div style={{ display: 'flex', alignItems: 'center' }}>
-                    <Form.Label style={{ fontSize: 18, fontWeight: 'bold', fontFamily: 'TimesNewRoman', color: 'grey' }}>Registration No:</Form.Label>
-                    <Form.Text style={{ fontSize: 14, fontWeight: 'bold', marginLeft: '5%' }}>{modalData.reg_no}</Form.Text>
-                  </div>
-                  <div style={{ display: 'flex', alignItems: 'center' }}>
-                    <Form.Label style={{ fontSize: 18, fontWeight: 'bold', fontFamily: 'TimesNewRoman', color: 'grey' }}>Registration Date:</Form.Label>
-                    <Form.Text style={{ fontSize: 14, fontWeight: 'bold', marginLeft: '5%' }}>{modalData.date_of_establishment}</Form.Text>
-                  </div>
-                  <Form.Label style={{ fontSize: 18, fontWeight: 'bold', fontFamily: 'TimesNewRoman' }}>Email:</Form.Label>
-                  <Form.Text style={{ fontSize: 14, fontWeight: 'bold', marginLeft: '28%' }}>	{modalData.email}</Form.Text>
-
-                  <Form.Label style={{ fontSize: 18, fontWeight: 'bold', fontFamily: 'TimesNewRoman', color: 'grey' }}>Website:</Form.Label>
-                  <Form.Text style={{ fontSize: 14, fontWeight: 'bold', marginLeft: '28%' }}>{modalData.comp_website}</Form.Text>
-
-                  <Form.Label style={{ fontSize: 18, fontWeight: 'bold', fontFamily: 'TimesNewRoman', color: 'grey' }}>Address:</Form.Label>
-                  <Form.Text style={{ fontSize: 14, fontWeight: 'bold', marginLeft: '28%' }}>{modalData.address} </Form.Text>
-
-                  <Form.Label style={{ fontSize: 18, fontWeight: 'bold', fontFamily: 'TimesNewRoman', color: 'grey' }}>Contact no:</Form.Label>
-                  <Form.Text style={{ fontSize: 14, fontWeight: 'bold', marginLeft: '28%' }}>{modalData.contact_number}</Form.Text>
-
-                  <Form.Label style={{ fontSize: 18, fontWeight: 'bold', fontFamily: 'TimesNewRoman', color: 'grey' }}>Fax no:</Form.Label>
-                  <Form.Text style={{ fontSize: 14, fontWeight: 'bold', marginLeft: '28%' }}>{modalData.fax_number}</Form.Text>
-
-                  <Form.Label style={{ fontSize: 18, fontWeight: 'bold', fontFamily: 'TimesNewRoman', color: 'grey' }}>Number of employess</Form.Label>
-                  <Form.Text style={{ fontSize: 14, fontWeight: 'bold', marginLeft: '28%' }}>{modalData.num_of_employees}</Form.Text>
-
-                  <Form.Label style={{ fontSize: 18, fontWeight: 'bold', fontFamily: 'TimesNewRoman', color: 'grey' }}>Number of tech leads</Form.Label>
-                  <Form.Text style={{ fontSize: 14, fontWeight: 'bold', marginLeft: '28%' }}>{modalData.num_of_techleads}</Form.Text>
+                  <Form.Label style={{ fontSize: 20 }}>Company Name</Form.Label>
+                  <Form.Control type="text" placeholder={modalData.comp_name} disabled style={{ fontSize: 18 }} >
+                  </Form.Control>
+                  <Form.Label style={{ fontSize: 20 }}>Registration Date</Form.Label>
+                  <Form.Control type="text" placeholder={modalData.date_of_establishment} disabled style={{ fontSize: 18 }} >
+                  </Form.Control>
+                  <Form.Label style={{ fontSize: 20 }}>Address</Form.Label>
+                  <Form.Control type="text" placeholder={modalData.address} disabled style={{ fontSize: 18 }}>
+                  </Form.Control>
+                  <Form.Label style={{ fontSize: 20 }}>Email</Form.Label>
+                  <Form.Control type="text" placeholder={modalData.email} disabled style={{ fontSize: 18 }}>
+                  </Form.Control>
+                  <Form.Label style={{ fontSize: 20 }}>Web Site</Form.Label>
+                  <Form.Control type="text" placeholder={modalData.comp_website} disabled style={{ fontSize: 18 }}>
+                  </Form.Control>
+                  <Form.Label style={{ fontSize: 20 }}>Contact Number</Form.Label>
+                  <Form.Control type="text" placeholder={modalData.contact_number} disabled style={{ fontSize: 18 }}>
+                  </Form.Control>
+                  <Form.Label style={{ fontSize: 20 }}>Fax Number</Form.Label>
+                  <Form.Control type="text" placeholder={modalData.fax_number} disabled style={{ fontSize: 18 }}>
+                  </Form.Control>
+                  <Form.Label style={{ fontSize: 20 }}>Number of Employees</Form.Label>
+                  <Form.Control type="text" placeholder={modalData.num_of_employees} disabled style={{ fontSize: 18 }}>
+                  </Form.Control>
+                  <Form.Label style={{ fontSize: 20 }}>Number of Techleads</Form.Label>
+                  <Form.Control type="text" placeholder={modalData.num_of_techleads} disabled style={{ fontSize: 18 }} >
+                  </Form.Control>
 
                 </Form.Group>
               </Form>
@@ -179,7 +183,7 @@ function RegCompanyList() {
           </button>
         </div>
       </div>
-    </div>
+    </div >
   )
 }
 
