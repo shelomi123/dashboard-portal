@@ -36,6 +36,7 @@ import summary from './content/advertisement/summary'
 import BlackListedCompany from './content/companies/blackListedCompanies'
 import RegisteredCompany from './content/companies/registeredCompanies'
 import PendingCompany from './content/companies/pendingCompanies'
+import toAllCompanies from './content/companies/toAllCompanies';
 
 
 ReactDOM.render(
@@ -65,9 +66,10 @@ ReactDOM.render(
         <Route path="/category" component={category} />
         <Route path="/summary" component={summary} />
 
-        <Route path="/registeredcom" component={RegisteredCompany} />
-        <Route path="/pendingcom" component={PendingCompany} />
-        <Route path="/blacklistedcom" component={BlackListedCompany} />
+        <Route path="/registeredcom" component={RegisteredCompany}/>
+        <Route path="/pendingcom" component={PendingCompany}/>
+        <Route path="/blacklistedcom" component={BlackListedCompany}/>
+        <Route path="/toAllComs" component={toAllCompanies}/>
 
         <Redirect from="/" to="/dashboard" />
       </Switch>

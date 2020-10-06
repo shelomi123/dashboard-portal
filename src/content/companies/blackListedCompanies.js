@@ -19,6 +19,12 @@ export default class BlackListedCompany extends Component {
             hideDefult: false,
             hideFilter: true,
             alphabet:'',
+            company_obj: {
+                com_name:'', com_email:'', com_dis:'', com_num:''
+            },
+            email: '',
+            subject: '',
+            message: ''
         }
     }
     async componentDidMount(){
@@ -44,28 +50,50 @@ export default class BlackListedCompany extends Component {
     handlePageClick = (e) => {
         this.setState({alphabet: e.target.value, hideDefult: true, hideFilter:false})
     }
+    msgClick = (e) => {
+        this.setState({hideForm: true, email: e.email,
+            company_obj:{com_name:e.comp_name, com_web:e.comp_website, com_dis:e.description, com_num:e.contact_number, com_mail: e.email}});
+    }
+    onEmailChange = (e) => {
+        this.setState({email: e.target.value})
+    }
+    onSubChange = (e) => {
+        this.setState({subject: e.target.value})
+    }
+    onMessageChange = (e) => {
+        this.setState({message: e.target.value})
+    }
+
+    viewClick = (e) => {
+        this.setState({ show: true,
+            company_obj:{com_name:e.comp_name, com_web:e.comp_website, com_dis:e.description, com_num:e.contact_number}
+        });
+    }
     render() {
+        
         const {com_names ,alphabet, search_field} = this.state
         const filter_companie = com_names.filter(company => (
-            company.comp_name.toLowerCase().includes(search_field.toLowerCase()) //name should replace comp_name
-        ))
-        const filter_compani = com_names.filter(company => (company.comp_name.charAt(0).toLowerCase()=== alphabet.toLowerCase() )) 
+            (company.comp_name.toLowerCase().includes(search_field.toLowerCase()))
+            ));
+        
+        const filter_compani = com_names.filter(company => (company.comp_name.charAt(0).toLowerCase()=== alphabet.toLowerCase() ))   
         return (
             <div>
-            <Navbar/>
-            <SideBar/>
-            {/* <Content/> */}
+                <Navbar/>
+                <SideBar/>
             <div className="admin-content">
             <div className="companies">
                 <div>
                     <button className="compnaytab"><Link style={{color:'black'}} to="/registeredcom" >Registered Companies</Link></button>
                     <button className="compnaytab"><Link style={{color:'black'}} to="/pendingcom">Pending to be Approved</Link></button>
                     <button className="compnaytab"><Link style={{color:'black'}} to="/blacklistedcom">BlackListed Companies</Link></button>
+                    <button className="compnaytab"><Link style={{color:'black'}} to="/toAllComs">To All Companies</Link></button>
                 </div>
                 <form className=" search-bar"   >
                     <i className="material-icons inline" style={{position:'absolute', margin:'0.6em 32em'}}>search</i>
                     <input type="text" onChange={this.searchFunc}  placeholder="Search.." name="search"></input>
                 </form>
+                
                 <div className="containerAlph">
                     <nav aria-label="Page navigation example">
                     <ul className="pagination">
@@ -109,11 +137,11 @@ export default class BlackListedCompany extends Component {
                     </nav>
                 </div>
             
+               
+                <div hidden={this.state.hideDefult}  className="cards">
             {filter_companie && filter_companie.map((company_data, index) => {
                 return(
-                    <div hidden={this.state.hideDefult} key={index} className="container">
-                        <div className="cards">
-                            <div className="card" style={{margin: '5px 5px'}}>
+                            <div className="card text-black mb-3" style={{ backgroundColor:'#b2bec3',margin: '5px 10px'}} key={index}>
                                 <img className="company-logo" src={ucsc_logo} alt="ucsc_logo"/>
                                 <div className="card-body " style={{marginLeft:' 10em'}}>
                                     <h3 className="card-title" style={{position:'relative', fontSize:'30px'}}>{company_data.comp_name}</h3>
@@ -121,48 +149,87 @@ export default class BlackListedCompany extends Component {
                                     <p className="card-title" style={{position:'relative', fontSize:'15px'}}>Contact register Name:&ensp;{ 'James anderson example'}</p>
                                     <p className="card-title" style={{position:'relative', fontSize:'15px'}}>E-Mail :&ensp;{company_data.email}</p>
                                     <div style={{position:'relative'}}><hr/>
-                                        <button type="button" className="btn btn-secondary">Send Message</button>&emsp;&emsp;
-                                        <button type="button" className="btn btn-secondary" onClick={()=> this.setState({show: true})}>View More...</button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <Modal show={this.state.show} size="lg" aria-labelledby="contained-modal-title-vcenter" animation={false} centered>
-                                    <img className="company-logo" src={ucsc_logo} alt="ucsc_logo"/>
+                                        <button type="button" className="btn text-white" style={{backgroundColor:'#2d3436'}} value={company_data} onClick={()=>this.msgClick(company_data)}>Unblock</button>&emsp;&emsp;&emsp;&emsp;
+                                        <button type="button" className="btn text-white" style={{backgroundColor:'#2d3436'}} value={company_data} onClick={()=>this.viewClick(company_data)}>View More...</button>
+                                    </div>    
+                                </div>  
+
+                                <Modal show={this.state.show} size="lg" aria-labelledby="contained-modal-title-vcenter" animation={false} centered>
+                                        <img className="company-logo" src={ucsc_logo} alt="ucsc_logo"/>
+                                        <Modal.Header >
+                                            <Modal.Title style={{marginLeft:'10em'}} id="contained-modal-title-vcenter">{this.state.company_obj.com_name}</Modal.Title>
+                                            <Dropdown >
+                                                <Dropdown.Toggle variant="Secondary" id="dropdown-basic">
+                                                </Dropdown.Toggle>
+                                                <Dropdown.Menu>
+                                                <Dropdown.Item href="#/action-1">Unblock Company</Dropdown.Item>
+                                                </Dropdown.Menu>
+                                            </Dropdown>
+                                        </Modal.Header>
+                                        <Modal.Body style={{paddingLeft:'12em'}}>
+                                            <p>
+                                            {this.state.company_obj.com_dis}
+                                            </p>
+                                            <a href="# " >{this.state.company_obj.com_web}</a>
+                                            <p>
+                                                Cras mattis consectetur purus sit amet fermentum. Cras justo odio,
+                                                dapibus ac facilisis in, egestas eget quam. Morbi leo risus, porta ac
+                                                consectetur ac, vestibulum at eros.
+                                            </p>
+                                        </Modal.Body>
+                                        <Modal.Footer>
+                                            <Button type="Submit" onClick={()=>this.msgClick(company_data)} >Send Message</Button>
+                                            <Button onClick={()=> this.setState({show: false})}>Cancel</Button>
+                                        </Modal.Footer>
+                                    </Modal>        
+                                
+                  {/* /////////////////////////////////////////////////////////////////////////////////////////////////////////////               */}
+                                
+                                <Modal  show={this.state.hideForm} size="lg" aria-labelledby="contained-modal-title-vcenter" animation={false} centered>
                                     <Modal.Header >
-                                        <Modal.Title style={{marginLeft:'10em'}} id="contained-modal-title-vcenter">{company_data.comp_name}</Modal.Title>
-                                        <Dropdown >
-                                            <Dropdown.Toggle variant="Secondary" id="dropdown-basic">
-                                            </Dropdown.Toggle>
-                                            <Dropdown.Menu>
-                                            <Dropdown.Item href="#/action-1">Block Company</Dropdown.Item>
-                                            </Dropdown.Menu>
-                                        </Dropdown>
+                                        <Modal.Title style={{marginLeft:'10em'}} id="contained-modal-title-vcenter">{this.state.company_obj.com_name}</Modal.Title>
                                     </Modal.Header>
-                                    <Modal.Body style={{paddingLeft:'12em'}}>
-                                        <p>
-                                        {company_data.description}
-                                        </p>
-                                        <a href="# " >{company_data.comp_website}</a>
-                                        <p>
-                                            Cras mattis consectetur purus sit amet fermentum. Cras justo odio,
-                                            dapibus ac facilisis in, egestas eget quam. Morbi leo risus, porta ac
-                                            consectetur ac, vestibulum at eros.
-                                        </p>
+                                    <Modal.Body>
+                                        <div className="input-group mb-3">
+                                            <div className="input-group-prepend">
+                                                <span className="input-group-text" id="basic-addon1"><i className="material-icons inline">mail</i></span>
+                                            </div>
+                                            <input type="text" className="form-control" placeholder="E-mail" value={this.state.email || ''} onChange={this.onEmailChange.bind(this)} ></input>
+                                        </div>
+
+                                        <div className="input-group mb-3">
+                                            <div className="input-group-prepend">
+                                                <span className="input-group-text" id="basic-addon1"><i className="material-icons inline">label</i></span>
+                                            </div>
+                                            <input type="text" className="form-control" placeholder="subject" value={this.state.subject || ''} onChange={this.onSubChange.bind(this)} ></input>
+                                        </div>
+
+                                        <div className="input-group mb-3">
+                                            <div className="input-group-prepend">
+                                                <span className="input-group-text" id="basic-addon1"><i className="material-icons inline">create</i></span>
+                                            </div>
+                                            <textarea type="text" className="form-control" rows="4" placeholder="your message" value={this.state.message || ''} onChange={this.onMessageChange.bind(this)} ></textarea>
+                                        </div>
                                     </Modal.Body>
                                     <Modal.Footer>
-                                        <Button >Send Message</Button>
-                                        <Button onClick={()=> this.setState({show: false})}>Cancel</Button>
+                                        <Button >Send</Button>
+                                        <Button onClick={()=> this.setState({hideForm: false})}>Cancel</Button>
                                     </Modal.Footer>
-                                    </Modal>
-                    </div>
+                                </Modal>
+
+{/* ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// */}
+
+                            </div>
+                        
+                    
                 );
             })}
+            </div>
+                            
+                <div hidden={this.state.hideFilter}  className="cards">
             {filter_compani && filter_compani.map((company_data, index) => {
                 return(
-                    <div hidden={this.state.hideFilter} key={index} className="container">
-                        <div className="cards">
-                            <div className="card" style={{margin: '5px 5px'}}>
+                            <div className="card text-white bg-secondary mb-3" style={{margin: '5px 5px'}} key={index}>
                                 <img className="company-logo" src={ucsc_logo} alt="ucsc_logo"/>
                                 <div className="card-body " style={{marginLeft:' 10em'}}>
                                     <h3 className="card-title" style={{position:'relative', fontSize:'30px'}}>{company_data.comp_name}</h3>
@@ -170,29 +237,28 @@ export default class BlackListedCompany extends Component {
                                     <p className="card-title" style={{position:'relative', fontSize:'15px'}}>Contact register Name:&ensp;{ 'James anderson example'}</p>
                                     <p className="card-title" style={{position:'relative', fontSize:'15px'}}>E-Mail :&ensp;{company_data.email}</p>
                                     <div style={{position:'relative'}}><hr/>
-                                        <button type="button" className="btn btn-secondary">Send Message</button>&emsp;&emsp;
-                                        <button type="button" className="btn btn-secondary" onClick={()=> this.setState({show: true})}>View More...</button>
-                                    </div>
+                                        <button type="button" className="btn text-white" style={{backgroundColor:'#2d3436'}} value={company_data} onClick={()=>this.msgClick(company_data)}>Unblock</button>&emsp;&emsp;&emsp;&emsp;
+                                        <button type="button" className="btn text-white" style={{backgroundColor:'#2d3436'}} value={company_data} onClick={()=>this.viewClick(company_data)}>View More...</button>
+                                     </div>
                                 </div>
-                            </div>
-                        </div>
-                        <Modal show={this.state.show} size="lg" aria-labelledby="contained-modal-title-vcenter" animation={false} centered>
+                                
+                                <Modal show={this.state.show} size="lg" aria-labelledby="contained-modal-title-vcenter" animation={false} centered>
                                     <img className="company-logo" src={ucsc_logo} alt="ucsc_logo"/>
                                     <Modal.Header >
-                                        <Modal.Title style={{marginLeft:'10em'}} id="contained-modal-title-vcenter">{company_data.comp_name}</Modal.Title>
+                                        <Modal.Title style={{marginLeft:'10em'}} id="contained-modal-title-vcenter">{this.state.company_obj.com_name}</Modal.Title>
                                         <Dropdown >
                                             <Dropdown.Toggle variant="Secondary" id="dropdown-basic">
                                             </Dropdown.Toggle>
                                             <Dropdown.Menu>
-                                            <Dropdown.Item href="#/action-1">Block Company</Dropdown.Item>
+                                            <Dropdown.Item href="#/action-1">Unblock Company</Dropdown.Item>
                                             </Dropdown.Menu>
                                         </Dropdown>
                                     </Modal.Header>
                                     <Modal.Body style={{paddingLeft:'12em'}}>
                                         <p>
-                                        {company_data.description}
+                                        {this.state.company_obj.com_dis}
                                         </p>
-                                        <a href="# " >{company_data.comp_website}</a>
+                                        <a href="# " >{this.state.company_obj.com_web}</a>
                                         <p>
                                             Cras mattis consectetur purus sit amet fermentum. Cras justo odio,
                                             dapibus ac facilisis in, egestas eget quam. Morbi leo risus, porta ac
@@ -200,16 +266,53 @@ export default class BlackListedCompany extends Component {
                                         </p>
                                     </Modal.Body>
                                     <Modal.Footer>
-                                        <Button >Send Message</Button>
-                                        <Button onClick={()=> this.setState({show: false})}>Cancel</Button>
+                                        <Button type="submit" onClick={()=>this.msgClick(company_data)} >Send Message</Button>
+                                        <Button  onClick={()=> this.setState({show: false})}>Cancel</Button>
                                     </Modal.Footer>
                                     </Modal>
-                    </div>
+                               
+                                <Modal show={this.state.hideForm} size="lg" aria-labelledby="contained-modal-title-vcenter" animation={false} centered>
+                                    <Modal.Header >
+                                        <Modal.Title style={{marginLeft:'10em'}} id="contained-modal-title-vcenter">{this.state.company_obj.com_name}</Modal.Title>
+                                    </Modal.Header>
+                                    <Modal.Body>
+                                        <div className="input-group mb-3">
+                                            <div className="input-group-prepend">
+                                                <span className="input-group-text" id="basic-addon1"><i className="material-icons inline">mail</i></span>
+                                            </div>
+                                            <input type="text" className="form-control" placeholder="E-mail" value={this.state.email || ''} onChange={this.onEmailChange.bind(this)} ></input>
+                                        </div>
+
+                                        <div className="input-group mb-3">
+                                            <div className="input-group-prepend">
+                                                <span className="input-group-text" id="basic-addon1"><i className="material-icons inline">label</i></span>
+                                            </div>
+                                            <input type="text" className="form-control" placeholder="subject" value={this.state.subject || ''} onChange={this.onSubChange.bind(this)} ></input>
+                                        </div>
+
+                                        <div className="input-group mb-3">
+                                            <div className="input-group-prepend">
+                                                <span className="input-group-text" id="basic-addon1"><i className="material-icons inline">create</i></span>
+                                            </div>
+                                            <textarea type="text" className="form-control" rows="4" placeholder="your message" value={this.state.message || ''} onChange={this.onMessageChange.bind(this)} ></textarea>
+                                        </div>
+                                    </Modal.Body>
+                                    <Modal.Footer>
+                                        <Button >Seend</Button>
+                                        <Button onClick={()=> this.setState({hideForm: false})}>Cancel</Button>
+                                    </Modal.Footer>
+                                </Modal>
+                            </div>
+                        
+                    
                 );
             })}
+            </div>
+            
             </div>
             </div>
             </div>
         )
+    
     }
 }
