@@ -15,8 +15,7 @@
   border: none;
   outline: none;
   text-align: center;
-  margin-top: 1em;
-  margin-right: 0;
+  margin-right: 3px;
 }
 .catogeries_btn:hover {
   background-color: rgb(33, 153, 209);
@@ -46,7 +45,7 @@
   margin-left: 30%;
 }
 .deadline_form_control {
-  width: '20%';
+  width: "20%";
   height: 40px;
   border-radius: 10px;
   background-color: rgb(220, 248, 248);
@@ -69,7 +68,27 @@
 .continue-btn:hover {
   background-color: rgb(33, 153, 209);
 }
-
+.btn_pos {
+  display: flex;
+  flex-direction: row;
+  margin-left: 66%;
+  padding-top: 4%;
+}
+.registered_company_btn:hover {
+  background-color: rgb(33, 153, 209);
+}
+.registered_company_btn {
+  background-color: rgb(54, 192, 247);
+  border-radius: 20px;
+  border-style: none;
+  color: #fff;
+  width: 210px;
+  height: 40px;
+  border: none;
+  outline: none;
+  text-align: center;
+  padding: 3px;
+}
 /*====================================================adCatogries===================================================*/
 .cat_container {
   background-color: rgba(128, 128, 128, 0.116);
@@ -89,9 +108,9 @@
   /* position: fixed; */
   display: flex;
   flex-direction: column;
-  margin-top: 1em;
+  margin-top: 3%;
   margin-left: 5%;
-  width: 68em;
+  width: 90%;
   height: fit-content;
   border-color: black;
   text-align: center;
@@ -101,6 +120,7 @@
   padding-top: 30px;
   margin-left: 70%;
 }
+
 .new_category_btn {
   background-color: rgb(54, 192, 247);
   border-radius: 15px;
@@ -110,13 +130,13 @@
   border: none;
   outline: none;
   text-align: center;
-  margin-top: 2em;
   padding: 3px;
   margin-left: 8em;
 }
 .new_category_btn:hover {
   background-color: rgb(33, 153, 209);
 }
+
 .ad_back_btn_position {
   margin-left: 70%;
   margin-top: 1em;
