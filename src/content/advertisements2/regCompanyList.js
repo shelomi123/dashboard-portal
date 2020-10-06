@@ -7,6 +7,7 @@ import '../../../node_modules/bootstrap/dist/css/bootstrap.min.css'
 import { Button, Modal, Form } from 'react-bootstrap'
 // import { Link } from 'react-router-dom'
 import axios from 'axios'
+import { Link } from 'react-router-dom'
 
 
 
@@ -18,9 +19,9 @@ function RegCompanyList() {
   const [modalData, setModalData] = useState([]);
   const handleClose = () => setShow(false);
 
-
   // getting data from the server to pass to the modal 
   const handleShow = (rowData) => {
+
     let key = rowData[3];
     for (var i = 0; i < regCompanyData.length; i++) {
       if (key === regCompanyData[i].email) {
@@ -46,9 +47,9 @@ function RegCompanyList() {
             }
           }
           console.log(regCompanyData);
-
-
-
+        })
+        .catch(e => {
+          console.log(e);
         })
 
     } catch (error) {
@@ -135,31 +136,31 @@ function RegCompanyList() {
               <Form>
                 <Form.Group>
 
-                  <Form.Label style={{ fontSize: 20 }}>Company Name</Form.Label>
+                  <Form.Label style={{ fontSize: 17 }}>Company Name</Form.Label>
                   <Form.Control type="text" placeholder={modalData.comp_name} disabled style={{ fontSize: 18 }} >
                   </Form.Control>
-                  <Form.Label style={{ fontSize: 20 }}>Registration Date</Form.Label>
+                  <Form.Label style={{ fontSize: 17 }}>Registration Date</Form.Label>
                   <Form.Control type="text" placeholder={modalData.date_of_establishment} disabled style={{ fontSize: 18 }} >
                   </Form.Control>
-                  <Form.Label style={{ fontSize: 20 }}>Address</Form.Label>
+                  <Form.Label style={{ fontSize: 17 }}>Address</Form.Label>
                   <Form.Control type="text" placeholder={modalData.address} disabled style={{ fontSize: 18 }}>
                   </Form.Control>
-                  <Form.Label style={{ fontSize: 20 }}>Email</Form.Label>
+                  <Form.Label style={{ fontSize: 17 }}>Email</Form.Label>
                   <Form.Control type="text" placeholder={modalData.email} disabled style={{ fontSize: 18 }}>
                   </Form.Control>
-                  <Form.Label style={{ fontSize: 20 }}>Web Site</Form.Label>
+                  <Form.Label style={{ fontSize: 17 }}>Web Site</Form.Label>
                   <Form.Control type="text" placeholder={modalData.comp_website} disabled style={{ fontSize: 18 }}>
                   </Form.Control>
-                  <Form.Label style={{ fontSize: 20 }}>Contact Number</Form.Label>
+                  <Form.Label style={{ fontSize: 17 }}>Contact Number</Form.Label>
                   <Form.Control type="text" placeholder={modalData.contact_number} disabled style={{ fontSize: 18 }}>
                   </Form.Control>
-                  <Form.Label style={{ fontSize: 20 }}>Fax Number</Form.Label>
+                  <Form.Label style={{ fontSize: 17 }}>Fax Number</Form.Label>
                   <Form.Control type="text" placeholder={modalData.fax_number} disabled style={{ fontSize: 18 }}>
                   </Form.Control>
-                  <Form.Label style={{ fontSize: 20 }}>Number of Employees</Form.Label>
+                  <Form.Label style={{ fontSize: 17 }}>Number of Employees</Form.Label>
                   <Form.Control type="text" placeholder={modalData.num_of_employees} disabled style={{ fontSize: 18 }}>
                   </Form.Control>
-                  <Form.Label style={{ fontSize: 20 }}>Number of Techleads</Form.Label>
+                  <Form.Label style={{ fontSize: 17 }}>Number of Techleads</Form.Label>
                   <Form.Control type="text" placeholder={modalData.num_of_techleads} disabled style={{ fontSize: 18 }} >
                   </Form.Control>
 
@@ -171,16 +172,19 @@ function RegCompanyList() {
 
         </div>
         <div className="p-2 " style={{ marginLeft: '48em' }}>
-          <button
-            className="btn btn-success"
-            style={{ width: '200px', marginRight: '2em' }}
-          >
-            Request ADs
+          <Link to="adHome2">
+            <button
+              className="btn btn-success"
+              style={{ width: '200px', marginRight: '2em' }}
+            >
+              Request ADs
           </button>
-          <button className="btn btn-danger" style={{ width: '200px' }}>
-            Cancel
-
+          </Link>
+          <Link style={{ color: 'red' }} to="/adHome1">
+            <button className="btn btn-danger" style={{ width: '200px' }}>
+              Cancel
           </button>
+          </Link>
         </div>
       </div>
     </div >
