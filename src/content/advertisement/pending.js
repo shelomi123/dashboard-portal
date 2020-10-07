@@ -8,7 +8,7 @@ import SideBar from '../../components/sidebar'
 import { Button } from 'react-bootstrap'
 import axios from 'axios'
 import { FcApproval, FcDisapprove } from 'react-icons/fc'
-import { Update } from '@material-ui/icons'
+
 
 
 
@@ -18,6 +18,7 @@ function Pending() {
   const [loading, setLoading] = useState(false);
   const [adData, setAdData] = useState([]);
   const [adId, setAdId] = useState();
+  const [pendingNum, setPendingNum] = useState(0);
   const history = useHistory();
 
 
@@ -29,25 +30,30 @@ function Pending() {
     try {
       setLoading(true);
       axios
-        .get(`http://localhost:5000/advert/getAll`)
+        .get(`http://localhost:5000/advert/getPending`)
         .then(res => {
-
-          for (var i = 0; i < res.data.length; i++) {
-            if (res.data[i].status.toString() === "pending") {
-              setAdData(res.data[i]);
-            }
-          }
+          setAdData(res.data);
         })
 
     } catch (error) {
       console.log(error);
 
     }
+
+
     setLoading(false);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [loading])
 
   console.log(adData)
+
+  //get the number of pending adverts
+  useEffect(() => {
+    setPendingNum(adData.length);
+  }, [adData])
+  console.log(pendingNum)
+
+
 
 
   //when click on row get ad ID
@@ -56,7 +62,7 @@ function Pending() {
   }
 
 
-  //Handle approve 
+  //Handle approve  adverts
   const handleApprove = () => {
     console.log(adId);
     let dataObj = {
@@ -64,11 +70,6 @@ function Pending() {
     }
 
     console.log(dataObj)
-    // for (var i = 0; i < adData.length; i++) {
-    //   if (adId === adData[i].ad_id) {
-
-    //   }
-    // }
     setTimeout(() => {
       axios
         .put(`http://localhost:5000/advert/ApproveAdvert`, dataObj)
@@ -82,11 +83,35 @@ function Pending() {
         })
 
     }, 1000);
-
-
   }
 
-  console.log(adData);
+  //handle decline adverts
+  const handleDecline = () => {
+    console.log(adId);
+    let dataObj = {
+      id: adId
+    }
+
+    console.log(dataObj)
+    setTimeout(() => {
+      axios
+        .put(`http://localhost:5000/advert/DeclineAdvert`, dataObj)
+        .then(res => {
+          console.log(res.data);
+          console.log("Declined");
+          history.push('/pending');
+        })
+        .catch(e => {
+          console.log(e);
+        })
+
+    }, 1000);
+  }
+
+
+
+
+
 
   const columns = [
     'COMPANY NAME',
@@ -95,11 +120,11 @@ function Pending() {
     'NO OF POSITIONS',
 
     {
-      name: 'viewmore',
+      name: '',
       options: {
         customBodyRenderLite: () => {
           return (
-            <Button className='btn-info' size="sm">
+            <Button variant="outline-info" size="sm">
               {`View More`}
             </Button>
           );
@@ -124,7 +149,7 @@ function Pending() {
       options: {
         customBodyRenderLite: () => {
           return (
-            <Button className='btn-light' size="sm">
+            <Button className='btn-light' size="sm" onClick={handleDecline}>
               <FcDisapprove size={23} />
             </Button>
           );
@@ -148,30 +173,33 @@ function Pending() {
       <div className="admin-content">
         <div class="container p-3 my-3 bg-light" >
           <div class="form-group row">
+            {/* <div class="col-md-3">
+              <button type="button" class="btn btn-info custom "><Link style={{ color: 'white' }} to="/adHome2" >Home</Link></button>
+            </div> */}
             <div class="col-md-3">
-              <button type="button" class="btn btn-info custom "><Link style={{ color: 'white' }} to="/summary" >SUMMARY</Link></button>
+              <Link style={{ color: 'white' }} to="/summary" > <button type="button" class="btn btn-info custom ">SUMMARY</button></Link>
             </div>
             <div class="col-md-3">
-              <button type="button" class="btn btn-info custom"><Link style={{ color: 'white' }} to="/pending" >PENDING APPROVAL</Link></button>
+              <Link style={{ color: 'white' }} to="/pending" ><button type="button" class="btn btn-info custom">PENDING APPROVAL</button></Link>
             </div>
             <div class="col-md-3">
-              <button type="button" class="btn btn-info custom" ><Link style={{ color: 'white' }} to="/approved" >APPROVED</Link></button>
+              <Link style={{ color: 'white' }} to="/approved" > <button type="button" class="btn btn-info custom" >APPROVED</button></Link>
             </div>
             <div class="col-md-3">
-              <button type="button" class="btn btn-info custom"><Link style={{ color: 'white' }} to="/declined" >DECLINED</Link></button>
+              <Link style={{ color: 'white' }} to="/declined" ><button type="button" class="btn btn-info custom">DECLINED</button></Link>
             </div>
           </div>
         </div>
 
         <br></br>
         <div className="col-md-8" >
-          <h6>30 advertisements are pending approval</h6>
+          <h6 style={{ marginLeft: '56%' }}>{pendingNum} advertisements  pending the approval</h6>
         </div>
         <br></br>
         <div className="container-fluid">
           <MUIDataTable
             columns={columns}
-            data={Data.forEach(item => {
+            data={Data.map(item => {
               return [
                 item.comp_name,
                 item.ad_id,
@@ -181,6 +209,8 @@ function Pending() {
             })}
             options={{
               options,
+              selectableRows: false,
+              viewColumns: false,
               download: false,
               print: false,
               rowsPerPage: 5,
@@ -192,7 +222,7 @@ function Pending() {
           />
         </div>
         <br></br>
-        <div class="form-group row">
+        {/* <div class="form-group row">
 
           <div class="col-md-8">
 
@@ -206,11 +236,11 @@ function Pending() {
           <div class="col-md-2">
             <button type="button" class="btn btn-info smbtn" style={{ background: '#d12317' }}>CANCEL</button>
           </div>
-        </div>
+        </div> */}
 
 
       </div>
-    </div>
+    </div >
   )
 }
 
