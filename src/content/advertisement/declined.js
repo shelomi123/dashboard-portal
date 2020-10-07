@@ -5,7 +5,7 @@ import 'bootstrap/dist/css/bootstrap.css'
 import { Link } from 'react-router-dom'
 import Navbar from '../../components/navbar'
 import SideBar from '../../components/sidebar'
-import { Button } from 'react-bootstrap'
+import { Button, Form, Modal } from 'react-bootstrap'
 import axios from 'axios'
 
 
@@ -31,6 +31,9 @@ function Declined() {
   const [loading, setLoading] = useState(false);
   const [adData, setAdData] = useState([]);
   const [number, setNumber] = useState(0);
+  const [show, setShow] = useState(false);
+  const [modalData, setModalData] = useState([]);
+  const handleClose = () => setShow(false);
 
 
 
@@ -53,6 +56,19 @@ function Declined() {
   useEffect(() => {
     setNumber(adData.length)
   }, [adData])
+
+  //handle the view more click
+  const handleRowClick = (rowData) => {
+    console.log(rowData[1]);
+    let key = rowData[1];
+    for (var i = 0; i < adData.length; i++) {
+      if (key === adData[i].ad_id) {
+        setModalData(adData[i]);
+      }
+    }
+    setShow(true);
+
+  }
 
   const columns = [
     'COMPANY NAME',
@@ -139,16 +155,127 @@ function Declined() {
             })}
             options={{
               options,
-              selectableRows: false,
+              selectableRows: "none",
               viewColumns: false,
               download: false,
               print: false,
               rowsPerPage: 7,
               rowsPerPageOptions: false,
+              onRowClick: handleRowClick,
             }}
           />
         </div>
         <br></br>
+        <Modal dialogClassName='modal-70w'
+          show={show}
+          onHide={handleClose} >
+
+          <Modal.Body>
+            <container>
+              <div className='row'>
+                <span className="col-5">
+                  <img src={modalData.profile_pic_url} alt='name' style={{ width: '40%', height: '70%', marginLeft: '60%' }} />
+                </span>
+                <span className="col-6" style={{ marginTop: '3%' }}>
+                  <h1>{modalData.comp_name}</h1>
+                </span>
+              </div>
+
+              <div className='row' style={{ marginLeft: '15%' }}>
+                <span className='col-5'>
+                  <Form>
+                    <Form.Label style={{ fontSize: 17 }}>Company Website</Form.Label>
+                    <Form.Control type="text" placeholder={modalData.comp_website} disabled style={{ fontSize: 18 }} >
+                    </Form.Control>
+                  </Form>
+                </span>
+                <span className='col-5' >
+                  <Form>
+                    <Form.Label style={{ fontSize: 17 }}>Date Created</Form.Label>
+                    <Form.Control type="text" placeholder={modalData.date_created} disabled style={{ fontSize: 18 }} >
+                    </Form.Control>
+                  </Form>
+                </span>
+              </div>
+
+              <div className='row' style={{ marginLeft: '15%' }}>
+                <span className='col-5'>
+                  <Form>
+                    <Form.Label style={{ fontSize: 17 }}>Advert Category</Form.Label>
+                    <Form.Control type="text" placeholder={modalData.internship_position} disabled style={{ fontSize: 18 }} >
+                    </Form.Control>
+                  </Form>
+                </span>
+                <span className='col-5' >
+                  <Form>
+                    <Form.Label style={{ fontSize: 17 }}>Advert Category Code</Form.Label>
+                    <Form.Control type="text" placeholder={modalData.cat_id} disabled style={{ fontSize: 18 }} >
+                    </Form.Control>
+                  </Form>
+                </span>
+              </div>
+              <div className='row' style={{ marginLeft: '15%' }}>
+                <span className='col-10'>
+                  <Form>
+                    <Form.Label style={{ fontSize: 17 }}>Position Description</Form.Label>
+                    <Form.Control type="text" placeholder={modalData.position_desc} disabled style={{ fontSize: 18 }} >
+                    </Form.Control>
+                  </Form>
+                </span>
+              </div>
+              <div className='row' style={{ marginLeft: '15%' }}>
+                <span className='col-10'>
+                  <Form>
+                    <Form.Label style={{ fontSize: 17 }}>Job Description</Form.Label>
+                    <Form.Control type="text" placeholder={modalData.job_desc} disabled style={{ fontSize: 18 }} >
+                    </Form.Control>
+                  </Form>
+                </span>
+              </div>
+              <div className='row' style={{ marginLeft: '15%' }}>
+                <span className='col-10'>
+                  <Form>
+                    <Form.Label style={{ fontSize: 17 }}>Needed Knowledge and Skills </Form.Label>
+                    <Form.Control type="text" placeholder={modalData.knowledge_skills} disabled style={{ fontSize: 18 }} >
+                    </Form.Control>
+                  </Form>
+                </span>
+              </div>
+              <div className='row' style={{ marginLeft: '15%' }}>
+                <span className='col-10'>
+                  <Form>
+                    <Form.Label style={{ fontSize: 17 }}>Benefits </Form.Label>
+                    <Form.Control type="text" placeholder={modalData.benefits} disabled style={{ fontSize: 18 }} >
+                    </Form.Control>
+                  </Form>
+                </span>
+              </div>
+              <div className='row' style={{ marginLeft: '15%' }}>
+                <span className='col-5'>
+                  <Form>
+                    <Form.Label style={{ fontSize: 17 }}>Number of Postitions available</Form.Label>
+                    <Form.Control type="text" placeholder={modalData.no_of_positions} disabled style={{ fontSize: 18 }} >
+                    </Form.Control>
+                  </Form>
+                </span>
+                <span className='col-5' >
+                  <Form>
+                    <Form.Label style={{ fontSize: 17 }}>Number Of Applicants</Form.Label>
+                    <Form.Control type="text" placeholder={modalData.no_of_applicants} disabled style={{ fontSize: 18 }} >
+                    </Form.Control>
+                  </Form>
+                </span>
+              </div>
+              <div className="col-10" style={{ maxWidth: '70%', maxHeight: '50%', marginLeft: '30%' }}>
+
+                <img src={modalData.attachment_url} alt='name' style={{ width: '50%', height: '50%' }} />
+              </div>
+
+            </container>
+
+
+          </Modal.Body>
+        </Modal >
         {/* <div class="form-group row">
 
           <div class="col-md-8">

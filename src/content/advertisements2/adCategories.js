@@ -6,9 +6,9 @@ import './ads2.css'
 import '../../../node_modules/bootstrap/dist/css/bootstrap.min.css'
 import Navbar from '../../components/navbar'
 import SideBar from '../../components/sidebar'
-import { Link } from 'react-router-dom'
+import { Link, useHistory } from 'react-router-dom'
 import axios from 'axios'
-import { toast } from 'react-toastify';
+import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 
@@ -24,6 +24,8 @@ function AdCategories() {
   const [categoryData, setCategoryData] = useState([]);
   const [isAdding, setIsAdding] = useState(false);
   const [modalData, setModalData] = useState({})
+
+  const history = useHistory();
 
 
 
@@ -72,23 +74,32 @@ function AdCategories() {
       .then(res => {
         console.log(res.data);
         toast.success('Category Added Successfully ', { position: toast.POSITION.TOP_RIGHT });
+        history.push('/adCategories');
       })
       .catch(err => {
         console.log(err);
         toast.error('error occured while adding ', { position: toast.POSITION.TOP_RIGHT });
-
+        history.push('/adCategories');
       })
     setShow(false);
     setIsAdding(false)
 
   }
 
+  const options = {
+    filterType: 'checkbox',
+    responsive: 'vertical',
+  }
+
 
   return (
     <div>
+      <div>
+        <ToastContainer newestOnTop={true} />
+      </div>
       <Navbar />
       <SideBar />
-      <div className="container-fluid cat_container" style={{ width: '85%', marginLeft: '13em', position: 'fixed' }}>
+      <div className="container-fluid cat_container" style={{ width: '85%', marginLeft: '13em', position: 'relative' }}>
         <h1>ADVERTISEMENT CATEGORIES</h1>
         <div className="new_category_btn_position">
           <button className="new_category_btn " style={{ outline: 'none' }} onClick={handleShow}>
@@ -128,6 +139,7 @@ function AdCategories() {
                 ]
               })}
               options={{
+                options,
                 selectableRows: "none",
                 download: false,
                 print: false,

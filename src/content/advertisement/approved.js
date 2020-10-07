@@ -176,7 +176,7 @@ function Approved() {
               }
               options={{
                 options,
-                selectableRows: false,
+                selectableRows: "none",
                 viewColumns: false,
                 download: false,
                 print: false,
