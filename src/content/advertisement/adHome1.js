@@ -16,7 +16,7 @@ function adHome1() {
                     <center>advertisements from the </center>
                     <center>companies yet.</center>
                     <br></br>
-                    <button type="button" class="btn btn-info" style={{ background: '#01506e' }}><Link style={{ color: 'white' }} to="/setDeadline" >START REQUESTING ADVERTISEMENTS</Link></button>
+                    <Link style={{ color: 'white' }} to="/setDeadline" > <button type="button" class="btn btn-info" style={{ background: '#01506e' }}>START REQUESTING ADVERTISEMENTS</button></Link>
 
                 </div>
 

@@ -18,8 +18,8 @@ function SideNavbar() {
                 <span className="material-icons sidebar-icon">people</span>Students</div></Link>
             <Link to="/adverts"><div className="sidebar-link">
                 <span className="material-icons sidebar-icon">view_carousel</span>Advertiesments</div></Link>
-            <Link to="/cvs"><div className="sidebar-link">
-                <span className="material-icons sidebar-icon">text_snippet</span>Student CVs</div></Link>
+            {/* <Link to="/cvs"><div className="sidebar-link">
+                <span className="material-icons sidebar-icon">text_snippet</span>Student CVs</div></Link> */}
             <Link to="/emailing"><div className="sidebar-link">
                 <span className="material-icons sidebar-icon">mail</span>E mailing</div></Link>
             <Link to="/users"><div className="sidebar-link">
