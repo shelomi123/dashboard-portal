@@ -1,3 +1,5 @@
+// import Users from "./content/users";
+
 class Auth {
     constructor() {
         var token = localStorage.getItem('UserToken');
