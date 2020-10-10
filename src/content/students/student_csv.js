@@ -1,4 +1,6 @@
 import React from 'react';
+import Navbar from '../../components/navbar';
+import SideBar from '../../components/sidebar';
 import './students.css';
 import {
     Card, CardImg, CardText, CardBody,
@@ -8,14 +10,15 @@ import arrow from '../../assets/images/arrow.png';
 // import CSVReader from "react-csv-reader";
 import { CSVReader, readString } from 'react-papaparse';
 import {Tabs, Tab} from 'react-bootstrap';
+import { Link } from 'react-router-dom'
 
 
 function Student_csv(){
 
-    
+    var fileData;
     const handleOnDrop = (data) => {
         console.log(data)
-        
+        fileData = data
       }
      
     const handleOnError = (err, file, inputElem, reason) => {
@@ -26,10 +29,33 @@ function Student_csv(){
         
         console.log(data)
         
-      }
+    }
+
+    function saveFile(){
+       // console.log(fileData)
+        const options = {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body:  JSON.stringify(fileData)
+        }
+        fetch("http://localhost:5000/student/add", options).then(async res => {
+            const data = await res.json();
+            console.log(data.message)
+            /** Navigate to the dashboard */
+            window.open('/dashboard')
+        })
+        .catch(err=>{
+            console.log(err)
+        })
+    }
     
     return (
+        <div>
+            <Navbar />
+            <SideBar />
+       
         <div className="admin-content">
+            
            <div className="file container">
                {/* <div className="file_upload">
                     <div className="fu-content-wrapper">
@@ -52,6 +78,13 @@ function Student_csv(){
                                 <Button className="cancel">Cancel</Button>
                             </div>
                 </div> */}
+                <div className="right" style={{float:"right", marginRight:"20px"}}>
+                <Link style={{ color: "white" }} to="/student_list2">  <button className="view_students" style={{ outline: 'none' }}>
+                    View Enrolled Students </button>
+                </Link>
+                </div>
+                <br></br>
+                <br></br>
                
                 <Tabs defaultActiveKey="cs" id="controlled-tab-example">
                     <Tab eventKey="cs" title="Computer Science">
@@ -91,12 +124,13 @@ function Student_csv(){
                         <div className="row">
                             <div className="col-xl-7 col-lg-6 col-md-4"></div>
                             <div className="buttons col-xl-5 col-lg-6 col-md-8">
-                            <button className="btn upload btn-primary" style={{ width: '180px', marginRight: '2em' }}>Save</button>  
+                            <button className="btn upload btn-primary" style={{ width: '180px', marginRight: '2em' }} onClick={()=> saveFile()}>Save</button>  
                             <button className="btn cancel btn-danger"  style={{ width: '180px' }}>Cancel</button>
         
                             </div>
                         </div>
                     </Tab>
+                    
                     <Tab eventKey="is" title="Information Systems">
                         <div className="files container">
                                 <CSVReader 
@@ -139,11 +173,15 @@ function Student_csv(){
                     </Tab>
                     
                 </Tabs>
+                
             </div>
             
-           
+        
+        </div>   
         </div>
     )
 }
+
+
 
 export default Student_csv;
