@@ -2,7 +2,6 @@ import React, { Component } from 'react'
 import '../../App.css'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import { Link } from 'react-router-dom'
-import ucsc_logo from '../../assets/images/red.jpg'
 import { Modal, Button, Dropdown } from 'react-bootstrap';
 
 import Navbar from '../../components/navbar'
@@ -21,11 +20,12 @@ export default class PendingCompany extends Component {
             hideFilter: true,
             alphabet:'',
             company_obj: {
-                com_name:'', com_email:'', com_dis:'', com_num:''
+                com_name:'', com_email:'', com_dis:'', com_num:'', com_adrz:'', com_intern:'', com_estb:'', com_fax:''
             },
             email: '',
             subject: '',
-            message: ''
+            message: '',
+            approve: ''
         }
     }
 
@@ -45,6 +45,7 @@ export default class PendingCompany extends Component {
             this.setState({error: error});
         }
     }
+    
     searchFunc = (e) => {
         this.setState({search_field: e.target.value});
     }
@@ -64,20 +65,27 @@ export default class PendingCompany extends Component {
     onMessageChange = (e) => {
         this.setState({message: e.target.value})
     }
-    viewClick = (e) => {
-        this.setState({ show: true,
-            company_obj:{com_name:e.comp_name, com_web:e.comp_website, com_dis:e.description, com_num:e.contact_number}
+    onSendMsg = (e) => {
+        console.log(e);
+        const msgBody ={emailBody:this.state.message, email:this.state.email, title: this.state.subject}
+        Axios.post('http://localhost:5000/company/sendMailtoCompany', msgBody).then(response => console.log(response)).catch(error => {
+            console.error('There was an error!', error);
         });
+    }
+    viewClick = (e) => {
+        this.setState({ show: true, company_obj:{com_name:e.comp_name, com_web:e.comp_website, com_dis:e.description, com_num:e.contact_number, 
+            com_adrz:e.address, com_estb:e.date_of_establishment, com_intern: e.provide_internships, com_fax: e.fax_number}});
     }
     isApprove = (e) => {
         console.log(e);
-        var userid = localStorage.getItem('UserToken');
-        const data = {user_id: userid,  comp_id : e.comp_id };
-        console.log("front end com id :" , data);
-        Axios.post('http://localhost:5000/company/approveCompany', data).then(response=> console.log("nesw" , response));
+        // var userid = localStorage.getItem('UserToken');
+        const data = {  comp_id : e.comp_id };
+        Axios.put('http://localhost:5000/company/approveCompany', data).then(response=> this.setState({ approve: response.data.is_approved})).catch(err=>{
+            console.log(err); });
+        console.log("resu", this.state.approve );
     }
     isDecline = (e) => {
-        console.log( this.array);
+        console.log("do");
     }
 
     render() {
@@ -91,9 +99,9 @@ export default class PendingCompany extends Component {
             <div className="admin-content">
             <div className="companies">
                 <div>
-                    <button className="compnaytab"><Link style={{color:'black'}} to="/registeredcom" >Registered Companies</Link></button>
-                    <button className="compnaytab"><Link style={{color:'black'}} to="/pendingcom">Pending to be Approved</Link></button>
-                    <button className="compnaytab"><Link style={{color:'black'}} to="/blacklistedcom">BlackListed Companies</Link></button>
+                    <button className="compnaytab"><Link style={{color:'white'}} to="/registeredcom" >Registered Companies</Link></button>
+                    <button className="compnaytab"><Link style={{color:'white'}} to="/pendingcom">Pending to be Approved</Link></button>
+                    <button className="compnaytab"><Link style={{color:'white'}} to="/blacklistedcom">BlackListed Companies</Link></button>
                     {/* <button className="compnaytab"><Link style={{color:'black'}} to="/toAllComs">To All Companies</Link></button> */}
                 </div>
                 <form className=" search-bar"   >
@@ -146,50 +154,45 @@ export default class PendingCompany extends Component {
                 <div hidden={this.state.hideDefult}  className="cards">
                 {filter_companie && filter_companie.map((company_data, index) => {
                 return(
-                            <div className="card text-black mb-3" style={{ backgroundColor:'#b2bec3',margin: '5px 10px'}} key={index}>
-                                <img className="company-logo" src={ucsc_logo} alt="ucsc_logo"/>
+                            <div className="card text-white mb-3" style={{ borderRadius:'5', backgroundColor:'#7f8fa6',margin: '5px 14px'}} key={index}>
+                            <img className="company-logo" src={company_data.profile_pic_url} alt="com_logo"/>
                                 <div className="card-body " style={{marginLeft:' 10em'}}>
                                     <h3 className="card-title" style={{position:'relative', fontSize:'30px'}}>{company_data.comp_name}</h3>
                                     <p className="card-title" style={{position:'relative', fontSize:'15px'}}>Contact Number :&ensp;{company_data.contact_number}</p>
                                     <p className="card-title" style={{position:'relative', fontSize:'15px'}}>Contact register Name:&ensp;{ 'James anderson example'}</p>
                                     <p className="card-title" style={{position:'relative', fontSize:'15px'}}>E-Mail :&ensp;{company_data.email}</p>
                                     <div style={{position:'relative'}}><hr/>
-                                        <button type="button" className="btn text-white" style={{backgroundColor:'#2d3436'}} value={company_data} onClick={()=>this.isApprove(company_data)}>Approve</button>&emsp;
-                                        <button type="button" className="btn text-white" style={{backgroundColor:'#2d3436'}} value={company_data} onClick={()=>this.viewClick(company_data)}>Decline</button>&emsp;&emsp;
-                                        <button type="button" className="btn text-white" style={{backgroundColor:'#2d3436'}} value={company_data} onClick={()=>this.viewClick(company_data)}>View More...</button>
+                                        <button type="button" className="btn-appr" style={{backgroundColor:'#2d3436'}} value={company_data} onClick={()=>this.isApprove(company_data)}>Approve</button>&emsp;
+                                        <button type="button" className="btn-decl" style={{backgroundColor:'#2d3436'}} value={company_data} onClick={()=>this.viewClick(company_data)}>Decline</button>&emsp;&emsp;
+                                        <button type="button" className="btn-viewmoreBlack" style={{backgroundColor:'#2d3436'}} value={company_data} onClick={()=>this.viewClick(company_data)}>View More...</button>
                                     </div>    
                                 </div>  
 
                                 <Modal show={this.state.show} size="lg" aria-labelledby="contained-modal-title-vcenter" animation={false} centered>
-                                        <img className="company-logo" src={ucsc_logo} alt="ucsc_logo"/>
-                                        <Modal.Header >
-                                            <Modal.Title style={{marginLeft:'10em'}} id="contained-modal-title-vcenter">{this.state.company_obj.com_name}</Modal.Title>
-                                            <Dropdown >
-                                                <Dropdown.Toggle variant="Secondary" id="dropdown-basic">
-                                                </Dropdown.Toggle>
-                                                <Dropdown.Menu>
-                                                <Dropdown.Item href="#/action-1">Block Company</Dropdown.Item>
-                                                </Dropdown.Menu>
-                                            </Dropdown>
-                                        </Modal.Header>
-                                        <Modal.Body style={{paddingLeft:'12em'}}>
-                                            <p>
-                                            {this.state.company_obj.com_dis}
-                                            </p>
-                                            <a href="# " >{this.state.company_obj.com_web}</a>
-                                            <p>
-                                                Cras mattis consectetur purus sit amet fermentum. Cras justo odio,
-                                                dapibus ac facilisis in, egestas eget quam. Morbi leo risus, porta ac
-                                                consectetur ac, vestibulum at eros.
-                                            </p>
-                                        </Modal.Body>
-                                        <Modal.Footer>
-                                            <Button type="Submit" onClick={()=>this.msgClick(company_data)}>Send Message</Button>
-                                            <Button onClick={()=> this.setState({show: false})}>Cancel</Button>
-                                        </Modal.Footer>
-                                    </Modal>        
-                                
-                  {/* /////////////////////////////////////////////////////////////////////////////////////////////////////////////               */}
+                            <img className="company-logo-modal" src={company_data.profile_pic_url} alt="com_logo" position="relative"/>
+                                <Modal.Header style={{backgroundColor:'#192a56'}} >
+                                    <Modal.Title style={{color:'white', marginLeft:'10em'}} id="contained-modal-title-vcenter">{this.state.company_obj.com_name}</Modal.Title>
+                                    <Dropdown >
+                                        <Dropdown.Toggle variant="Secondary" id="dropdown-basic">
+                                        </Dropdown.Toggle>
+                                        <Dropdown.Menu>
+                                        <Dropdown.Item href="#/action-1">Block Company</Dropdown.Item>
+                                        </Dropdown.Menu>
+                                    </Dropdown>
+                                </Modal.Header>
+                                <Modal.Body style={{paddingLeft:'12em',color:'black' }}>
+                                <p>{this.state.company_obj.com_dis}</p>
+                                <a href={this.state.company_obj.com_web} >{this.state.company_obj.com_web}</a>
+                                <br/><br/><br/>
+                                <p>Date of Establish : {this.state.company_obj.com_estb}</p>
+                                <p>Fax Number : {this.state.company_obj.com_fax}</p>
+                                <p>Comapny Address : {this.state.company_obj.com_adrz}</p>
+                                </Modal.Body>
+                                <Modal.Footer style={{backgroundColor:'#192a56'}}>
+                                    {/* <Button type="Submit" onClick={()=>this.msgClick(company_data)} >Send Message</Button> */}
+                                    <Button onClick={()=> this.setState({show: false})}>Cancel</Button>
+                            </Modal.Footer>
+                        </Modal>      
                                 
                                 <Modal  show={this.state.hideForm} size="lg" aria-labelledby="contained-modal-title-vcenter" animation={false} centered>
                                     <Modal.Header >
@@ -218,66 +221,58 @@ export default class PendingCompany extends Component {
                                         </div>
                                     </Modal.Body>
                                     <Modal.Footer>
-                                        <Button >Send</Button>
+                                        <Button value={company_data} onClick={(e) => this.onSendMsg(company_data)}>Send</Button>
                                         <Button onClick={()=> this.setState({hideForm: false})}>Cancel</Button>
                                     </Modal.Footer>
                                 </Modal>
-
-{/* ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// */}
-
-                            </div>
-                        
-                    
+                            </div>          
                 );
             })}
             </div>                          
                 <div hidden={this.state.hideFilter}  className="cards">
             {filter_compani && filter_compani.map((company_data, index) => {
                 return(
-                    <div className="card text-black mb-3" style={{ backgroundColor:'#b2bec3',margin: '5px 10px'}} key={index}>
-                                <img className="company-logo" src={ucsc_logo} alt="ucsc_logo"/>
+                    <div className="card text-white mb-3" style={{ borderRadius:'5', backgroundColor:'#7f8fa6',margin: '5px 14px'}} key={index}>
+                            <img className="company-logo" src={company_data.profile_pic_url} alt="com_logo"/>
                                 <div className="card-body " style={{marginLeft:' 10em'}}>
                                     <h3 className="card-title" style={{position:'relative', fontSize:'30px'}}>{company_data.comp_name}</h3>
                                     <p className="card-title" style={{position:'relative', fontSize:'15px'}}>Contact Number :&ensp;{company_data.contact_number}</p>
                                     <p className="card-title" style={{position:'relative', fontSize:'15px'}}>Contact register Name:&ensp;{ 'James anderson example'}</p>
                                     <p className="card-title" style={{position:'relative', fontSize:'15px'}}>E-Mail :&ensp;{company_data.email}</p>
                                     <div style={{position:'relative'}}><hr/>
-                                        <button type="button" className="btn text-white" style={{backgroundColor:'#2d3436'}} value={company_data} onClick={()=>this.isApprove(company_data)}>Approve</button>&emsp;
-                                        <button type="button" className="btn text-white" style={{backgroundColor:'#2d3436'}} value={company_data} onClick={()=>this.isDecline(company_data)}>Decline</button>&emsp;&emsp;
-                                        <button type="button" className="btn text-white" style={{backgroundColor:'#2d3436'}} value={company_data} onClick={()=>this.viewClick(company_data)}>View More...</button>
-                                     </div>
-                                </div>
-                                
+                                        <button type="button" className="btn-appr" style={{backgroundColor:'#2d3436'}} value={company_data} onClick={()=>this.isApprove(company_data)}>Approve</button>&emsp;
+                                        <button type="button" className="btn-decl" style={{backgroundColor:'#2d3436'}} value={company_data} onClick={()=>this.viewClick(company_data)}>Decline</button>&emsp;&emsp;
+                                        <button type="button" className="btn-viewmoreBlack" style={{backgroundColor:'#2d3436'}} value={company_data} onClick={()=>this.viewClick(company_data)}>View More...</button>
+                                    </div>    
+                                </div>  
+
                                 <Modal show={this.state.show} size="lg" aria-labelledby="contained-modal-title-vcenter" animation={false} centered>
-                                    <img className="company-logo" src={ucsc_logo} alt="ucsc_logo"/>
-                                    <Modal.Header >
-                                        <Modal.Title style={{marginLeft:'10em'}} id="contained-modal-title-vcenter">{this.state.company_obj.com_name}</Modal.Title>
-                                        <Dropdown >
-                                            <Dropdown.Toggle variant="Secondary" id="dropdown-basic">
-                                            </Dropdown.Toggle>
-                                            <Dropdown.Menu>
-                                            <Dropdown.Item href="#/action-1">Block Company</Dropdown.Item>
-                                            </Dropdown.Menu>
-                                        </Dropdown>
-                                    </Modal.Header>
-                                    <Modal.Body style={{paddingLeft:'12em'}}>
-                                        <p>
-                                        {this.state.company_obj.com_dis}
-                                        </p>
-                                        <a href="# " >{this.state.company_obj.com_web}</a>
-                                        <p>
-                                            Cras mattis consectetur purus sit amet fermentum. Cras justo odio,
-                                            dapibus ac facilisis in, egestas eget quam. Morbi leo risus, porta ac
-                                            consectetur ac, vestibulum at eros.
-                                        </p>
-                                    </Modal.Body>
-                                    <Modal.Footer>
-                                        <Button type="submit" onClick={()=>this.msgClick(company_data)} >Sendd Message</Button>
-                                        <Button  onClick={()=> this.setState({show: false})}>Cancel</Button>
-                                    </Modal.Footer>
-                                    </Modal>
+                            <img className="company-logo-modal" src={company_data.profile_pic_url} alt="com_logo" position="relative"/>
+                                <Modal.Header style={{backgroundColor:'#192a56'}} >
+                                    <Modal.Title style={{color:'white', marginLeft:'10em'}} id="contained-modal-title-vcenter">{this.state.company_obj.com_name}</Modal.Title>
+                                    <Dropdown >
+                                        <Dropdown.Toggle variant="Secondary" id="dropdown-basic">
+                                        </Dropdown.Toggle>
+                                        <Dropdown.Menu>
+                                        <Dropdown.Item href="#/action-1">Block Company</Dropdown.Item>
+                                        </Dropdown.Menu>
+                                    </Dropdown>
+                                </Modal.Header>
+                                <Modal.Body style={{paddingLeft:'12em',color:'black' }}>
+                                <p>{this.state.company_obj.com_dis}</p>
+                                <a href={this.state.company_obj.com_web} >{this.state.company_obj.com_web}</a>
+                                <br/><br/><br/>
+                                <p>Date of Establish : {this.state.company_obj.com_estb}</p>
+                                <p>Fax Number : {this.state.company_obj.com_fax}</p>
+                                <p>Comapny Address : {this.state.company_obj.com_adrz}</p>
+                                </Modal.Body>
+                                <Modal.Footer style={{backgroundColor:'#192a56'}}>
+                                    {/* <Button type="Submit" onClick={()=>this.msgClick(company_data)} >Send Message</Button> */}
+                                    <Button onClick={()=> this.setState({show: false})}>Cancel</Button>
+                            </Modal.Footer>
+                        </Modal>        
                                
-                                <Modal show={this.state.hideForm} size="lg" aria-labelledby="contained-modal-title-vcenter" animation={false} centered>
+                                <Modal  show={this.state.hideForm} size="lg" aria-labelledby="contained-modal-title-vcenter" animation={false} centered>
                                     <Modal.Header >
                                         <Modal.Title style={{marginLeft:'10em'}} id="contained-modal-title-vcenter">{this.state.company_obj.com_name}</Modal.Title>
                                     </Modal.Header>
@@ -304,10 +299,11 @@ export default class PendingCompany extends Component {
                                         </div>
                                     </Modal.Body>
                                     <Modal.Footer>
-                                        <Button >Seend</Button>
+                                        <Button value={company_data} onClick={() => this.onSendMsg(company_data)}>Send</Button>
                                         <Button onClick={()=> this.setState({hideForm: false})}>Cancel</Button>
                                     </Modal.Footer>
                                 </Modal>
+
                             </div>
                         
                     
