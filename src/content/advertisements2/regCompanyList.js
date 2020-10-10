@@ -269,6 +269,7 @@ function RegCompanyList() {
             <button
               className="btn btn-success"
               style={{ width: '200px', marginRight: '2em' }}
+
             >
               Request ADs
           </button>
