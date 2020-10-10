@@ -12,7 +12,7 @@ function SideNavbar() {
             <div className="empty-box"></div>
             <Link to="/dashboard"><div className="sidebar-link">
                 <span className="material-icons sidebar-icon">dashboard</span>Dashboard</div></Link>
-            <Link to="/companies"><div className="sidebar-link">
+            <Link to="/registeredcom"><div className="sidebar-link">
                 <span className="material-icons sidebar-icon">corporate_fare</span>Companies</div></Link>
             <Link to="/students"><div className="sidebar-link">
                 <span className="material-icons sidebar-icon">people</span>Students</div></Link>
