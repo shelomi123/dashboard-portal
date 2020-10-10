@@ -31,7 +31,7 @@
     /* background-color: white; */
     border: 0;
     box-shadow: 0 5px 10px 0 rgba(0,0,0,.2);
-    width: 40%;
+    width: 100%;
     margin-top: 40px;
     
 }
@@ -44,7 +44,8 @@
     background: white;
     margin-top: 60px;
     padding: 60px;
-    padding-bottom: 120px;
+    padding-bottom: 60px;
+    padding-top: 30px;
 }
 
 .file_upload {
@@ -103,15 +104,34 @@
     margin-right: 30px;
     background-color: rgb(64, 213, 224);
 }
-.cancel{
+/* .cancel{
     background-color: rgb(248, 168, 217);
-}
+} */
 .upload:hover{
     background-color: rgb(64, 187, 224);
 }
-.cancel:hover{
+/* .cancel:hover{
     background-color: violet;
+} */
+
+.view_students{
+    border-radius: 10px;
+    background-color: rgb(54, 192, 247);
+    border-radius: 20px;
+    border-style: none;
+    color: #fff;
+    width: 200px;
+    height: 40px;
+    border: none;
+    outline: none;
+    text-align: center;
+    /* margin-bottom: 1em; */
+    /* margin-right: 0; */
+    
 }
+.view_students:hover {
+    background-color: rgb(33, 153, 209);
+  }
 .csv-reader-input{
     background: #FFF;
     clear: both;

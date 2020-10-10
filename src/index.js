@@ -18,7 +18,11 @@ import setDeadline from './content/advertisements2/setDeadline'
 import Users from './views/users'
 import adCategories from './content/advertisements2/adCategories'
 import regCompanyList from './content/advertisements2/regCompanyList'
+
 import Student_csv from './content/students/student_csv';
+import Student_enrolling from './content/students/student_enrolling'
+import Student_enrolled from './content/students/student_enrolled'
+import Student_list2 from './content/students/student_list2'
 
 import adHome1 from './content/advertisement/adHome1'
 import adHome2 from './content/advertisement/adHome2'
@@ -64,6 +68,11 @@ ReactDOM.render(
         <Route path="/registeredcom" component={RegisteredCompany} />
         <Route path="/pendingcom" component={PendingCompany} />
         <Route path="/blacklistedcom" component={BlackListedCompany} />
+
+        <Route path="/student_csv" component={Student_csv}/>
+        <Route path="/student_enrolling" component={Student_enrolling} />
+        <Route path="/student_enrolled" component={Student_enrolled} />
+        <Route path="/student_list2" component={Student_list2} />
 
         <Redirect from="/" to="/dashboard" />
       </Switch>
