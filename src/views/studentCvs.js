@@ -4,12 +4,12 @@ import SideBar from '../components/sidebar'
 import Content from '../content/StudentCvs/deadline.js';
 
 
-function StudentCvs(){
+function StudentCvs() {
     return (
         <div>
-        <Navbar/>
-        <SideBar/>
-        <Content/>
+            <Navbar />
+            <SideBar />
+            <Content />
         </div>
     );
 }
