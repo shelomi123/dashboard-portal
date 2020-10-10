@@ -85,8 +85,6 @@ export default class Companies extends Component {
 ///////////////////////////////////////////////////////
     submitMessage = (e) => {
 
-        // console.log("wewvvwvw");
-
     const requestOptions = {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },

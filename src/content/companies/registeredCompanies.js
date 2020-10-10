@@ -65,6 +65,9 @@ export default class RegisteredCompany extends Component {
     onMessageChange = (e) => {
         this.setState({message: e.target.value})
     }
+    onSendMsg = (e) => {
+        console.log("do somethinf");
+    }
     viewClick = (e) => {
         this.setState({ show: true,
             company_obj:{com_name:e.comp_name, com_web:e.comp_website, com_dis:e.description, com_num:e.contact_number}
@@ -210,7 +213,7 @@ export default class RegisteredCompany extends Component {
                                         </div>
                                     </Modal.Body>
                                     <Modal.Footer>
-                                        <Button >Send</Button>
+                                        <Button onClick={() => this.onSendMsg()} >Send</Button>
                                         <Button onClick={()=> this.setState({hideForm: false})}>Cancel</Button>
                                     </Modal.Footer>
                                 </Modal>
