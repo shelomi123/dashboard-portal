@@ -180,3 +180,7 @@
   color: rgba(72, 71, 71, 0.708);
   font-weight: 700;
 }
+.modal-50w {
+  width: 50%;
+  max-width: none !important;
+}

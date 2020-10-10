@@ -5,7 +5,6 @@ import SideBar from '../../components/sidebar'
 import './ads2.css'
 import '../../../node_modules/bootstrap/dist/css/bootstrap.min.css'
 import { Button, Modal, Form } from 'react-bootstrap'
-// import { Link } from 'react-router-dom'
 import axios from 'axios'
 import { Link } from 'react-router-dom'
 
@@ -37,15 +36,16 @@ function RegCompanyList() {
     try {
       setLoading(true);
       axios
-        .get(`http://localhost:5000/company/getAll`)
+        .get(`http://localhost:5000/company/getApprovedCompany`)
         .then(res => {
 
           // console.log(res.data[0].is_verified);
-          for (var i = 0; i < res.data.length; i++) {
-            if (res.data[i].is_verified === true) {
-              setRegCompanyData(res.data);
-            }
-          }
+          // for (var i = 0; i < res.data.length; i++) {
+          //   if (res.data[i].is_approved === true) {
+          //     setRegCompanyData(res.data);
+          //   }
+          // }
+          setRegCompanyData(res.data);
           console.log(regCompanyData);
         })
         .catch(e => {
@@ -130,7 +130,7 @@ function RegCompanyList() {
 
         <div>
           {/* model to show company details */}
-          <Modal show={show} onHide={handleClose} >
+          {/* <Modal show={show} onHide={handleClose} >
 
             <Modal.Body>
               <Form>
@@ -168,11 +168,103 @@ function RegCompanyList() {
               </Form>
             </Modal.Body>
 
-          </Modal>
+          </Modal> */}
+          <Modal dialogClassName='modal-50w'
+            show={show}
+            onHide={handleClose} >
+            <Modal.Body>
+              <container>
+                <div className='row'>
+                  <span className="col-4">
+                    <img src={modalData.profile_pic_url} alt='name' style={{ width: '40%', height: '70%', marginLeft: '60%' }} />
+                  </span>
+                  <span className="col-6" style={{ marginTop: '0%' }}>
+                    <h1>{modalData.comp_name}</h1>
+                  </span>
+                </div>
+
+                <div className='row' style={{ marginLeft: '5%' }}>
+                  <span className='col-6'>
+                    <Form>
+                      <Form.Label style={{ fontSize: 17 }}>Company Website</Form.Label>
+                      <Form.Control type="text" placeholder={modalData.comp_website} disabled style={{ fontSize: 18 }} >
+                      </Form.Control>
+                    </Form>
+                  </span>
+                  <span className='col-6' >
+                    <Form>
+                      <Form.Label style={{ fontSize: 17 }}>Date Created</Form.Label>
+                      <Form.Control type="text" placeholder={modalData.date_of_establishment} disabled style={{ fontSize: 18 }} >
+                      </Form.Control>
+                    </Form>
+                  </span>
+                </div>
+
+                <div className='row' style={{ marginLeft: '5%' }}>
+                  <span className='col-6'>
+                    <Form>
+                      <Form.Label style={{ fontSize: 17 }}>Address</Form.Label>
+                      <Form.Control type="text" placeholder={modalData.address} disabled style={{ fontSize: 18 }} >
+                      </Form.Control>
+                    </Form>
+                  </span>
+                  <span className='col-6' >
+                    <Form>
+                      <Form.Label style={{ fontSize: 17 }}>Email</Form.Label>
+                      <Form.Control type="text" placeholder={modalData.email} disabled style={{ fontSize: 18 }} >
+                      </Form.Control>
+                    </Form>
+                  </span>
+                </div>
+
+                <div className='row' style={{ marginLeft: '5%' }}>
+                  <span className='col-6'>
+                    <Form>
+                      <Form.Label style={{ fontSize: 17 }}>Fax Number</Form.Label>
+                      <Form.Control type="text" placeholder={modalData.fax_number} disabled style={{ fontSize: 18 }} >
+                      </Form.Control>
+                    </Form>
+                  </span>
+                  <span className='col-6'>
+                    <Form>
+                      <Form.Label style={{ fontSize: 17 }}>Contact Number</Form.Label>
+                      <Form.Control type="text" placeholder={modalData.contact_number} disabled style={{ fontSize: 18 }} >
+                      </Form.Control>
+                    </Form>
+                  </span>
+                </div>
+
+
+                <div className='row' style={{ marginLeft: '5%' }}>
+                  <span className='col-6'>
+                    <Form>
+                      <Form.Label style={{ fontSize: 17 }}>Number of Employees</Form.Label>
+                      <Form.Control type="text" placeholder={modalData.num_of_employees} disabled style={{ fontSize: 18 }} >
+                      </Form.Control>
+                    </Form>
+                  </span>
+                  <span className='col-6' >
+                    <Form>
+                      <Form.Label style={{ fontSize: 17 }}>Number of Techleads</Form.Label>
+                      <Form.Control type="text" placeholder={modalData.num_of_techleads} disabled style={{ fontSize: 18 }} >
+                      </Form.Control>
+                    </Form>
+                  </span>
+                </div>
+                {/* <div className="col-10" style={{ maxWidth: '70%', maxHeight: '50%', marginLeft: '30%' }}>
+
+                <img src={modalData.attachment_url} alt='name' style={{ width: '50%', height: '50%' }} />
+              </div> */}
+
+              </container>
+
+
+            </Modal.Body>
+          </Modal >
 
         </div>
         <div className="p-2 " style={{ marginLeft: '48em' }}>
-          <Link to="adHome2">
+          <Link to="/summary">
             <button
               className="btn btn-success"
               style={{ width: '200px', marginRight: '2em' }}

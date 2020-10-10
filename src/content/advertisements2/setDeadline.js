@@ -71,17 +71,20 @@ class setDeadline extends Component {
 
               </Form.Group>
             </Form>
-            <button
-              onSubmit={this.checkDate(this.state.selectedDate)}
-              className="continue-btn  "
-              style={{ outline: 'none' }}
-              type="submit"
-            >
-              Continue
+            <Link style={{ color: 'white' }} to="/regCompanyList" >
+              <button
+                onSubmit={this.checkDate(this.state.selectedDate)}
+                className="continue-btn  "
+                style={{ outline: 'none' }}
+                type="submit"
+              >
+                Continue
             </button>
+            </Link>
+
           </Card>
         </div>
-      </div>
+      </div >
 
     )
   }
