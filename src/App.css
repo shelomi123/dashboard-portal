@@ -131,18 +131,6 @@
 
 .companies { max-width: 100%;height: auto ;display: flex; flex-direction: column;}
 
-.companyview-btn{
-    max-width: 6em;
-    border-radius: 4em;
-    background: linear-gradient(0deg, rgb(149, 174, 183) 0%, rgb(122, 121, 151) 0%, rgb(89, 81, 132) 0%, rgb(110, 96, 137) 50%, rgb(113, 107, 157) 100%, rgba(255, 255, 255, 0) 100%);
-    border: none;
-}
-.companydel-btn{
-    width: 6em;
-    border-radius: 4em;
-    background: linear-gradient(0deg, rgb(98, 16, 16) 0%, rgb(144, 54, 54) 0%, rgb(168, 95, 95) 0%, rgb(199, 104, 104) 50%, rgb(154, 60, 60) 100%, rgba(255, 255, 255, 0) 100%);
-    border: none;
-}
 .companymsg-btn{
     max-width: 6em;
     border-radius: 4em;
@@ -151,6 +139,14 @@
 }
   
 .cards { margin-left: 8em; display: flex; flex-wrap: wrap; }
+
+.card-view {
+	background:linear-gradient(to bottom, #657a9d 5%, #8aa0cd 100%);
+  margin: '10px 15px';
+	background-color:rgb(25, 56, 108);
+	border-radius:19px;
+
+}
  
 form.search-bar input[type=text] {
     padding: 10px;
@@ -168,17 +164,20 @@ form.search-bar::after {content: ""; clear: both; display: table; border: none;}
 
 
 .compnaytab {
+  box-shadow:inset 0px 11px 15px 3px #23395e;
   border: none;
   width: 18em;
   height: 5em;
   font-size: 16px;
-  margin: 10px 20px;
+  margin: 10px 70px;
   cursor: pointer;
   box-shadow: 0 8px 20px 0 rgba(0, 0, 2, 0.2), 0 6px 20px 0 rgba(0, 0, 5, 0.19);
   background-color: rgb(43, 155, 199);
+	background:linear-gradient(to bottom, #3a537d 5%, #4e6593 100%);
   }
 
 .company-logo { position: absolute;height: 150px;width: 150px;margin: 50px 10px;border-radius: 50%;}
+.company-logo-modal {position: absolute; height: 150px;width: 150px;margin: 100px 10px;border-radius: 50%;}
 
 .company-logo {
   position: absolute;
@@ -186,6 +185,84 @@ form.search-bar::after {content: ""; clear: both; display: table; border: none;}
   width: 150px;
   margin: 50px 10px;
   border-radius: 50%;
+}
+.btn-viewmore {
+  box-shadow:inset 0px 11px 15px 3px #23395e;
+	background:linear-gradient(to bottom, #2e466e 5%, #415989 100%);
+	background-color:#2e466e;
+	border-radius:19px;
+	border:1px solid #1f2f47;
+	display:inline-block;
+	cursor:pointer;
+	color:#ffffff;
+	font-family:Arial;
+	font-size:15px;
+	padding:14px 86px;
+	text-decoration:none;
+	text-shadow:0px 1px 0px #263666;
+}
+.btn-viewmore:hover {
+	background:linear-gradient(to bottom, #1f3460 5%, #557bbe 100%);
+	background-color:#1a305b;
+}
+.btn-decl {
+  box-shadow:inset 0px 1px 0px 0px #f7c5c0;
+	background:linear-gradient(to bottom, #e0583f 5%, #952929 100%);
+	background-color:#a93e1e;
+	border-radius:6px;
+	border:1px solid #d83f10;
+	display:inline-block;
+	cursor:pointer;
+	color:#ffffff;
+	font-family:Arial;
+	font-size:15px;
+	font-weight:bold;
+	padding:10px 20px;
+	text-decoration:none;
+	text-shadow:0px 1px 0px #a8442b;
+}
+.btn-decl:hover {
+	background:linear-gradient(to bottom, #a91b1b 5%, #db3f3f 100%);
+	background-color:#b92b2b;
+}
+.btn-appr {
+  box-shadow:inset 0px 1px 0px 0px #f7c5c0;
+	background:linear-gradient(to bottom, #e0583f 5%, #952929 100%);
+	background-color:#a93e1e;
+	border-radius:6px;
+	border:1px solid #d83f10;
+	display:inline-block;
+	cursor:pointer;
+	color:#ffffff;
+	font-family:Arial;
+	font-size:15px;
+	font-weight:bold;
+	padding:10px 20px;
+	text-decoration:none;
+	text-shadow:0px 1px 0px #a8442b;
+}
+.btn-appr:hover {
+	background:linear-gradient(to bottom, #a91b1b 5%, #db3f3f 100%);
+	background-color:#b92b2b;
+}
+.btn-viewmoreBlack{
+  box-shadow:inset 0px 0px 15px 3px #23395e;
+	background:linear-gradient(to bottom, #2e466e 5%, #415989 100%);
+	background-color:#2e466e;
+	border-radius:17px;
+	border:1px solid #1f2f47;
+	display:inline-block;
+	cursor:pointer;
+	color:#ffffff;
+	font-family:Arial;
+	font-size:15px;
+	padding:8px 22px;
+	text-decoration:none;
+	text-shadow:0px 1px 0px #263666;
+}
+.btn-viewmoreBlack:hover {
+	background:linear-gradient(to bottom, #1f3460 5%, #557bbe 100%);
+	background-color:#1a305b;
 }
 
 /*==================================================== students =================================================== */
