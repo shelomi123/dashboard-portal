@@ -69,7 +69,7 @@ ReactDOM.render(
         <Route path="/registeredcom" component={RegisteredCompany}/>
         <Route path="/pendingcom" component={PendingCompany}/>
         <Route path="/blacklistedcom" component={BlackListedCompany}/>
-        <Route path="/toAllComs" component={toAllCompanies}/>
+        {/* <Route path="/toAllComs" component={toAllCompanies}/> */}
 
         <Redirect from="/" to="/dashboard" />
       </Switch>

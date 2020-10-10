@@ -34,17 +34,17 @@ export default class PendingCompany extends Component {
             fetch('Http://localhost:5000/company/getAll').then((res) => res.json())
             .then((data) => {
                 data.sort((a, b) => a.comp_name.localeCompare(b.comp_name))
-                for (let index = 0; index < data.length; index++) {
-                    if(data[index].is_approved === false){
-                        this.setState({com_names: data, hideDefault:this.props.fromView, hideFilter: true })
-                    } 
-                } 
+                data.forEach( element => {
+                    if(element.is_approved === false){
+                        this.state.com_names.push(element)
+                    }
+                })        
+            this.setState({ hideDefault:this.props.fromView, hideFilter: true });
             });
         }  catch(error){ 
             this.setState({error: error});
         }
     }
-
     searchFunc = (e) => {
         this.setState({search_field: e.target.value});
     }
@@ -64,26 +64,26 @@ export default class PendingCompany extends Component {
     onMessageChange = (e) => {
         this.setState({message: e.target.value})
     }
-
     viewClick = (e) => {
         this.setState({ show: true,
             company_obj:{com_name:e.comp_name, com_web:e.comp_website, com_dis:e.description, com_num:e.contact_number}
         });
     }
     isApprove = (e) => {
-        console.log(e.comp_id);
-        // const data = { User_id : e.comp_id, Comp_id : e.comp_id};
-        // Axios.post('http://localhost:5000/company/approveCompany', data).then(res => console.log(res.data.comp_id));
+        console.log(e);
+        var userid = localStorage.getItem('UserToken');
+        const data = {user_id: userid,  comp_id : e.comp_id };
+        console.log("front end com id :" , data);
+        Axios.post('http://localhost:5000/company/approveCompany', data).then(response=> console.log("nesw" , response));
+    }
+    isDecline = (e) => {
+        console.log( this.array);
     }
 
     render() {
-        
         const {com_names ,alphabet, search_field} = this.state
-        const filter_companie = com_names.filter(company => (
-            (company.comp_name.toLowerCase().includes(search_field.toLowerCase()))
-            ));
-        
-        const filter_compani = com_names.filter(company => (company.comp_name.charAt(0).toLowerCase()=== alphabet.toLowerCase() ))   
+        const filter_companie = com_names.filter(company => ((company.comp_name.toLowerCase().includes(search_field.toLowerCase())) ));      
+        const filter_compani = com_names.filter(company => (company.comp_name.charAt(0).toLowerCase()=== alphabet.toLowerCase() ));    
         return (
             <div>
                 <Navbar/>
@@ -94,13 +94,12 @@ export default class PendingCompany extends Component {
                     <button className="compnaytab"><Link style={{color:'black'}} to="/registeredcom" >Registered Companies</Link></button>
                     <button className="compnaytab"><Link style={{color:'black'}} to="/pendingcom">Pending to be Approved</Link></button>
                     <button className="compnaytab"><Link style={{color:'black'}} to="/blacklistedcom">BlackListed Companies</Link></button>
-                    <button className="compnaytab"><Link style={{color:'black'}} to="/toAllComs">To All Companies</Link></button>
+                    {/* <button className="compnaytab"><Link style={{color:'black'}} to="/toAllComs">To All Companies</Link></button> */}
                 </div>
                 <form className=" search-bar"   >
                     <i className="material-icons inline" style={{position:'absolute', margin:'0.6em 32em'}}>search</i>
                     <input type="text" onChange={this.searchFunc}  placeholder="Search.." name="search"></input>
                 </form>
-                
                 <div className="containerAlph">
                     <nav aria-label="Page navigation example">
                     <ul className="pagination">
@@ -143,10 +142,9 @@ export default class PendingCompany extends Component {
                     </ul>
                     </nav>
                 </div>
-            
-               
+                       
                 <div hidden={this.state.hideDefult}  className="cards">
-            {filter_companie && filter_companie.map((company_data, index) => {
+                {filter_companie && filter_companie.map((company_data, index) => {
                 return(
                             <div className="card text-black mb-3" style={{ backgroundColor:'#b2bec3',margin: '5px 10px'}} key={index}>
                                 <img className="company-logo" src={ucsc_logo} alt="ucsc_logo"/>
@@ -232,12 +230,11 @@ export default class PendingCompany extends Component {
                     
                 );
             })}
-            </div>
-                            
+            </div>                          
                 <div hidden={this.state.hideFilter}  className="cards">
             {filter_compani && filter_compani.map((company_data, index) => {
                 return(
-                            <div className="card text-white bg-secondary mb-3" style={{margin: '5px 5px'}} key={index}>
+                    <div className="card text-black mb-3" style={{ backgroundColor:'#b2bec3',margin: '5px 10px'}} key={index}>
                                 <img className="company-logo" src={ucsc_logo} alt="ucsc_logo"/>
                                 <div className="card-body " style={{marginLeft:' 10em'}}>
                                     <h3 className="card-title" style={{position:'relative', fontSize:'30px'}}>{company_data.comp_name}</h3>
@@ -246,7 +243,7 @@ export default class PendingCompany extends Component {
                                     <p className="card-title" style={{position:'relative', fontSize:'15px'}}>E-Mail :&ensp;{company_data.email}</p>
                                     <div style={{position:'relative'}}><hr/>
                                         <button type="button" className="btn text-white" style={{backgroundColor:'#2d3436'}} value={company_data} onClick={()=>this.isApprove(company_data)}>Approve</button>&emsp;
-                                        <button type="button" className="btn text-white" style={{backgroundColor:'#2d3436'}} value={company_data} onClick={()=>this.viewClick(company_data)}>Decline</button>&emsp;&emsp;
+                                        <button type="button" className="btn text-white" style={{backgroundColor:'#2d3436'}} value={company_data} onClick={()=>this.isDecline(company_data)}>Decline</button>&emsp;&emsp;
                                         <button type="button" className="btn text-white" style={{backgroundColor:'#2d3436'}} value={company_data} onClick={()=>this.viewClick(company_data)}>View More...</button>
                                      </div>
                                 </div>
@@ -316,8 +313,7 @@ export default class PendingCompany extends Component {
                     
                 );
             })}
-            </div>
-            
+            </div>           
             </div>
             </div>
             </div>

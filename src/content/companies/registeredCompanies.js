@@ -30,16 +30,16 @@ export default class RegisteredCompany extends Component {
     }
 
     async componentDidMount(){
-
         try{
             fetch('Http://localhost:5000/company/getAll').then((res) => res.json())
             .then((data) => {
                 data.sort((a, b) => a.comp_name.localeCompare(b.comp_name))
-                for (let index = 0; index < data.length; index++) {
-                    if(data[index].is_approved === true){
-                        this.setState({com_names: data, hideDefault:this.props.fromView, hideFilter: true })
+                data.forEach( element => {
+                    if(element.is_approved === true){
+                        this.state.com_names.push(element)
                     }
-                } 
+                })        
+            this.setState({ hideDefault:this.props.fromView, hideFilter: true });
             });
         }  catch(error){ 
             this.setState({error: error});
@@ -65,7 +65,6 @@ export default class RegisteredCompany extends Component {
     onMessageChange = (e) => {
         this.setState({message: e.target.value})
     }
-
     viewClick = (e) => {
         this.setState({ show: true,
             company_obj:{com_name:e.comp_name, com_web:e.comp_website, com_dis:e.description, com_num:e.contact_number}
@@ -89,13 +88,12 @@ export default class RegisteredCompany extends Component {
                     <button className="compnaytab"><Link style={{color:'black'}} to="/registeredcom" >Registered Companies</Link></button>
                     <button className="compnaytab"><Link style={{color:'black'}} to="/pendingcom">Pending to be Approved</Link></button>
                     <button className="compnaytab"><Link style={{color:'black'}} to="/blacklistedcom">BlackListed Companies</Link></button>
-                    <button className="compnaytab"><Link style={{color:'black'}} to="/toAllComs">To All Companies</Link></button>
+                    {/* <button className="compnaytab"><Link style={{color:'black'}} to="/toAllComs">To All Companies</Link></button> */}
                 </div>
                 <form className=" search-bar"   >
                     <i className="material-icons inline" style={{position:'absolute', margin:'0.6em 32em'}}>search</i>
                     <input type="text" onChange={this.searchFunc}  placeholder="Search.." name="search"></input>
-                </form>
-                
+                </form>           
                 <div className="containerAlph">
                     <nav aria-label="Page navigation example">
                     <ul className="pagination">
@@ -137,9 +135,7 @@ export default class RegisteredCompany extends Component {
                         </li>
                     </ul>
                     </nav>
-                </div>
-            
-               
+                </div>       
                 <div hidden={this.state.hideDefult}  className="cards">
             {filter_companie && filter_companie.map((company_data, index) => {
                 return(
@@ -226,12 +222,11 @@ export default class RegisteredCompany extends Component {
                     
                 );
             })}
-            </div>
-                            
+            </div>                       
                 <div hidden={this.state.hideFilter}  className="cards">
             {filter_compani && filter_compani.map((company_data, index) => {
                 return(
-                            <div className="card text-white bg-secondary mb-3" style={{margin: '5px 5px'}} key={index}>
+                    <div className="card text-black mb-3" style={{ backgroundColor:'#b2bec3',margin: '5px 10px'}} key={index}>
                                 <img className="company-logo" src={ucsc_logo} alt="ucsc_logo"/>
                                 <div className="card-body " style={{marginLeft:' 10em'}}>
                                     <h3 className="card-title" style={{position:'relative', fontSize:'30px'}}>{company_data.comp_name}</h3>
@@ -309,8 +304,7 @@ export default class RegisteredCompany extends Component {
                     
                 );
             })}
-            </div>
-            
+            </div>          
             </div>
             </div>
             </div>

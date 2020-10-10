@@ -32,12 +32,12 @@ export default class BlackListedCompany extends Component {
             fetch('Http://localhost:5000/company/getAll').then((res) => res.json())
             .then((data) => {
                 data.sort((a, b) => a.comp_name.localeCompare(b.comp_name))
-                for (let index = 0; index < data.length; index++) {
-                    if(data[index].is_approved === false){
-                        this.setState({com_names: data, hideDefault:this.props.fromView, hideFilter: true })
+                data.forEach( element => {
+                    if(element.is_approved === false){
+                        this.state.com_names.push(element)
                     }
-                    console.log('index is :' ,index);  
-                } 
+                })        
+            this.setState({ hideDefault:this.props.fromView, hideFilter: true });
             });
         }  catch(error){ 
             this.setState({error: error});
@@ -63,19 +63,18 @@ export default class BlackListedCompany extends Component {
     onMessageChange = (e) => {
         this.setState({message: e.target.value})
     }
-
+    unBloclClick = (e) => {
+        console.log("do something");
+    }
     viewClick = (e) => {
         this.setState({ show: true,
             company_obj:{com_name:e.comp_name, com_web:e.comp_website, com_dis:e.description, com_num:e.contact_number}
         });
     }
+
     render() {
-        
         const {com_names ,alphabet, search_field} = this.state
-        const filter_companie = com_names.filter(company => (
-            (company.comp_name.toLowerCase().includes(search_field.toLowerCase()))
-            ));
-        
+        const filter_companie = com_names.filter(company => ((company.comp_name.toLowerCase().includes(search_field.toLowerCase())) ));
         const filter_compani = com_names.filter(company => (company.comp_name.charAt(0).toLowerCase()=== alphabet.toLowerCase() ))   
         return (
             <div>
@@ -87,13 +86,12 @@ export default class BlackListedCompany extends Component {
                     <button className="compnaytab"><Link style={{color:'black'}} to="/registeredcom" >Registered Companies</Link></button>
                     <button className="compnaytab"><Link style={{color:'black'}} to="/pendingcom">Pending to be Approved</Link></button>
                     <button className="compnaytab"><Link style={{color:'black'}} to="/blacklistedcom">BlackListed Companies</Link></button>
-                    <button className="compnaytab"><Link style={{color:'black'}} to="/toAllComs">To All Companies</Link></button>
+                    {/* <button className="compnaytab"><Link style={{color:'black'}} to="/toAllComs">To All Companies</Link></button> */}
                 </div>
                 <form className=" search-bar"   >
                     <i className="material-icons inline" style={{position:'absolute', margin:'0.6em 32em'}}>search</i>
                     <input type="text" onChange={this.searchFunc}  placeholder="Search.." name="search"></input>
-                </form>
-                
+                </form>               
                 <div className="containerAlph">
                     <nav aria-label="Page navigation example">
                     <ul className="pagination">
@@ -135,9 +133,7 @@ export default class BlackListedCompany extends Component {
                         </li>
                     </ul>
                     </nav>
-                </div>
-            
-               
+                </div>             
                 <div hidden={this.state.hideDefult}  className="cards">
             {filter_companie && filter_companie.map((company_data, index) => {
                 return(
@@ -149,7 +145,7 @@ export default class BlackListedCompany extends Component {
                                     <p className="card-title" style={{position:'relative', fontSize:'15px'}}>Contact register Name:&ensp;{ 'James anderson example'}</p>
                                     <p className="card-title" style={{position:'relative', fontSize:'15px'}}>E-Mail :&ensp;{company_data.email}</p>
                                     <div style={{position:'relative'}}><hr/>
-                                        <button type="button" className="btn text-white" style={{backgroundColor:'#2d3436'}} value={company_data} onClick={()=>this.msgClick(company_data)}>Unblock</button>&emsp;&emsp;&emsp;&emsp;
+                                        <button type="button" className="btn text-white" style={{backgroundColor:'#2d3436'}} value={company_data} onClick={()=>this.unBloclClick(company_data)}>Unblock</button>&emsp;&emsp;&emsp;&emsp;
                                         <button type="button" className="btn text-white" style={{backgroundColor:'#2d3436'}} value={company_data} onClick={()=>this.viewClick(company_data)}>View More...</button>
                                     </div>    
                                 </div>  
@@ -224,12 +220,11 @@ export default class BlackListedCompany extends Component {
                     
                 );
             })}
-            </div>
-                            
+            </div>                           
                 <div hidden={this.state.hideFilter}  className="cards">
             {filter_compani && filter_compani.map((company_data, index) => {
                 return(
-                            <div className="card text-white bg-secondary mb-3" style={{margin: '5px 5px'}} key={index}>
+                    <div className="card text-black mb-3" style={{ backgroundColor:'#b2bec3',margin: '5px 10px'}} key={index}>
                                 <img className="company-logo" src={ucsc_logo} alt="ucsc_logo"/>
                                 <div className="card-body " style={{marginLeft:' 10em'}}>
                                     <h3 className="card-title" style={{position:'relative', fontSize:'30px'}}>{company_data.comp_name}</h3>
@@ -307,8 +302,7 @@ export default class BlackListedCompany extends Component {
                     
                 );
             })}
-            </div>
-            
+            </div>           
             </div>
             </div>
             </div>

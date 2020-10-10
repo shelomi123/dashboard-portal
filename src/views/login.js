@@ -36,6 +36,7 @@ const validate = values => {
 
 
 function Login() {
+    // const [user, setUser] = useState()
     const formik = useFormik({ initialValues, onSubmit, validate });
     const history = useHistory();
 
@@ -43,7 +44,6 @@ function Login() {
 
     const submitData = (e) => {
         e.preventDefault();
-        console.log(formik.values);
         axios
             .post(`http://localhost:5000/auth/UserLogin`, formik.values)
             .then(res => {
@@ -56,6 +56,7 @@ function Login() {
                 }
                 else {
                     auth.setAuthenticatedTrue(res.data);
+                    console.log("res data :" +res.data);
                     history.push('/');
                 }
 

@@ -221,7 +221,7 @@ export default class Companies extends Component {
                                         </p>
                                     </Modal.Body>
                                     <Modal.Footer>
-                                        <Button type="Submit" >Send Message</Button>
+                                        <Button type="submit" onClick={()=>this.msgClick(company_data)}>Send Message</Button>
                                         <Button onClick={()=> this.setState({show: false})}>Cancel</Button>
                                     </Modal.Footer>
                                 </Modal>        
@@ -272,7 +272,7 @@ export default class Companies extends Component {
         <div hidden={this.state.hideFilter}  className="cards">
         {filter_compani && filter_compani.map((company_data, index) => {
             return(
-                        <div className="card text-white bg-secondary mb-3" style={{margin: '5px 5px'}} key={index}>
+                    <div className="card text-black mb-3" style={{ backgroundColor:'#b2bec3',margin: '5px 10px'}} key={index}>
                             <img className="company-logo" src={ucsc_logo} alt="ucsc_logo"/>
                             <div className="card-body " style={{marginLeft:' 10em'}}>
                                 <h3 className="card-title" style={{position:'relative', fontSize:'30px'}}>{company_data.comp_name}</h3>
@@ -309,7 +309,7 @@ export default class Companies extends Component {
                                     </p>
                                 </Modal.Body>
                                 <Modal.Footer>
-                                    <Button type="submit" >Sendd Message</Button>
+                                    <Button type="submit" onClick={()=>this.msgClick(company_data)}>Send Message</Button>
                                     <Button  onClick={()=> this.setState({show: false})}>Cancel</Button>
                                 </Modal.Footer>
                                 </Modal>
