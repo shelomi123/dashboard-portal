@@ -66,7 +66,7 @@ function RegCompanyList() {
   const columns = [
     'Company Name',
     'Registration Date',
-    'Contact no',
+    'Contact Number',
     'Email',
     'Website',
 
@@ -75,7 +75,7 @@ function RegCompanyList() {
       options: {
         customBodyRenderLite: () => {
           return (
-            <Button className='btn' size="sm" onClick={handleShow}>
+            <Button variant="outline-primary" size="sm" onClick={handleShow}>
               {`View more`}
             </Button>
 
@@ -120,6 +120,7 @@ function RegCompanyList() {
           })}
           options={{
             options,
+            viewColumns: false,
             download: false,
             print: false,
             rowsPerPage: 5,
@@ -193,7 +194,7 @@ function RegCompanyList() {
                   </span>
                   <span className='col-6' >
                     <Form>
-                      <Form.Label style={{ fontSize: 17 }}>Date Created</Form.Label>
+                      <Form.Label style={{ fontSize: 17 }}>Registration Date</Form.Label>
                       <Form.Control type="text" placeholder={modalData.date_of_establishment} disabled style={{ fontSize: 18 }} >
                       </Form.Control>
                     </Form>
