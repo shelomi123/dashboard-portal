@@ -17,7 +17,7 @@ class setDeadline extends Component {
 
     this.state = {
       todayDate: new Date(),
-      selectedDate: '',
+      selectedDate: null,
 
     }
     console.log('today date=============' + this.state.todayDate);
@@ -77,6 +77,7 @@ class setDeadline extends Component {
                 className="continue-btn  "
                 style={{ outline: 'none' }}
                 type="submit"
+                disabled={!this.state.selectedDate}
               >
                 Continue
             </button>
