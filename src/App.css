@@ -197,7 +197,7 @@ form.search-bar::after {content: ""; clear: both; display: table; border: none;}
 	color:#ffffff;
 	font-family:Arial;
 	font-size:15px;
-	padding:14px 86px;
+	padding:10px 76px;
 	text-decoration:none;
 	text-shadow:0px 1px 0px #263666;
 }
@@ -217,7 +217,7 @@ form.search-bar::after {content: ""; clear: both; display: table; border: none;}
 	font-family:Arial;
 	font-size:15px;
 	font-weight:bold;
-	padding:10px 20px;
+	padding:6px 20px;
 	text-decoration:none;
 	text-shadow:0px 1px 0px #a8442b;
 }
@@ -237,7 +237,7 @@ form.search-bar::after {content: ""; clear: both; display: table; border: none;}
 	font-family:Arial;
 	font-size:15px;
 	font-weight:bold;
-	padding:10px 20px;
+	padding:6px 20px;
 	text-decoration:none;
 	text-shadow:0px 1px 0px #a8442b;
 }
@@ -256,7 +256,7 @@ form.search-bar::after {content: ""; clear: both; display: table; border: none;}
 	color:#ffffff;
 	font-family:Arial;
 	font-size:15px;
-	padding:8px 22px;
+	padding:8px 20px;
 	text-decoration:none;
 	text-shadow:0px 1px 0px #263666;
 }
