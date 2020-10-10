@@ -234,9 +234,7 @@ function Pending() {
         <div class="container p-3 my-3 bg-light" >
           <div class="form-group row">
 
-          <div class="col-md-2">
-                <Link style={{ color: 'white' }} to="/adHome2" > <button type="button" class="btn btn-info custom ">HOME</button></Link>
-              </div>
+          
               <div class="col-md-2">
                 <Link style={{ color: 'white' }} to="/summary" > <button type="button" class="btn btn-info custom ">SUMMARY</button></Link>
               </div>
