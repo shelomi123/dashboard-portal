@@ -181,12 +181,12 @@ export default class PendingCompany extends Component {
                                     </Dropdown>
                                 </Modal.Header>
                                 <Modal.Body style={{paddingLeft:'12em',color:'black' }}>
-                                <p>{this.state.company_obj.com_dis}</p>
-                                <a href={this.state.company_obj.com_web} >{this.state.company_obj.com_web}</a>
-                                <br/><br/><br/>
-                                <p>Date of Establish : {this.state.company_obj.com_estb}</p>
-                                <p>Fax Number : {this.state.company_obj.com_fax}</p>
-                                <p>Comapny Address : {this.state.company_obj.com_adrz}</p>
+                                <p><b>{this.state.company_obj.com_dis}</b></p>
+                                <a href={this.state.company_obj.com_web} target="_blank" >{this.state.company_obj.com_web}</a>
+                                <br/><br/>
+                                <p><b>Date of Establish :</b> {this.state.company_obj.com_estb}</p>
+                                <p><b>Fax Number : </b>{this.state.company_obj.com_fax}</p>
+                                <p><b>Comapny Address : </b>{this.state.company_obj.com_adrz}</p>
                                 </Modal.Body>
                                 <Modal.Footer style={{backgroundColor:'#192a56'}}>
                                     {/* <Button type="Submit" onClick={()=>this.msgClick(company_data)} >Send Message</Button> */}
@@ -259,12 +259,12 @@ export default class PendingCompany extends Component {
                                     </Dropdown>
                                 </Modal.Header>
                                 <Modal.Body style={{paddingLeft:'12em',color:'black' }}>
-                                <p>{this.state.company_obj.com_dis}</p>
-                                <a href={this.state.company_obj.com_web} >{this.state.company_obj.com_web}</a>
-                                <br/><br/><br/>
-                                <p>Date of Establish : {this.state.company_obj.com_estb}</p>
-                                <p>Fax Number : {this.state.company_obj.com_fax}</p>
-                                <p>Comapny Address : {this.state.company_obj.com_adrz}</p>
+                                <p><b>{this.state.company_obj.com_dis}</b></p>
+                                <a href={this.state.company_obj.com_web} target="_blank" >{this.state.company_obj.com_web}</a>
+                                <br/><br/>
+                                <p><b>Date of Establish :</b> {this.state.company_obj.com_estb}</p>
+                                <p><b>Fax Number : </b>{this.state.company_obj.com_fax}</p>
+                                <p><b>Comapny Address : </b>{this.state.company_obj.com_adrz}</p>
                                 </Modal.Body>
                                 <Modal.Footer style={{backgroundColor:'#192a56'}}>
                                     {/* <Button type="Submit" onClick={()=>this.msgClick(company_data)} >Send Message</Button> */}
